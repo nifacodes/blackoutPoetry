@@ -1,0 +1,31 @@
+h3 span {
+  font-family: "UnifrakturMaguntia", cursive;
+  font-size: 5rem;
+}
+
+.header-title {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5%;
+}
+
+.second-span {
+  margin-left: 10px;
+}
+
+.side-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-title {
+    justify-content: center;
+  }
+
+  .side-info {
+    text-align: center;
+    margin-top: 15px !important;
+  }
+}

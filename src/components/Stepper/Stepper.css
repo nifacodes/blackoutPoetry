@@ -1,0 +1,27 @@
+.instructions {
+  margin-bottom: 10px !important;
+}
+.step-lable{
+  background: linear-gradient(to right, #093028, #237a57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10% !important;
+  margin-top: 5% !important;
+}
+
+.next-btn{
+  background: linear-gradient(to right, #093028, #237a57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: whitesmoke !important
+}
+
+.reset-btn {
+  margin-bottom: 10% !important;
+}
+
+.stepper {
+  background-color: whitesmoke !important;
+}
