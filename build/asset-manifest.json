@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8d1e310a.chunk.css",
+    "main.js": "/static/js/main.a9b2257d.chunk.js",
+    "main.js.map": "/static/js/main.a9b2257d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.af022d2b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.af022d2b.js.map",
+    "static/js/2.fe15b0df.chunk.js": "/static/js/2.fe15b0df.chunk.js",
+    "static/js/2.fe15b0df.chunk.js.map": "/static/js/2.fe15b0df.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f40631b24dc457a174ad784be2848e6e.js": "/precache-manifest.f40631b24dc457a174ad784be2848e6e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.8d1e310a.chunk.css.map": "/static/css/main.8d1e310a.chunk.css.map",
+    "static/js/2.fe15b0df.chunk.js.LICENSE": "/static/js/2.fe15b0df.chunk.js.LICENSE",
+    "static/media/1.png": "/static/media/1.be86d7a1.png",
+    "static/media/2.png": "/static/media/2.53b4d42f.png",
+    "static/media/3.png": "/static/media/3.13735280.png",
+    "static/media/4.png": "/static/media/4.58af08ba.png",
+    "static/media/App.css": "/static/media/phone2.33da35c1.png",
+    "static/media/SavedNewspaper.css": "/static/media/folded_paper.62507078.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af022d2b.js",
+    "static/js/2.fe15b0df.chunk.js",
+    "static/css/main.8d1e310a.chunk.css",
+    "static/js/main.a9b2257d.chunk.js"
+  ]
+}
