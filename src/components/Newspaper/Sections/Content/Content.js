@@ -3,7 +3,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
 
-import "./Content.css";
+import './Content.css';
 
 const Content = ({
   entireCurrentArticleOF,
@@ -27,8 +27,7 @@ const Content = ({
 
   const content = Object.keys(currentContentWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
-      isWordUsed =
-        currentContentWordMap[i].isClicked ||
+      isWordUsed = currentContentWordMap[i].isClicked ||
         currentContentWordMap[i].isMouseOver;
     }
 
@@ -42,11 +41,11 @@ const Content = ({
           currentContentWordMap[i].isClicked
             ? "pencil-style"
             : currentContentWordMap[i].isMouseOver
-            ? "marker-style"
-            : null
+              ? "marker-style"
+              : null
         }
       >
-        {`${currentContentWordMap[i].word} `}
+        <span className='main-font'>{`${currentContentWordMap[i].word} `}</span>
       </span>
     ) : null;
   });
@@ -65,7 +64,9 @@ const Content = ({
           {content}
         </Typography>
         <div className='author'>
-          <Typography variant='h6'>{entireCurrentArticleOF.author}</Typography>
+          <Typography variant='h6'>
+            <span className='main-font'>{entireCurrentArticleOF.author}</span>
+          </Typography>
         </div>
       </Grid>
     </Grid>
@@ -82,7 +83,7 @@ Content.propTypes = {
   }).isRequired,
   currentContentWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
-    PropTypes.shape({})
+    PropTypes.shape({}),
   ]).isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   onClickHandler: PropTypes.func.isRequired,

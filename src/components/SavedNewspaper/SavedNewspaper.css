@@ -1,21 +1,31 @@
 .folded-bg {
-  display: flex;
+  /* display: flex; */
   background-image: url("../../img/folded_paper.png");
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  padding: 7%;
+  background-size: contain;
+  /* height: 100%; */
+  background-repeat: no-repeat;
+  /* padding: 7%;
   padding-top: 25%;
   margin-right: 5% !important;
-  margin-top: 110px;
+  margin-top: 110px; */
   cursor: pointer;
-  display: flex;
   flex-direction: column;
   align-items: flex-end;
+  border: green solid 2px;
 }
 
 .saved-container {
-  padding: 25% 0 2% 5%;
+  padding: 17% 0 2% 05%;
+  font-family: "Inria Serif", serif;
+}
+.saved-container span {
+  background-color: black;
+  padding: 5px;
+  color: #d0d0d0;
+}
+.saved-author {
+  background-color: transparent !important;
+  color: black !important;
 }
 
 .delete-btn {
@@ -29,10 +39,6 @@
   outline: none;
   margin-top: 5%;
   margin-bottom: 10%;
-}
-
-.saved-newspapers-container {
-  overflow-y: auto;
 }
 
 @media only screen and (min-width: 756px) and (max-width: 1024px) {

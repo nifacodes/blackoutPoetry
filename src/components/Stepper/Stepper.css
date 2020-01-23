@@ -1,8 +1,14 @@
 .instructions {
   margin-bottom: 10px !important;
+  /* border: green solid 2px; */
+  /* background-color: whitesmoke !important; */
 }
-.step-lable{
-  background: linear-gradient(to right, #093028, #237a57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.step-lable {
+  background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .info {
   display: flex;
@@ -13,9 +19,13 @@
   margin-top: 5% !important;
 }
 
-.next-btn{
-  background: linear-gradient(to right, #093028, #237a57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: whitesmoke !important
+.next-btn {
+  background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: whitesmoke !important;
 }
 
 .reset-btn {
@@ -23,5 +33,18 @@
 }
 
 .stepper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border-top: #808080 solid 3px;
+  /* background-color: #d3d3d3 !important; */
+  border-radius: 3px;
   background-color: whitesmoke !important;
+  /* border: red solid 2px; */
+}
+
+@media only screen and (max-width: 375px) {
+  .stepper {
+    background-color: transparent !important;
+  }
 }

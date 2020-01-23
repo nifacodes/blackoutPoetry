@@ -1,8 +1,8 @@
-
 .content-container {
   margin-top: 2%;
   height: 500px;
   margin-bottom: 5%;
+  font-family: "Inria Serif", serif;
 }
 
 .scroll {
@@ -79,17 +79,16 @@
     height: 100%;
   }
 
-.content-container {
-  margin-top: 2%;
-  height: 500px;
-  margin-bottom: 5%;
-}
+  .content-container {
+    margin-top: 2%;
+    height: 500px;
+    margin-bottom: 5%;
+  }
 
-.scroll {
-  height: 100%;
-  overflow: auto;
-}
-
+  .scroll {
+    height: 100%;
+    overflow: auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,12 +1,25 @@
 h3 span {
-  font-family: "UnifrakturMaguntia", cursive;
+  /* font-family: "UnifrakturMaguntia", cursive; */
+  font-family: "Luckiest Guy", cursive;
   font-size: 5rem;
 }
 
 .header-title {
   display: flex;
+  text-align: center;
   flex-wrap: wrap;
   padding-top: 5%;
+  /* color: #dcdcdc; */
+  /* background-color: #353839; */
+}
+
+.header-title span {
+  font-family: "Calistoga", cursive;
+
+  /* font-family: "Luckiest Guy", cursive; */
+  /* font-family: "Abril Fatface", cursive; */
+  /* font-family: "Ultra", serif; */
+  /* font-family: "Alfa Slab One", cursive; */
 }
 
 .second-span {
@@ -17,6 +30,8 @@ h3 span {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* color: #dcdcdc; */
+  /* background-color: #353839; */
 }
 
 @media only screen and (max-width: 600px) {

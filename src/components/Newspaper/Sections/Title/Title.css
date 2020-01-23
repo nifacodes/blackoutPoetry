@@ -1,4 +1,5 @@
 .title-container {
+  margin-top: 2%;
   color: #3f2a14;
   border-bottom: #808080 solid 3px;
   border-top: #808080 solid 3px;
@@ -19,14 +20,16 @@
   display: flex;
   justify-content: flex-end;
 }
-
+.main-font {
+  font-family: "Inria Serif", serif;
+}
 .title {
   color: #3f2a14;
   display: flex;
-  color: #e7e7e7;
+  color: #dcdcdc;
   background-color: #353839;
   justify-content: center;
-  margin-top: 5% !important;
+  margin-top: 3% !important;
   border-radius: 3px;
 }
 .pencil-style {
@@ -36,6 +39,13 @@
 .marker-style {
   background-color: black;
   color: black;
+}
+.title-main {
+  /* font-family: "Luckiest Guy", cursive; */
+  /* font-family: "Abril Fatface", cursive; */
+  /* font-family: "Ultra", serif; */
+  /* font-family: "Alfa Slab One", cursive; */
+  font-family: "Calistoga", cursive;
 }
 
 @media only screen and (max-width: 600px) {

@@ -314,7 +314,6 @@ class App extends React.Component {
           break;
         case 2:
           this.setState({ step: 2 });
-          console.log("here one");
           break;
         default:
           break;
@@ -370,17 +369,23 @@ class App extends React.Component {
           );
           break;
         case 2:
-          console.log("here two");
 
           return (
-            <Grid item xs={12} sm={12} md={3} lg={3}>
-              <SavedNewspaper
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={3}
+              lg={3}
+              className='saved-newspapers-container'
+            >
+              {/* <SavedNewspaper
                 onSaveHandler={this.onSaveHandler}
                 savedArticles={savedArticles}
                 volNum={volNum}
                 deleteSavedHandler={this.deleteSavedHandler}
                 isPoetryFinished={isPoetryFinished}
-              />
+              /> */}
             </Grid>
           );
           break;
