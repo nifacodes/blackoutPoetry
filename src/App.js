@@ -1,14 +1,14 @@
-import React from 'react';
-import { Grid, Button } from '@material-ui/core';
-import _ from 'lodash';
-import Loader from 'react-loader';
-import Uniqid from 'uniqid';
-import DehazeIcon from '@material-ui/icons/Dehaze';
-import { createWordMap, getRandomNumber } from './utils';
-import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
-import { getLexperContent, getArticles } from './api';
-import './App.css';
-
+import React from "react";
+import { Grid, Button } from "@material-ui/core";
+import _ from "lodash";
+import Loader from "react-loader";
+import Uniqid from "uniqid";
+import DehazeIcon from "@material-ui/icons/Dehaze";
+import { createWordMap, getRandomNumber } from "./utils";
+import { Modal, Newspaper, SavedNewspaper, MobileNav } from "./components";
+import { getLexperContent, getArticles } from "./api";
+import "./App.css";
+// import styles from "./App.Module.css"
 const isMobile = window.innerWidth <= 768;
 
 class App extends React.Component {
@@ -31,15 +31,16 @@ class App extends React.Component {
       isOpen: false,
       isNavOpen: false,
       volNum: 1,
+      step: 0
     };
-
-    this.componentToBeRendered = null;
   }
 
   async componentDidMount() {
     const articles = await getArticles();
 
-    const pendingContents = articles.map(async (article) => getLexperContent(article.url));
+    const pendingContents = articles.map(async article =>
+      getLexperContent(article.url)
+    );
     const fullContents = await Promise.all(pendingContents);
 
     articles.forEach((article, i) => {
@@ -52,22 +53,50 @@ class App extends React.Component {
       entireCurrentArticleOF: {
         ...articles[0],
         fullContentText: articles[0].fullContentText,
-        id: articles[0].id,
+        id: articles[0].id
       },
       currentTitleWordMap: createWordMap(articles[0].title),
       currentAuthorWordMap: createWordMap(articles[0].author),
       currentContentWordMap: createWordMap(articles[0].fullContentText),
-      isLoading: false,
+      isLoading: false
     });
   }
 
-  pencilState = () => this.setState({ isPencilState: true, isMarkerState: false, isDisplayFromSaved: false, isInspiration: false, isPoetryFinished: false });
+  pencilState = () =>
+    this.setState({
+      isPencilState: true,
+      isMarkerState: false,
+      isDisplayFromSaved: false,
+      isInspiration: false,
+      isPoetryFinished: false
+    });
 
-  markerState = () => this.setState({ isPencilState: false, isMarkerState: true, isDisplayFromSaved: false, isInspiration: false, isPoetryFinished: false });
+  markerState = () =>
+    this.setState({
+      isPencilState: false,
+      isMarkerState: true,
+      isDisplayFromSaved: false,
+      isInspiration: false,
+      isPoetryFinished: false
+    });
 
-  saveState = () => this.setState({ isPencilState: false, isMarkerState: false, isDisplayFromSaved: false, isInspiration: false, isPoetryFinished: true });
+  saveState = () =>
+    this.setState({
+      isPencilState: false,
+      isMarkerState: false,
+      isDisplayFromSaved: false,
+      isInspiration: false,
+      isPoetryFinished: true
+    });
 
-  loadExamples = () => this.setState({ isInspiration: true, isDisplayFromSaved: false, isPoetryFinished: false });
+  loadExamples = () => {
+    console.log("examples");
+    this.setState({
+      isInspiration: true,
+      isDisplayFromSaved: false,
+      isPoetryFinished: false
+    });
+  };
 
   loadNewArticle = async () => {
     const { totalArticles } = this.state;
@@ -84,74 +113,99 @@ class App extends React.Component {
       entireCurrentArticleOF: {
         ...totalArticles[randomNum],
         fullContentText: totalArticles[randomNum].fullContentText,
-        id: totalArticles[randomNum].id,
+        id: totalArticles[randomNum].id
       },
       currentTitleWordMap: createWordMap(totalArticles[randomNum].title),
       currentAuthorWordMap: createWordMap(totalArticles[randomNum].author),
       currentContentWordMap: createWordMap(
-        totalArticles[randomNum].fullContentText,
-      ),
+        totalArticles[randomNum].fullContentText
+      )
     });
   };
 
   saveCurrentArticle = () => {
-    const { savedArticles, currentTitleWordMap, currentContentWordMap, currentAuthorWordMap, entireCurrentArticleOF } = this.state;
+    const {
+      savedArticles,
+      currentTitleWordMap,
+      currentContentWordMap,
+      currentAuthorWordMap,
+      entireCurrentArticleOF
+    } = this.state;
+
+    console.log("here");
 
     if (!savedArticles[entireCurrentArticleOF.id]) {
       this.setState({
         savedArticles: {
           ...savedArticles,
-          [entireCurrentArticleOF.id]: { currentTitleWordMap, currentContentWordMap, currentAuthorWordMap, entireCurrentArticleOF },
+          [entireCurrentArticleOF.id]: {
+            currentTitleWordMap,
+            currentContentWordMap,
+            currentAuthorWordMap,
+            entireCurrentArticleOF
+          }
         },
         isInspiration: false,
         isMarkerState: false,
-        isPencilState: false,
+        isPencilState: false
       });
     } else {
       this.setState({
         savedArticles: {
           ...savedArticles,
-          [entireCurrentArticleOF.id]: { currentTitleWordMap, currentContentWordMap, currentAuthorWordMap, entireCurrentArticleOF, isInspiration: false, isMarkerState: false, isPencilState: false },
-        },
+          [entireCurrentArticleOF.id]: {
+            currentTitleWordMap,
+            currentContentWordMap,
+            currentAuthorWordMap,
+            entireCurrentArticleOF,
+            isInspiration: false,
+            isMarkerState: false,
+            isPencilState: false
+          }
+        }
       });
     }
   };
 
   onClickHandler = (i, category) => {
-    const { currentTitleWordMap, currentAuthorWordMap, currentContentWordMap } = this.state;
+    const {
+      currentTitleWordMap,
+      currentAuthorWordMap,
+      currentContentWordMap
+    } = this.state;
 
     switch (category) {
-      case 'title':
-        this.setState((prevState) => ({
+      case "title":
+        this.setState(prevState => ({
           currentTitleWordMap: {
             ...currentTitleWordMap,
             [i]: {
               ...currentTitleWordMap[i],
-              isClicked: !prevState.currentTitleWordMap[i].isClicked,
-            },
-          },
+              isClicked: !prevState.currentTitleWordMap[i].isClicked
+            }
+          }
         }));
         break;
-      case 'author':
-        this.setState((prevState) => ({
+      case "author":
+        this.setState(prevState => ({
           currentAuthorWordMap: {
             ...currentAuthorWordMap,
             [i]: {
               ...currentAuthorWordMap[i],
-              isClicked: !prevState.currentAuthorWordMap[i].isClicked,
-            },
-          },
+              isClicked: !prevState.currentAuthorWordMap[i].isClicked
+            }
+          }
         }));
         break;
-      case 'content':
-        this.setState((prevState) => ({
+      case "content":
+        this.setState(prevState => ({
           currentContentWordMap: {
             ...currentContentWordMap,
             [i]: {
               ...currentContentWordMap[i],
-              isClicked: !prevState.currentContentWordMap[i].isClicked,
-            },
-          },
+              isClicked: !prevState.currentContentWordMap[i].isClicked
+            }
+          }
         }));
         break;
       default:
@@ -160,31 +214,35 @@ class App extends React.Component {
   };
 
   onMouseOverHandler = (i, category) => {
-    const { currentTitleWordMap, currentAuthorWordMap, currentContentWordMap } = this.state;
+    const {
+      currentTitleWordMap,
+      currentAuthorWordMap,
+      currentContentWordMap
+    } = this.state;
 
     switch (category) {
-      case 'title':
+      case "title":
         this.setState({
           currentTitleWordMap: {
             ...currentTitleWordMap,
-            [i]: { ...currentTitleWordMap[i], isMouseOver: true },
-          },
+            [i]: { ...currentTitleWordMap[i], isMouseOver: true }
+          }
         });
         break;
-      case 'author':
+      case "author":
         this.setState({
           currentAuthorWordMap: {
             ...currentAuthorWordMap,
-            [i]: { ...currentAuthorWordMap[i], isMouseOver: true },
-          },
+            [i]: { ...currentAuthorWordMap[i], isMouseOver: true }
+          }
         });
         break;
-      case 'content':
+      case "content":
         this.setState({
           currentContentWordMap: {
             ...currentContentWordMap,
-            [i]: { ...currentContentWordMap[i], isMouseOver: true },
-          },
+            [i]: { ...currentContentWordMap[i], isMouseOver: true }
+          }
         });
         break;
       default:
@@ -192,15 +250,26 @@ class App extends React.Component {
     }
   };
 
-  onSaveHandler = (i) => {
+  onSaveHandler = i => {
     const { savedArticles } = this.state;
 
-    const { currentAuthorWordMap: clickedAuthorWordMap, currentTitleWordMap: clickedTitleWordMap, currentContentWordMap: clickedContentWordMap } = savedArticles[i];
+    const {
+      currentAuthorWordMap: clickedAuthorWordMap,
+      currentTitleWordMap: clickedTitleWordMap,
+      currentContentWordMap: clickedContentWordMap
+    } = savedArticles[i];
 
-    this.setState({ isDisplayFromSaved: true, isPoetryFinished: false, isInspiration: false, currentAuthorWordMap: clickedAuthorWordMap, currentTitleWordMap: clickedTitleWordMap, currentContentWordMap: clickedContentWordMap });
+    this.setState({
+      isDisplayFromSaved: true,
+      isPoetryFinished: false,
+      isInspiration: false,
+      currentAuthorWordMap: clickedAuthorWordMap,
+      currentTitleWordMap: clickedTitleWordMap,
+      currentContentWordMap: clickedContentWordMap
+    });
   };
 
-  deleteSavedHandler = (i) => {
+  deleteSavedHandler = i => {
     const { savedArticles } = this.state;
 
     const updatedSavedArticles = _.omit(savedArticles, i);
@@ -212,45 +281,123 @@ class App extends React.Component {
 
   handleClose = () => this.setState({ isOpen: false });
 
-  toggleNav = () => this.setState((prevState) => ({ isNavOpen: !prevState.isNavOpen }))
-
-  displayComponent = (i) => {
-    const { entireCurrentArticleOF, savedArticles, isInspiration, currentTitleWordMap, currentAuthorWordMap, currentContentWordMap, volNum, isDisplayFromSaved, inspirationImg, isPencilState, isMarkerState, isPoetryFinished } = this.state;
-
-    switch (i) {
-      case 0:
-        this.componentToBeRendered = (
-          <div className="video-container">
-            <iframe title="instructions" className="video" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
-          </div>
-        );
-        break;
-      case 1:
-        this.componentToBeRendered = (
-          <Grid item xs={12} sm={12} md={7} lg={7} lx={7} className="newspaper-container">
-            <Newspaper volNum={volNum} entireCurrentArticleOF={entireCurrentArticleOF} isPencilState={isPencilState} isMarkerState={isMarkerState} isInspiration={isInspiration} isDisplayFromSaved={isDisplayFromSaved} inspirationImg={inspirationImg} currentTitleWordMap={currentTitleWordMap} currentAuthorWordMap={currentAuthorWordMap} isPoetryFinished={isPoetryFinished} currentContentWordMap={currentContentWordMap} onClickHandler={this.onClickHandler} onMouseOverHandler={this.onMouseOverHandler} loadNewArticle={this.loadNewArticle} loadExamples={this.loadExamples} pencilState={this.pencilState} markerState={this.markerState} saveState={this.saveState} saveCurrentArticle={this.saveCurrentArticle} />
-          </Grid>
-        );
-        break;
-      case 2:
-        this.componentToBeRendered = (
-          <Grid item xs={12} md={3} lg={3}>
-            <SavedNewspaper onSaveHandler={this.onSaveHandler} savedArticles={savedArticles} volNum={volNum} deleteSavedHandler={this.deleteSavedHandler} />
-          </Grid>
-        );
-        break;
-      default:
-        break;
-    }
-  };
+  toggleNav = () =>
+    this.setState(prevState => ({ isNavOpen: !prevState.isNavOpen }));
 
   render() {
-    const { entireCurrentArticleOF, savedArticles, isInspiration, currentTitleWordMap, currentAuthorWordMap, currentContentWordMap, volNum, isPoetryFinished, isDisplayFromSaved, inspirationImg, isPencilState, isMarkerState, isLoading, isNavOpen, isOpen } = this.state;
+    const {
+      entireCurrentArticleOF,
+      savedArticles,
+      isInspiration,
+      currentTitleWordMap,
+      currentAuthorWordMap,
+      currentContentWordMap,
+      volNum,
+      isPoetryFinished,
+      isDisplayFromSaved,
+      inspirationImg,
+      isPencilState,
+      isMarkerState,
+      isLoading,
+      isNavOpen,
+      isOpen,
+      step
+    } = this.state;
+
+    const displayComponent = i => {
+      switch (i) {
+        case 0:
+          this.setState({ step: 0 });
+          break;
+        case 1:
+          this.setState({ step: 1 });
+          break;
+        case 2:
+          this.setState({ step: 2 });
+          console.log("here one");
+          break;
+        default:
+          break;
+      }
+    };
+
+    const componentToBeRendered = () => {
+      switch (step) {
+        case 0:
+          return (
+            <div className='video-container'>
+              <iframe
+                title='instructions'
+                className='video'
+                src='https://www.youtube.com/embed/wKpVgoGr6kE'
+              />
+            </div>
+          );
+          break;
+        case 1:
+          return (
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={7}
+              lg={7}
+              lx={7}
+              className='newspaper-container'
+            >
+              <Newspaper
+                volNum={volNum}
+                entireCurrentArticleOF={entireCurrentArticleOF}
+                isPencilState={isPencilState}
+                isMarkerState={isMarkerState}
+                isInspiration={isInspiration}
+                isDisplayFromSaved={isDisplayFromSaved}
+                inspirationImg={inspirationImg}
+                currentTitleWordMap={currentTitleWordMap}
+                currentAuthorWordMap={currentAuthorWordMap}
+                isPoetryFinished={isPoetryFinished}
+                currentContentWordMap={currentContentWordMap}
+                onClickHandler={this.onClickHandler}
+                onMouseOverHandler={this.onMouseOverHandler}
+                loadNewArticle={this.loadNewArticle}
+                loadExamples={this.loadExamples}
+                pencilState={this.pencilState}
+                markerState={this.markerState}
+                saveState={this.saveState}
+                saveCurrentArticle={this.saveCurrentArticle}
+              />
+            </Grid>
+          );
+          break;
+        case 2:
+          console.log("here two");
+
+          return (
+            <Grid item xs={12} sm={12} md={3} lg={3}>
+              <SavedNewspaper
+                onSaveHandler={this.onSaveHandler}
+                savedArticles={savedArticles}
+                volNum={volNum}
+                deleteSavedHandler={this.deleteSavedHandler}
+                isPoetryFinished={isPoetryFinished}
+              />
+            </Grid>
+          );
+          break;
+      }
+    };
 
     if (_.isEmpty(entireCurrentArticleOF)) {
       return (
-        <Grid container className="main-container">
-          <Loader loaded={false} scale={2.0} top="50%" left="50%" position="relative" loadedClassName="loader" />
+        <Grid container className='main-container'>
+          <Loader
+            loaded={false}
+            scale={2.0}
+            top='50%'
+            left='50%'
+            position='relative'
+            loadedClassName='loader'
+          />
         </Grid>
       );
     }
@@ -258,30 +405,85 @@ class App extends React.Component {
     if (isMobile) {
       return (
         <>
-          <button type="button" className="nav-container" onClick={this.toggleNav}> <DehazeIcon /> </button>
-          <MobileNav toggleNav={this.toggleNav} isNavOpen={isNavOpen} displayComponent={this.displayComponent} />
-          {
-            this.componentToBeRendered || (
-              <div className="video-container">
-                <iframe title="instructions" className="video" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
-              </div>
-            )
-          }
+          <button
+            type='button'
+            className='nav-container'
+            onClick={this.toggleNav}
+          >
+            <DehazeIcon />
+          </button>
+          <MobileNav
+            toggleNav={this.toggleNav}
+            isNavOpen={isNavOpen}
+            displayComponent={displayComponent}
+          />
+          {console.log("here three")}
+          {componentToBeRendered()}
+          {/* {this.componentToBeRendered || (
+            <div className='video-container'>
+              <iframe
+                title='instructions'
+                className='video'
+                src='https://www.youtube.com/embed/wKpVgoGr6kE'
+              />
+            </div>
+          )} */}
         </>
       );
     }
 
     return (
-      <Grid container className="main-container">
+      <Grid container className='main-container'>
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        <Grid item className="bg-showing" md={2} lg={2} lx={2}>
-          <Button className="learnmore-button" variant="contained" size="small" onClick={this.handleOpen}>Learn more</Button>
+        <Grid item className={"bg-showing"} md={2} lg={2} lx={2}>
+          <Button
+            className='learnmore-button'
+            variant='contained'
+            size='small'
+            onClick={this.handleOpen}
+          >
+            Learn more
+          </Button>
         </Grid>
-        <Grid item xs={12} sm={12} md={7} lg={7} lx={7} className={`newspaper-container ${isLoading ? 'loader' : ''}`}>
-          <Newspaper volNum={volNum} entireCurrentArticleOF={entireCurrentArticleOF} isPencilState={isPencilState} isMarkerState={isMarkerState} isInspiration={isInspiration} isDisplayFromSaved={isDisplayFromSaved} isPoetryFinished={isPoetryFinished} inspirationImg={inspirationImg} currentTitleWordMap={currentTitleWordMap} currentAuthorWordMap={currentAuthorWordMap} currentContentWordMap={currentContentWordMap} onClickHandler={this.onClickHandler} onMouseOverHandler={this.onMouseOverHandler} loadNewArticle={this.loadNewArticle} loadExamples={this.loadExamples} pencilState={this.pencilState} markerState={this.markerState} saveState={this.saveState} saveCurrentArticle={this.saveCurrentArticle} />
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={7}
+          lg={7}
+          lx={7}
+          className={`newspaper-container ${isLoading ? "loader" : ""}`}
+        >
+          <Newspaper
+            volNum={volNum}
+            entireCurrentArticleOF={entireCurrentArticleOF}
+            isPencilState={isPencilState}
+            isMarkerState={isMarkerState}
+            isInspiration={isInspiration}
+            isDisplayFromSaved={isDisplayFromSaved}
+            isPoetryFinished={isPoetryFinished}
+            inspirationImg={inspirationImg}
+            currentTitleWordMap={currentTitleWordMap}
+            currentAuthorWordMap={currentAuthorWordMap}
+            currentContentWordMap={currentContentWordMap}
+            onClickHandler={this.onClickHandler}
+            onMouseOverHandler={this.onMouseOverHandler}
+            loadNewArticle={this.loadNewArticle}
+            loadExamples={this.loadExamples}
+            pencilState={this.pencilState}
+            markerState={this.markerState}
+            saveState={this.saveState}
+            saveCurrentArticle={this.saveCurrentArticle}
+          />
         </Grid>
         <Grid item xs={12} md={3} lg={3}>
-          <SavedNewspaper onSaveHandler={this.onSaveHandler} savedArticles={savedArticles} volNum={volNum} deleteSavedHandler={this.deleteSavedHandler} isPoetryFinished={isPoetryFinished} />
+          <SavedNewspaper
+            onSaveHandler={this.onSaveHandler}
+            savedArticles={savedArticles}
+            volNum={volNum}
+            deleteSavedHandler={this.deleteSavedHandler}
+            isPoetryFinished={isPoetryFinished}
+          />
         </Grid>
       </Grid>
     );

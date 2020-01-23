@@ -18,17 +18,24 @@
   padding: 25% 0 2% 5%;
 }
 
-.delete-btn{
+.delete-btn {
   font-weight: 400;
   color: whitesmoke;
-  background-image: linear-gradient(to right, #093028, #237a57); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+  background-image: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   outline: none;
   margin-top: 5%;
-  margin-bottom: 10%
+  margin-bottom: 10%;
 }
 
+.saved-newspapers-container {
+  overflow-y: auto;
+}
 
-@media only screen and (max-width: 960px) {
+@media only screen and (min-width: 756px) and (max-width: 1024px) {
   .folded-bg {
     display: none;
   }

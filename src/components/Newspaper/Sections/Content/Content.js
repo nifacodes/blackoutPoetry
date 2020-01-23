@@ -1,11 +1,20 @@
 /* eslint-disable no-nested-ternary */
-import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Grid, Typography } from "@material-ui/core";
+import PropTypes from "prop-types";
 
-import './Content.css';
+import "./Content.css";
 
-const Content = ({ entireCurrentArticleOF, currentContentWordMap, onMouseOverHandler, onClickHandler, isMarkerState, isPencilState, isPoetryFinished, isDisplayFromSaved }) => {
+const Content = ({
+  entireCurrentArticleOF,
+  currentContentWordMap,
+  onMouseOverHandler,
+  onClickHandler,
+  isMarkerState,
+  isPencilState,
+  isPoetryFinished,
+  isDisplayFromSaved
+}) => {
   let pencilHandler = null;
   let markerHandler = null;
   let isWordUsed = true;
@@ -18,29 +27,45 @@ const Content = ({ entireCurrentArticleOF, currentContentWordMap, onMouseOverHan
 
   const content = Object.keys(currentContentWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
-      isWordUsed = currentContentWordMap[i].isClicked || currentContentWordMap[i].isMouseOver;
+      isWordUsed =
+        currentContentWordMap[i].isClicked ||
+        currentContentWordMap[i].isMouseOver;
     }
 
-    return (
-      isWordUsed ? (
-        <span key={i} onClick={() => (pencilHandler ? pencilHandler(i, 'content') : null)} onMouseOver={() => (markerHandler ? markerHandler(i, 'content') : null)} onFocus={() => (markerHandler ? markerHandler(i, 'content') : null)} className={currentContentWordMap[i].isClicked ? 'pencil-style' : currentContentWordMap[i].isMouseOver ? 'marker-style' : null}>
-          {`${currentContentWordMap[i].word} `}
-        </span>
-      ) : null
-    );
+    return isWordUsed ? (
+      <span
+        key={i}
+        onClick={() => (pencilHandler ? pencilHandler(i, "content") : null)}
+        onMouseOver={() => (markerHandler ? markerHandler(i, "content") : null)}
+        onFocus={() => (markerHandler ? markerHandler(i, "content") : null)}
+        className={
+          currentContentWordMap[i].isClicked
+            ? "pencil-style"
+            : currentContentWordMap[i].isMouseOver
+            ? "marker-style"
+            : null
+        }
+      >
+        {`${currentContentWordMap[i].word} `}
+      </span>
+    ) : null;
   });
 
   return (
-    <Grid container className="content-container">
-      <Grid item xs={12} className="scroll">
-        {!isDisplayFromSaved && !isPoetryFinished ? <img alt="article" src={entireCurrentArticleOF.urlToImage} className="image" /> : null}
-        <Typography variant="subtitle1" className="text">
+    <Grid container className='content-container'>
+      <Grid item xs={12} className='scroll'>
+        {!isDisplayFromSaved && !isPoetryFinished ? (
+          <img
+            alt='article'
+            src={entireCurrentArticleOF.urlToImage}
+            className='image'
+          />
+        ) : null}
+        <Typography variant='subtitle1' className='text'>
           {content}
         </Typography>
-        <div className="author">
-          <Typography variant="h6">
-            {entireCurrentArticleOF.author}
-          </Typography>
+        <div className='author'>
+          <Typography variant='h6'>{entireCurrentArticleOF.author}</Typography>
         </div>
       </Grid>
     </Grid>
@@ -50,12 +75,19 @@ const Content = ({ entireCurrentArticleOF, currentContentWordMap, onMouseOverHan
 export default Content;
 
 Content.propTypes = {
-  entireCurrentArticleOF: PropTypes.shape({ publishedAt: PropTypes.string.isRequired, urlToImage: PropTypes.string.isRequired, author: PropTypes.string.isRequired }).isRequired,
-  currentContentWordMap: PropTypes.oneOfType([PropTypes.instanceOf(Array), PropTypes.shape({})]).isRequired,
+  entireCurrentArticleOF: PropTypes.shape({
+    publishedAt: PropTypes.string.isRequired,
+    urlToImage: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired
+  }).isRequired,
+  currentContentWordMap: PropTypes.oneOfType([
+    PropTypes.instanceOf(Array),
+    PropTypes.shape({})
+  ]).isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   onClickHandler: PropTypes.func.isRequired,
   isMarkerState: PropTypes.bool.isRequired,
   isPencilState: PropTypes.bool.isRequired,
   isDisplayFromSaved: PropTypes.bool.isRequired,
-  isPoetryFinished: PropTypes.bool.isRequired,
+  isPoetryFinished: PropTypes.bool.isRequired
 };
