@@ -9,43 +9,44 @@ const SavedNewspaper = ({
   onSaveHandler,
   deleteSavedHandler
 }) => (
-  <Grid container className='saved-newspapers-container'>
-    {Object.keys(savedArticles).map((articleObj, i) => (
-      <Grid key={i} item className='folded-bg'>
-        <div
-          className='saved-container'
-          onClick={() =>
-            onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)
-          }
-        >
-          <Typography variant='subtitle1'>
-            <span className='title-main'>
-              {savedArticles[articleObj].entireCurrentArticleOF.title}
-            </span>
-          </Typography>
-          <Typography variant='body1'>
-            <span className='main-font saved-author'>
-              Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
-            </span>
-          </Typography>
-        </div>
-        <div>
-          <button
-            className='btn delete-btn'
-            type='button'
+    <Grid container className='saved-newspapers-container'>
+      {Object.keys(savedArticles).map((articleObj, i) => (
+        <Grid key={i} item className='folded-bg'>
+          <div
+            className='saved-container'
             onClick={() =>
-              deleteSavedHandler(
-                savedArticles[articleObj].entireCurrentArticleOF.id
-              )
+              onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)
             }
           >
-            Delete
+            <Typography variant='subtitle1'>
+              <div className='saved-title'>
+                {savedArticles[articleObj].entireCurrentArticleOF.title}
+              </div>
+            </Typography>
+            <Typography variant='body1'>
+              <div className='main-font saved-author'>
+                Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
+              </div>
+            </Typography>
+
+            <button
+              className='btn delete-btn'
+              type='button'
+              onClick={() =>
+                deleteSavedHandler(
+                  savedArticles[articleObj].entireCurrentArticleOF.id
+                )
+              }
+            >
+              Delete
           </button>
-        </div>
-      </Grid>
-    ))}
-  </Grid>
-);
+
+          </div>
+
+        </Grid>
+      ))}
+    </Grid>
+  );
 
 SavedNewspaper.propTypes = {
   savedArticles: PropTypes.shape([]).isRequired,

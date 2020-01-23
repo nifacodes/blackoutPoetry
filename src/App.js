@@ -379,13 +379,13 @@ class App extends React.Component {
               lg={3}
               className='saved-newspapers-container'
             >
-              {/* <SavedNewspaper
+              <SavedNewspaper
                 onSaveHandler={this.onSaveHandler}
                 savedArticles={savedArticles}
                 volNum={volNum}
                 deleteSavedHandler={this.deleteSavedHandler}
                 isPoetryFinished={isPoetryFinished}
-              /> */}
+              />
             </Grid>
           );
           break;

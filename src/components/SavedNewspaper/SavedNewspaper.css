@@ -2,6 +2,9 @@
   /* display: flex; */
   background-image: url("../../img/folded_paper.png");
   background-size: contain;
+  /* justify-content: center; */
+  align-items: center;
+
   /* height: 100%; */
   background-repeat: no-repeat;
   /* padding: 7%;
@@ -10,25 +13,38 @@
   margin-top: 110px; */
   cursor: pointer;
   flex-direction: column;
-  align-items: flex-end;
   border: green solid 2px;
 }
 
 .saved-container {
-  padding: 17% 0 2% 05%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 7% 5%;
+  margin-top: 19%;
   font-family: "Inria Serif", serif;
-}
-.saved-container span {
-  background-color: black;
-  padding: 5px;
-  color: #d0d0d0;
-}
-.saved-author {
-  background-color: transparent !important;
-  color: black !important;
+  width: 98%;
+  border: red solid 2px;
+  align-items: flex-end;
 }
 
+.saved-author{
+  margin-top: 5%;
+  display: flex;
+
+}
+
+.saved-title{
+  color: #3f2a14;
+  border-bottom: #808080 solid 3px;
+  border-top: #808080 solid 3px;
+  background-color: #d3d3d3;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+
 .delete-btn {
+  display: flex;
   font-weight: 400;
   color: whitesmoke;
   background-image: linear-gradient(
@@ -39,6 +55,7 @@
   outline: none;
   margin-top: 5%;
   margin-bottom: 10%;
+
 }
 
 @media only screen and (min-width: 756px) and (max-width: 1024px) {

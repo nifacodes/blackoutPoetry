@@ -64,9 +64,9 @@ const Content = ({
           {content}
         </Typography>
         <div className='author'>
-          <Typography variant='h6'>
+          {!isDisplayFromSaved && !isPoetryFinished ? <Typography variant='h6'>
             <span className='main-font'>{entireCurrentArticleOF.author}</span>
-          </Typography>
+          </Typography> : null}
         </div>
       </Grid>
     </Grid>
