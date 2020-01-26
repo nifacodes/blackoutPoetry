@@ -88,7 +88,7 @@ body,
   width: 100%;
 }
 
-.saved-newspapers-container {
+/* .saved-newspapers-container {
   border: blue solid 2px;
   overflow-y: scroll;
   height: 100vh;
@@ -96,8 +96,8 @@ body,
   /* margin-bottom: 3px !important;
   margin-top: 2% !important; */
   /* background-color: whitesmoke; 
-  width: 100%;*/
-}
+  width: 100%;
+} */
 
 /* .container-with-footer {
   display: flex;
