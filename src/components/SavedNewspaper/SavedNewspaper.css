@@ -13,7 +13,7 @@
   margin-top: 110px; */
   cursor: pointer;
   flex-direction: column;
-  border: green solid 2px;
+  /* border: green solid 2px; */
 }
 
 .saved-container {
@@ -23,7 +23,7 @@
   margin-top: 19%;
   font-family: "Inria Serif", serif;
   width: 98%;
-  border: red solid 2px;
+  /* border: red solid 2px; */
   align-items: flex-end;
 }
 
@@ -43,7 +43,7 @@
 }
 
 
-.delete-btn {
+/* .delete-btn {
   display: flex;
   font-weight: 400;
   color: whitesmoke;
@@ -51,12 +51,12 @@
     to right,
     #093028,
     #237a57
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
   outline: none;
   margin-top: 5%;
   margin-bottom: 10%;
 
-}
+} */
 
 @media only screen and (min-width: 756px) and (max-width: 1024px) {
   .folded-bg {
