@@ -1,0 +1,59 @@
+.title-container {
+  margin-top: 2%;
+  color: #3f2a14;
+  border-bottom: #808080 solid 3px;
+  border-top: #808080 solid 3px;
+  background-color: #d3d3d3;
+  border-radius: 3px;
+}
+
+.title-text {
+  text-align: center;
+}
+
+.date {
+  padding-left: 5%;
+}
+
+.date-second {
+  padding-right: 5%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title {
+  color: #3f2a14;
+  display: flex;
+  color: #dcdcdc;
+  background-color: #353839;
+  justify-content: center;
+  margin-top: 3% !important;
+  border-radius: 3px;
+}
+.pencil-style {
+  border: solid black 2px;
+}
+
+.marker-style {
+  background-color: black;
+  color: black;
+}
+.title-main {
+  
+  font-family: "Calistoga", cursive;
+}
+
+@media only screen and (max-width: 600px) {
+  .title-container {
+    margin-top: 5%;
+    margin-left: 3px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .title-text {
+    font-size: 1.6em !important;
+  }
+}

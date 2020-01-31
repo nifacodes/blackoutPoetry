@@ -3,22 +3,24 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  background-image: url("./img/bg-nophone.png");
+  background-image: url("./img/blackout_bg_nobtn.png");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
   box-sizing: border-box;
+  font-family: "Inria Serif", serif !important;
 }
+
 .newspaper-container {
   background-image: url("./img/paper.png");
   background-size: cover;
   margin-bottom: 3px !important;
   margin-top: 2% !important;
-  /* background-color: whitesmoke; */
-  width: 90%;
-  padding: 0 5%;
+  width: 100%;
+  padding: 5%;
+  overflow: auto;
 }
 
 .main-container {
@@ -26,7 +28,7 @@ body,
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: scroll;
 }
 
@@ -35,40 +37,16 @@ body,
   justify-content: center;
 }
 
-.footer {
-  height: 100%;
-  width: 100%;
-  background-color: whitesmoke;
-}
-
 .bg-showing {
   margin-top: 15% !important;
   width: 50%;
-  height: 40%;
-  background-image: url("./img/phone2.png");
+  height: 40%; 
+  /* background-image: url("./img/phone2.png"); */
   background-repeat: none;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.phone {
-  width: 100%;
-  height: 100%;
-}
-
-.learnmore-button {
-  transform: rotate(43deg);
-  margin-bottom: 20% !important;
-  background: linear-gradient(
-    to right,
-    #093028,
-    #237a57
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  /* background: linear-gradient(to right, #870000, #190a05); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: whitesmoke !important;
 }
 
 .nav-container {
@@ -85,35 +63,86 @@ body,
   width: 100%;
 }
 
+.saved-newspapers-container {
+  overflow-y: scroll;
+  max-height: 70vh;
+  /* margin-bottom: 3px !important;
+  margin-top: 2% !important; */
+  /* background-color: whitesmoke; */
+  width: 100%;
+  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #181818;
+  border-radius: 5px;
+}
+
+/* Handle on hover
+::-webkit-scrollbar-thumb:hover {
+  background: grey; 
+} */
+
+
 /* .container-with-footer {
-    display: flex;
-    flex-direction: column;
-    border: solid red 2px;
-  } */
+  display: flex;
+  flex-direction: column;
+  border: solid red 2px;
+} */
 
 /*
-   ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #353839;
-    border-radius: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #353839;
-  }
-  */
+ ::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #353839;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #353839;
+}
+*/
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
 
 @media only screen and (max-width: 1024px) {
   .bg-showing {
     display: none;
+  }
+  .saved-newspapers-container{
+    overflow-y: hidden;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .bg-showing {
+    display: visible;
   }
 }
 
@@ -129,6 +158,15 @@ body,
     width: 100%;
     overflow: auto;
     background-color: #e6e6e6;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .newspaper-container {
+    margin-top: 0 !important;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
   }
 }
 

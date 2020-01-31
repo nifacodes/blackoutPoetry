@@ -6,13 +6,18 @@ import {
   Button,
   Typography,
   FormHelperText,
+  MobileStepper,
 } from '@material-ui/core';
 import StepConnector from '@material-ui/core/StepConnector';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import './Stepper.css';
-//----------------------------------------
+import classNames from 'classnames';
+import styles from './Stepper.module.css';
+
+const isMobile = window.innerWidth <= 768;
+
 const getSteps = () => [
   'Get Inspired',
   'Browse Articles',
@@ -22,34 +27,34 @@ const getSteps = () => [
 ];
 
 const browseSentence = (
-  <span className="main-font">
+  <span className={styles['main-font']}>
     Click the Plus button below to browse through articles, choose one you like!
   </span>
 );
 
 const lightBulbSentence = (
-  <span className="main-font">
-    Click the Lightbulb button below to see real examples. <br /> Once you are
+  <span className={styles['main-font']}>
+    Click the Lightbulb button below to see real examples. Once you are
     inspired, click Next button to choose your own article.
   </span>
 );
 
 const saveSentence = (
-  <span className="main-font">
-    Congrats you completed your First Poetry...Great! <br /> If you want to save
+  <span className={styles['main-font']}>
+    Congrats you completed your First Poetry...Great! If you want to save
     this, click the Save button below or click Finish!
   </span>
 );
 
 const boxWords = (
-  <span className="main-font">
+  <span className={styles['main-font']}>
     {`Find words from the article that you like. Click them to 'box the word'.
     This will form your poem. Once you're done, click Next to continue`}
   </span>
 );
 
 const blackOutWords = (
-  <span className="main-font">
+  <span className={styles['main-font']}>
     Hover over the rest of the words to black them out! Once you&aposre done, click
     Next to continue
   </span>
@@ -180,7 +185,7 @@ const Stepper = ({
 
     return (
       <div
-        className={clsx(classes.root, {
+        className={classNames(classes.root, {
           [classes.active]: active,
           [classes.completed]: completed,
         })}
@@ -191,46 +196,74 @@ const Stepper = ({
   }
 
   return isDisplayFromSaved ? (
-    <Button className="next-btn reset-btn" onClick={handleReset}>
+    <Button className={classNames(styles['next-btn'], styles['reset-btn'])} onClick={handleReset}>
       Reset
     </Button>
   ) : (
-      <div className="root">
-        <MUIStepper
-          className="stepper"
-          activeStep={activeStep}
-          alternativeLabel
-          connector={<ColorlibConnector />}
-        >
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-            </Step>
-          ))}
-        </MUIStepper>
-        <div className="info">
+      <div className={styles.root}>
+        {!isMobile ? (
+          <MUIStepper
+            className={styles.stepper}
+            activeStep={activeStep}
+            alternativeLabel
+            connector={<ColorlibConnector />}
+          >
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+              </Step>
+            ))}
+          </MUIStepper>
+        ) : null}
+        <div className={styles.info}>
           <div>
-            <Typography className="instructions">
+            <Typography className={styles.insructions}>
               {getStepContent(activeStep)}
             </Typography>
             {activeStep === 0 ? (
-              <Button className="btn" onClick={loadExamples}>
-                <i className="fas fa-2x fa-lightbulb" />
+              <Button className={styles.btn} onClick={loadExamples}>
+                <i className={classNames('fas', 'fa-2x', 'fa-lightbulb')} />
               </Button>
             ) : null}
             {activeStep === 1 ? (
-              <Button className="btn" onClick={loadNewArticle}>
-                <i className="fas fa-2x fa-plus-circle" />
+              <Button className={styles.btn} onClick={loadNewArticle}>
+                <i className={classNames('fas', 'fa-2x', 'fa-plus-circle')} />
               </Button>
             ) : null}
             {activeStep === 4 ? (
-              <Button className="btn" onClick={saveCurrentArticle}>
-                <i className="fas fa-2x fa-save" />
+              <Button className={styles.btn} onClick={saveCurrentArticle}>
+                <i className={classNames('fas', 'fa-2x', 'fa-save')} />
               </Button>
             ) : null}
-            {activeStep === steps.length - 1 ? (
+            {isMobile ? (
+              <MobileStepper
+                steps={6}
+                className={styles.stepper}
+                position="static"
+                variant="text"
+                activeStep={activeStep}
+                nextButton={activeStep === steps.length - 1 ? (
+                  <Button size="small" className={styles['next-btn']} onClick={handleReset}>
+                    Finish
+                  <KeyboardArrowRight />
+                  </Button>
+                ) : (
+                    <Button size="small" className={styles['next-btn']} onClick={handleNext}>
+                      Next
+                  <KeyboardArrowRight />
+                    </Button>
+                  )}
+                backButton={(
+                  <Button size="small" className={styles['next-btn']} onClick={handleReset}>
+                    Reset
+                  <RotateLeftIcon />
+                  </Button>
+                )}
+              />
+            ) : null}
+            {isMobile ? null : activeStep === steps.length - 1 ? (
               <Button
-                className="next-btn"
+                className={styles['next-btn']}
                 variant="contained"
                 onClick={handleReset}
               >
@@ -238,7 +271,7 @@ const Stepper = ({
             </Button>
             ) : (
                 <Button
-                  className="next-btn"
+                  className={styles['next-btn']}
                   variant="contained"
                   onClick={handleNext}
                 >

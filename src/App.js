@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import _ from 'lodash';
 import Loader from 'react-loader';
 import Uniqid from 'uniqid';
@@ -7,8 +7,9 @@ import DehazeIcon from '@material-ui/icons/Dehaze';
 import { createWordMap, getRandomNumber } from './utils';
 import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
 import { getLexperContent, getArticles } from './api';
-import './App.css';
-// import styles from "./App.Module.css"
+import styles from './App.module.css';
+import classNames from 'classnames';
+
 const isMobile = window.innerWidth <= 768;
 
 class App extends React.Component {
@@ -328,15 +329,14 @@ class App extends React.Component {
       switch (step) {
         case 0:
           return (
-            <div className="video-container">
+            <div className={styles['video-container']}>
               <iframe
                 title="instructions"
-                className="video"
+                className={styles.video}
                 src="https://www.youtube.com/embed/wKpVgoGr6kE"
               />
             </div>
           );
-          break;
         case 1:
           return (
             <Grid
@@ -346,7 +346,7 @@ class App extends React.Component {
               md={7}
               lg={7}
               lx={7}
-              className="newspaper-container"
+              className={styles['newspaper-container']}
             >
               <Newspaper
                 volNum={volNum}
@@ -372,9 +372,7 @@ class App extends React.Component {
               />
             </Grid>
           );
-          break;
         case 2:
-
           return (
             <Grid
               item
@@ -382,7 +380,7 @@ class App extends React.Component {
               sm={12}
               md={3}
               lg={3}
-              className="saved-newspapers-container"
+              className={styles['saved-newspapers-container']}
             >
               <SavedNewspaper
                 onSaveHandler={this.onSaveHandler}
@@ -393,20 +391,21 @@ class App extends React.Component {
               />
             </Grid>
           );
-          break;
+        default:
+          return null;
       }
     };
 
     if (_.isEmpty(entireCurrentArticleOF)) {
       return (
-        <Grid container className="main-container">
+        <Grid container className={styles['main-container']}>
           <Loader
             loaded={false}
             scale={2.0}
             top="50%"
             left="50%"
             position="relative"
-            loadedClassName="loader"
+            loadedClassName={styles.loader}
           />
         </Grid>
       );
@@ -417,7 +416,7 @@ class App extends React.Component {
         <>
           <button
             type="button"
-            className="nav-container"
+            className={styles['nav-container']}
             onClick={this.toggleNav}
           >
             <DehazeIcon />
@@ -427,25 +426,25 @@ class App extends React.Component {
             isNavOpen={isNavOpen}
             displayComponent={displayComponent}
           />
-          {console.log('here three')}
-          {componentToBeRendered()}
-          {this.componentToBeRendered || (
-            <div className="video-container">
-              <iframe
-                title="instructions"
-                className="video"
-                src="https://www.youtube.com/embed/wKpVgoGr6kE"
-              />
-            </div>
-          )}
+          {
+            componentToBeRendered() || (
+              <div className={styles['video-container']}>
+                <iframe
+                  title="instructions"
+                  className={styles.video}
+                  src="https://www.youtube.com/embed/wKpVgoGr6kE"
+                />
+              </div>
+            )
+          }
         </>
       );
     }
 
     return (
-      <Grid container className="main-container">
+      <Grid container className={styles['main-container']}>
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        <Grid item className="bg-showing" md={2} lg={2} lx={2}>
+        <Grid item className={styles['bg-showing']} md={2} lg={2} lx={2}>
           {/* <Button
             className='learnmore-button'
             variant='contained'
@@ -462,7 +461,7 @@ class App extends React.Component {
           md={7}
           lg={7}
           lx={7}
-          className={`newspaper-container ${isLoading ? 'loader' : ''}`}
+          className={classNames(styles['newspaper-container'], isLoading ? styles.loader : '')}
         >
           <Newspaper
             volNum={volNum}

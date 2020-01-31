@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import './Title.css';
+import styles from './Title.module.css';
 
 const Title = ({
   entireCurrentArticleOF: { publishedAt },
@@ -43,36 +43,36 @@ const Title = ({
         onFocus={() => (markerHandler ? markerHandler(i, 'title') : null)}
         className={
           currentTitleWordMap[i].isClicked
-            ? 'pencil-style'
+            ? styles['pencil-style']
             : currentTitleWordMap[i].isMouseOver
-              ? 'marker-style'
+              ? styles['marker-style']
               : null
         }
       >
-        <strong className="title-main">{`${currentTitleWordMap[i].word} `}</strong>
+        <strong className={styles['title-main']}>{`${currentTitleWordMap[i].word} `}</strong>
       </span>
     ) : null;
   });
 
   return (
     <>
-      <Grid container className="title-container">
+      <Grid container className={styles['title-container']}>
         <Grid
           item
           xs={6}
-          className="date"
+          className={styles.date}
         >{`Published on: ${dateString}`}
         </Grid>
         <Grid
           item
           xs={6}
-          className="date-second"
+          className={styles['date-second']}
         >{`Vol. 1 No. ${volNum}`}
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={12} className="title">
-          <Typography variant="h4" className="title-text">
+        <Grid item xs={12} className={styles.title}>
+          <Typography variant="h4" className={styles['title-text']}>
             {title}
           </Typography>
         </Grid>

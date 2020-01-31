@@ -19,4 +19,3 @@ Fixed:
 - learn more media queries
 - no it should not remove it from loadNewArticle, should be added back in load new if they remove the saved article
 - remove author when poetry is complete
-

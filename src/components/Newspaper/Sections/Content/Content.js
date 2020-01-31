@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import './Content.css';
+import styles from './Content.module.css';
 
 const Content = ({
   entireCurrentArticleOF,
@@ -39,34 +39,34 @@ const Content = ({
         onFocus={() => (markerHandler ? markerHandler(i, 'content') : null)}
         className={
           currentContentWordMap[i].isClicked
-            ? 'pencil-style'
+            ? styles['pencil-style']
             : currentContentWordMap[i].isMouseOver
-              ? 'marker-style'
+              ? styles['marker-style']
               : null
         }
       >
-        <span className="main-font">{`${currentContentWordMap[i].word} `}</span>
+        <span className={styles['main-font']}>{`${currentContentWordMap[i].word} `}</span>
       </span>
     ) : null;
   });
 
   return (
-    <Grid container className="content-container">
-      <Grid item xs={12} className="scroll">
+    <Grid container className={styles['content-container']}>
+      <Grid item xs={12} className={styles.scroll}>
         {!isDisplayFromSaved && !isPoetryFinished ? (
           <img
             alt="article"
             src={entireCurrentArticleOF.urlToImage}
-            className="image"
+            className={styles.image}
           />
         ) : null}
-        <Typography variant="subtitle1" className="text">
+        <Typography variant="subtitle1" className={styles.text}>
           {content}
         </Typography>
-        <div className="author">
+        <div className={styles.author}>
           {!isDisplayFromSaved && !isPoetryFinished ? (
             <Typography variant="h6">
-              <span className="main-font">{entireCurrentArticleOF.author}</span>
+              <span className={styles['main-font']}>{entireCurrentArticleOF.author}</span>
             </Typography>
           ) : null}
         </div>

@@ -2,12 +2,12 @@ import React from 'react';
 import { Modal as ModalMUI } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import './Modal.css';
+import styles from './Modal.module.css';
 
 const Modal = ({ handleClose, isOpen }) => (
   <ModalMUI open={isOpen} onClose={handleClose}>
-    <div className="video-container" onClick={handleClose}>
-      <iframe className="video" title="instructions" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
+    <div className={styles['video-container']} onClick={handleClose}>
+      <iframe className={styles.video} title="instructions" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
     </div>
   </ModalMUI>
 );

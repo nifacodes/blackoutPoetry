@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Newspaper.css';
+import styles from './Newspaper.module.css';
 import { Header, Title, Content } from './Sections';
 
 import Stepper from '../Stepper/Stepper';
@@ -36,7 +36,7 @@ const Newspaper = ({
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour];
   return (
-    <div className="center-inspiration">
+    <div className={styles['center-inspiration']}>
       <Header handleOpen={handleOpen} />
       {isInspiration ? (<img src={inspirationImgs[getRandomNumberUpTo4()]} alt="" />) : (
         <>
@@ -98,7 +98,7 @@ Newspaper.propTypes = {
   onClickHandler: PropTypes.func.isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   isInspiration: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.bool.isRequired,
+  handleOpen: PropTypes.func.isRequired,
   isPoetryFinished: PropTypes.bool.isRequired,
   loadExamples: PropTypes.func.isRequired,
   pencilState: PropTypes.func.isRequired,

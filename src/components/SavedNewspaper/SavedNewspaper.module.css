@@ -1,0 +1,71 @@
+.folded-bg {
+  display: flex;
+  background-image: url("../../img/folded_paper.png");
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  flex-direction: row;
+}
+
+.saved-newspapers-container {
+  overflow-y: scroll;
+  max-height: 70vh;
+  /* margin-bottom: 3px !important;
+  margin-top: 2% !important; */
+  /* background-color: whitesmoke; */
+  width: 100%;
+  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+.saved-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 7% 5%;
+  margin-top: 19%;
+  font-family: "Inria Serif", serif !important;
+  width: 98%;
+  align-items: flex-end;
+}
+
+.saved-title{
+  color: #3f2a14;
+  border-bottom: #808080 solid 3px;
+  border-top: #808080 solid 3px;
+  background-color: #d3d3d3;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.saved-author{
+  margin-top: 5%;
+  display: flex;
+  font-family: "Calistoga", cursive;
+
+}
+
+.delete-btn {
+  display: flex;
+  justify-content: start;
+  font-weight: 300;
+  color: whitesmoke;
+  background-image: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); 
+  outline: none;
+ }
+
+@media only screen and (min-width: 756px) and (max-width: 1024px) {
+  .folded-bg {
+    display: none;
+  }
+}
+
