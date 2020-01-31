@@ -1,13 +1,13 @@
-import React from "react";
-import { Grid, Button } from "@material-ui/core";
-import _ from "lodash";
-import Loader from "react-loader";
-import Uniqid from "uniqid";
-import DehazeIcon from "@material-ui/icons/Dehaze";
-import { createWordMap, getRandomNumber } from "./utils";
-import { Modal, Newspaper, SavedNewspaper, MobileNav } from "./components";
-import { getLexperContent, getArticles } from "./api";
-import "./App.css";
+import React from 'react';
+import { Grid, Button } from '@material-ui/core';
+import _ from 'lodash';
+import Loader from 'react-loader';
+import Uniqid from 'uniqid';
+import DehazeIcon from '@material-ui/icons/Dehaze';
+import { createWordMap, getRandomNumber } from './utils';
+import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
+import { getLexperContent, getArticles } from './api';
+import './App.css';
 // import styles from "./App.Module.css"
 const isMobile = window.innerWidth <= 768;
 
@@ -31,16 +31,14 @@ class App extends React.Component {
       isOpen: false,
       isNavOpen: false,
       volNum: 1,
-      step: 0
+      step: 0,
     };
   }
 
   async componentDidMount() {
     const articles = await getArticles();
 
-    const pendingContents = articles.map(async article =>
-      getLexperContent(article.url)
-    );
+    const pendingContents = articles.map(async (article) => getLexperContent(article.url));
     const fullContents = await Promise.all(pendingContents);
 
     articles.forEach((article, i) => {
@@ -53,55 +51,59 @@ class App extends React.Component {
       entireCurrentArticleOF: {
         ...articles[0],
         fullContentText: articles[0].fullContentText,
-        id: articles[0].id
+        id: articles[0].id,
       },
       currentTitleWordMap: createWordMap(articles[0].title),
       currentAuthorWordMap: createWordMap(articles[0].author),
       currentContentWordMap: createWordMap(articles[0].fullContentText),
-      isLoading: false
+      isLoading: false,
     });
+    console.log('all IDS SET?', this.state.totalArticles);
   }
 
-  pencilState = () =>
-    this.setState({
-      isPencilState: true,
-      isMarkerState: false,
-      isDisplayFromSaved: false,
-      isInspiration: false,
-      isPoetryFinished: false
-    });
+  pencilState = () => this.setState({
+    isPencilState: true,
+    isMarkerState: false,
+    isDisplayFromSaved: false,
+    isInspiration: false,
+    isPoetryFinished: false,
+  });
 
-  markerState = () =>
-    this.setState({
-      isPencilState: false,
-      isMarkerState: true,
-      isDisplayFromSaved: false,
-      isInspiration: false,
-      isPoetryFinished: false
-    });
+  markerState = () => this.setState({
+    isPencilState: false,
+    isMarkerState: true,
+    isDisplayFromSaved: false,
+    isInspiration: false,
+    isPoetryFinished: false,
+  });
 
-  saveState = () =>
-    this.setState({
-      isPencilState: false,
-      isMarkerState: false,
-      isDisplayFromSaved: false,
-      isInspiration: false,
-      isPoetryFinished: true
-    });
+  saveState = () => this.setState({
+    isPencilState: false,
+    isMarkerState: false,
+    isDisplayFromSaved: false,
+    isInspiration: false,
+    isPoetryFinished: true,
+  });
 
   loadExamples = () => {
-    console.log("examples");
     this.setState({
       isInspiration: true,
       isDisplayFromSaved: false,
-      isPoetryFinished: false
+      isPoetryFinished: false,
     });
   };
 
   loadNewArticle = async () => {
-    const { totalArticles } = this.state;
+    const { totalArticles, savedArticles, entireCurrentArticleOF } = this.state;
 
-    const randomNum = getRandomNumber();
+    let randomNum = getRandomNumber();
+    if (!(_.isEmpty(savedArticles))) {
+      // console.log(savedArticles, "savedArticles")
+      while (totalArticles[randomNum].id in savedArticles) {
+        // console.log(totalArticles[randomNum].id, " is in ", savedArticles, "so lets find another number")
+        randomNum = getRandomNumber();
+      }
+    }
 
     this.setState({
       volNum: randomNum,
@@ -113,14 +115,16 @@ class App extends React.Component {
       entireCurrentArticleOF: {
         ...totalArticles[randomNum],
         fullContentText: totalArticles[randomNum].fullContentText,
-        id: totalArticles[randomNum].id
+        id: totalArticles[randomNum].id,
       },
       currentTitleWordMap: createWordMap(totalArticles[randomNum].title),
       currentAuthorWordMap: createWordMap(totalArticles[randomNum].author),
       currentContentWordMap: createWordMap(
-        totalArticles[randomNum].fullContentText
-      )
+        totalArticles[randomNum].fullContentText,
+      ),
     });
+    console.log('great, new find, so now the current is set to',
+      entireCurrentArticleOF.id);
   };
 
   saveCurrentArticle = () => {
@@ -129,10 +133,8 @@ class App extends React.Component {
       currentTitleWordMap,
       currentContentWordMap,
       currentAuthorWordMap,
-      entireCurrentArticleOF
+      entireCurrentArticleOF,
     } = this.state;
-
-    console.log("here");
 
     if (!savedArticles[entireCurrentArticleOF.id]) {
       this.setState({
@@ -142,12 +144,12 @@ class App extends React.Component {
             currentTitleWordMap,
             currentContentWordMap,
             currentAuthorWordMap,
-            entireCurrentArticleOF
-          }
+            entireCurrentArticleOF,
+          },
         },
         isInspiration: false,
         isMarkerState: false,
-        isPencilState: false
+        isPencilState: false,
       });
     } else {
       this.setState({
@@ -160,9 +162,9 @@ class App extends React.Component {
             entireCurrentArticleOF,
             isInspiration: false,
             isMarkerState: false,
-            isPencilState: false
-          }
-        }
+            isPencilState: false,
+          },
+        },
       });
     }
   };
@@ -171,41 +173,41 @@ class App extends React.Component {
     const {
       currentTitleWordMap,
       currentAuthorWordMap,
-      currentContentWordMap
+      currentContentWordMap,
     } = this.state;
 
     switch (category) {
-      case "title":
-        this.setState(prevState => ({
+      case 'title':
+        this.setState((prevState) => ({
           currentTitleWordMap: {
             ...currentTitleWordMap,
             [i]: {
               ...currentTitleWordMap[i],
-              isClicked: !prevState.currentTitleWordMap[i].isClicked
-            }
-          }
+              isClicked: !prevState.currentTitleWordMap[i].isClicked,
+            },
+          },
         }));
         break;
-      case "author":
-        this.setState(prevState => ({
+      case 'author':
+        this.setState((prevState) => ({
           currentAuthorWordMap: {
             ...currentAuthorWordMap,
             [i]: {
               ...currentAuthorWordMap[i],
-              isClicked: !prevState.currentAuthorWordMap[i].isClicked
-            }
-          }
+              isClicked: !prevState.currentAuthorWordMap[i].isClicked,
+            },
+          },
         }));
         break;
-      case "content":
-        this.setState(prevState => ({
+      case 'content':
+        this.setState((prevState) => ({
           currentContentWordMap: {
             ...currentContentWordMap,
             [i]: {
               ...currentContentWordMap[i],
-              isClicked: !prevState.currentContentWordMap[i].isClicked
-            }
-          }
+              isClicked: !prevState.currentContentWordMap[i].isClicked,
+            },
+          },
         }));
         break;
       default:
@@ -217,32 +219,32 @@ class App extends React.Component {
     const {
       currentTitleWordMap,
       currentAuthorWordMap,
-      currentContentWordMap
+      currentContentWordMap,
     } = this.state;
 
     switch (category) {
-      case "title":
+      case 'title':
         this.setState({
           currentTitleWordMap: {
             ...currentTitleWordMap,
-            [i]: { ...currentTitleWordMap[i], isMouseOver: true }
-          }
+            [i]: { ...currentTitleWordMap[i], isMouseOver: true },
+          },
         });
         break;
-      case "author":
+      case 'author':
         this.setState({
           currentAuthorWordMap: {
             ...currentAuthorWordMap,
-            [i]: { ...currentAuthorWordMap[i], isMouseOver: true }
-          }
+            [i]: { ...currentAuthorWordMap[i], isMouseOver: true },
+          },
         });
         break;
-      case "content":
+      case 'content':
         this.setState({
           currentContentWordMap: {
             ...currentContentWordMap,
-            [i]: { ...currentContentWordMap[i], isMouseOver: true }
-          }
+            [i]: { ...currentContentWordMap[i], isMouseOver: true },
+          },
         });
         break;
       default:
@@ -250,13 +252,13 @@ class App extends React.Component {
     }
   };
 
-  onSaveHandler = i => {
+  onSaveHandler = (i) => {
     const { savedArticles } = this.state;
 
     const {
       currentAuthorWordMap: clickedAuthorWordMap,
       currentTitleWordMap: clickedTitleWordMap,
-      currentContentWordMap: clickedContentWordMap
+      currentContentWordMap: clickedContentWordMap,
     } = savedArticles[i];
 
     this.setState({
@@ -265,11 +267,11 @@ class App extends React.Component {
       isInspiration: false,
       currentAuthorWordMap: clickedAuthorWordMap,
       currentTitleWordMap: clickedTitleWordMap,
-      currentContentWordMap: clickedContentWordMap
+      currentContentWordMap: clickedContentWordMap,
     });
   };
 
-  deleteSavedHandler = i => {
+  deleteSavedHandler = (i) => {
     const { savedArticles } = this.state;
 
     const updatedSavedArticles = _.omit(savedArticles, i);
@@ -277,12 +279,14 @@ class App extends React.Component {
     this.setState({ savedArticles: { ...updatedSavedArticles } });
   };
 
-  handleOpen = () => this.setState({ isOpen: true });
+  handleOpen = () => {
+    console.log('handleOpen');
+    this.setState({ isOpen: true });
+  };
 
   handleClose = () => this.setState({ isOpen: false });
 
-  toggleNav = () =>
-    this.setState(prevState => ({ isNavOpen: !prevState.isNavOpen }));
+  toggleNav = () => this.setState((prevState) => ({ isNavOpen: !prevState.isNavOpen }));
 
   render() {
     const {
@@ -301,10 +305,10 @@ class App extends React.Component {
       isLoading,
       isNavOpen,
       isOpen,
-      step
+      step,
     } = this.state;
 
-    const displayComponent = i => {
+    const displayComponent = (i) => {
       switch (i) {
         case 0:
           this.setState({ step: 0 });
@@ -324,11 +328,11 @@ class App extends React.Component {
       switch (step) {
         case 0:
           return (
-            <div className='video-container'>
+            <div className="video-container">
               <iframe
-                title='instructions'
-                className='video'
-                src='https://www.youtube.com/embed/wKpVgoGr6kE'
+                title="instructions"
+                className="video"
+                src="https://www.youtube.com/embed/wKpVgoGr6kE"
               />
             </div>
           );
@@ -342,7 +346,7 @@ class App extends React.Component {
               md={7}
               lg={7}
               lx={7}
-              className='newspaper-container'
+              className="newspaper-container"
             >
               <Newspaper
                 volNum={volNum}
@@ -364,6 +368,7 @@ class App extends React.Component {
                 markerState={this.markerState}
                 saveState={this.saveState}
                 saveCurrentArticle={this.saveCurrentArticle}
+
               />
             </Grid>
           );
@@ -377,7 +382,7 @@ class App extends React.Component {
               sm={12}
               md={3}
               lg={3}
-              className='saved-newspapers-container'
+              className="saved-newspapers-container"
             >
               <SavedNewspaper
                 onSaveHandler={this.onSaveHandler}
@@ -394,14 +399,14 @@ class App extends React.Component {
 
     if (_.isEmpty(entireCurrentArticleOF)) {
       return (
-        <Grid container className='main-container'>
+        <Grid container className="main-container">
           <Loader
             loaded={false}
             scale={2.0}
-            top='50%'
-            left='50%'
-            position='relative'
-            loadedClassName='loader'
+            top="50%"
+            left="50%"
+            position="relative"
+            loadedClassName="loader"
           />
         </Grid>
       );
@@ -411,8 +416,8 @@ class App extends React.Component {
       return (
         <>
           <button
-            type='button'
-            className='nav-container'
+            type="button"
+            className="nav-container"
             onClick={this.toggleNav}
           >
             <DehazeIcon />
@@ -422,33 +427,33 @@ class App extends React.Component {
             isNavOpen={isNavOpen}
             displayComponent={displayComponent}
           />
-          {console.log("here three")}
+          {console.log('here three')}
           {componentToBeRendered()}
-          {/* {this.componentToBeRendered || (
-            <div className='video-container'>
+          {this.componentToBeRendered || (
+            <div className="video-container">
               <iframe
-                title='instructions'
-                className='video'
-                src='https://www.youtube.com/embed/wKpVgoGr6kE'
+                title="instructions"
+                className="video"
+                src="https://www.youtube.com/embed/wKpVgoGr6kE"
               />
             </div>
-          )} */}
+          )}
         </>
       );
     }
 
     return (
-      <Grid container className='main-container'>
+      <Grid container className="main-container">
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        <Grid item className={"bg-showing"} md={2} lg={2} lx={2}>
-          <Button
+        <Grid item className="bg-showing" md={2} lg={2} lx={2}>
+          {/* <Button
             className='learnmore-button'
             variant='contained'
-            size='small'
+            size='large'
             onClick={this.handleOpen}
           >
             Learn more
-          </Button>
+          </Button> */}
         </Grid>
         <Grid
           item
@@ -457,7 +462,7 @@ class App extends React.Component {
           md={7}
           lg={7}
           lx={7}
-          className={`newspaper-container ${isLoading ? "loader" : ""}`}
+          className={`newspaper-container ${isLoading ? 'loader' : ''}`}
         >
           <Newspaper
             volNum={volNum}
@@ -479,6 +484,7 @@ class App extends React.Component {
             markerState={this.markerState}
             saveState={this.saveState}
             saveCurrentArticle={this.saveCurrentArticle}
+            handleOpen={this.handleOpen}
           />
         </Grid>
         <Grid item xs={12} md={3} lg={3}>

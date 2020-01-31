@@ -20,7 +20,6 @@ body,
   /* background-color: whitesmoke; */
   width: 90%;
   padding: 0 5%;
-  border: red solid 2;
 }
 
 .main-container {
@@ -47,7 +46,7 @@ body,
 .bg-showing {
   margin-top: 15% !important;
   width: 50%;
-  height: 40%;
+  height: 40%; 
   background-image: url("./img/phone2.png");
   background-repeat: none;
   background-size: cover;
@@ -62,8 +61,8 @@ body,
 }
 
 .learnmore-button {
-  transform: rotate(43deg);
-  margin-bottom: 20% !important;
+  /* transform: rotate(43deg); */
+  /* margin-bottom: 20% !important; */
   background: linear-gradient(
     to right,
     #093028,
@@ -88,16 +87,39 @@ body,
   width: 100%;
 }
 
-/* .saved-newspapers-container {
-  border: blue solid 2px;
+.saved-newspapers-container {
   overflow-y: scroll;
-  height: 100vh;
+  max-height: 70vh;
 
   /* margin-bottom: 3px !important;
   margin-top: 2% !important; */
-  /* background-color: whitesmoke; 
+  /* background-color: whitesmoke; */
   width: 100%;
+  
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #181818;
+  border-radius: 5px;
+}
+
+/* Handle on hover
+::-webkit-scrollbar-thumb:hover {
+  background: grey; 
 } */
+
 
 /* .container-with-footer {
   display: flex;
@@ -129,11 +151,14 @@ body,
   .bg-showing {
     display: none;
   }
+  .saved-newspapers-container{
+    overflow-y: hidden;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .bg-showing {
-    display: none;
+    display: visible;
   }
 }
 

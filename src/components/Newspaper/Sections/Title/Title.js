@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import React from "react";
-import { Grid, Typography } from "@material-ui/core";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Grid, Typography } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-import "./Title.css";
+import './Title.css';
 
 const Title = ({
   entireCurrentArticleOF: { publishedAt },
@@ -14,11 +14,11 @@ const Title = ({
   isMarkerState,
   onMouseOverHandler,
   onClickHandler,
-  volNum
+  volNum,
 }) => {
   const date = new Date(publishedAt);
-  const dateString = `${date.getDate()}/${date.getMonth() +
-    1}/${date.getFullYear()}`;
+  const dateString = `${date.getDate()}/${date.getMonth()
+    + 1}/${date.getFullYear()}`;
 
   let pencilHandler = null;
   let markerHandler = null;
@@ -32,46 +32,47 @@ const Title = ({
 
   const title = Object.keys(currentTitleWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
-      isWordUsed =
-        currentTitleWordMap[i].isClicked || currentTitleWordMap[i].isMouseOver;
+      isWordUsed = currentTitleWordMap[i].isClicked || currentTitleWordMap[i].isMouseOver;
     }
 
     return isWordUsed ? (
       <span
         key={i}
-        onClick={() => (pencilHandler ? pencilHandler(i, "title") : null)}
-        onMouseOver={() => (markerHandler ? markerHandler(i, "title") : null)}
-        onFocus={() => (markerHandler ? markerHandler(i, "title") : null)}
+        onClick={() => (pencilHandler ? pencilHandler(i, 'title') : null)}
+        onMouseOver={() => (markerHandler ? markerHandler(i, 'title') : null)}
+        onFocus={() => (markerHandler ? markerHandler(i, 'title') : null)}
         className={
           currentTitleWordMap[i].isClicked
-            ? "pencil-style"
+            ? 'pencil-style'
             : currentTitleWordMap[i].isMouseOver
-            ? "marker-style"
-            : null
+              ? 'marker-style'
+              : null
         }
       >
-        <strong className='title-main'>{`${currentTitleWordMap[i].word} `}</strong>
+        <strong className="title-main">{`${currentTitleWordMap[i].word} `}</strong>
       </span>
     ) : null;
   });
 
   return (
     <>
-      <Grid container className='title-container'>
+      <Grid container className="title-container">
         <Grid
           item
           xs={6}
-          className='date'
-        >{`Published on: ${dateString}`}</Grid>
+          className="date"
+        >{`Published on: ${dateString}`}
+        </Grid>
         <Grid
           item
           xs={6}
-          className='date-second'
-        >{`Vol. 1 No. ${volNum}`}</Grid>
+          className="date-second"
+        >{`Vol. 1 No. ${volNum}`}
+        </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={12} className='title'>
-          <Typography variant='h4' className='title-text'>
+        <Grid item xs={12} className="title">
+          <Typography variant="h4" className="title-text">
             {title}
           </Typography>
         </Grid>
@@ -82,17 +83,19 @@ const Title = ({
 
 Title.propTypes = {
   entireCurrentArticleOF: PropTypes.shape({
-    publishedAt: PropTypes.string.isRequired
+    publishedAt: PropTypes.string.isRequired,
   }).isRequired,
   currentTitleWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
-    PropTypes.shape({})
+    PropTypes.shape({}),
   ]).isRequired,
   isPencilState: PropTypes.bool.isRequired,
   isMarkerState: PropTypes.bool.isRequired,
+  isDisplayFromSaved: PropTypes.bool.isRequired,
+  isPoetryFinished: PropTypes.bool.isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   onClickHandler: PropTypes.func.isRequired,
-  volNum: PropTypes.number.isRequired
+  volNum: PropTypes.number.isRequired,
 };
 
 export default Title;

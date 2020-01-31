@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "./Newspaper.css";
-import { Header, Title, Content } from "./Sections";
+import './Newspaper.css';
+import { Header, Title, Content } from './Sections';
 
-import Stepper from "../Stepper/Stepper";
+import Stepper from '../Stepper/Stepper';
 
-import { getRandomNumberUpTo4 } from "../../utils";
+import { getRandomNumberUpTo4 } from '../../utils';
 
-import imageOne from "../../img/1.png";
-import imageTwo from "../../img/2.png";
-import imageThree from "../../img/3.png";
-import imageFour from "../../img/4.png";
+import imageOne from '../../img/1.png';
+import imageTwo from '../../img/2.png';
+import imageThree from '../../img/3.png';
+import imageFour from '../../img/4.png';
 
 const Newspaper = ({
   entireCurrentArticleOF,
@@ -31,18 +31,14 @@ const Newspaper = ({
   saveState,
   loadNewArticle,
   saveCurrentArticle,
-  isPoetryFinished
+  isPoetryFinished,
+  handleOpen,
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour];
-
-  console.log(isInspiration);
-
   return (
-    <div className='center-inspiration'>
-      <Header />
-      {isInspiration ? (
-        <img src={inspirationImgs[getRandomNumberUpTo4()]} alt='' />
-      ) : (
+    <div className="center-inspiration">
+      <Header handleOpen={handleOpen} />
+      {isInspiration ? (<img src={inspirationImgs[getRandomNumberUpTo4()]} alt="" />) : (
         <>
           <Title
             entireCurrentArticleOF={entireCurrentArticleOF}
@@ -88,22 +84,28 @@ Newspaper.propTypes = {
   isMarkerState: PropTypes.bool.isRequired,
   currentTitleWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
-    PropTypes.shape({})
+    PropTypes.shape({}),
   ]).isRequired,
   currentContentWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
-    PropTypes.shape({})
+    PropTypes.shape({}),
+  ]).isRequired,
+  currentAuthorWordMap: PropTypes.oneOfType([
+    PropTypes.instanceOf(Array),
+    PropTypes.shape({}),
   ]).isRequired,
   entireCurrentArticleOF: PropTypes.shape([]).isRequired,
   onClickHandler: PropTypes.func.isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   isInspiration: PropTypes.bool.isRequired,
+  handleOpen: PropTypes.bool.isRequired,
+  isPoetryFinished: PropTypes.bool.isRequired,
   loadExamples: PropTypes.func.isRequired,
   pencilState: PropTypes.func.isRequired,
   markerState: PropTypes.func.isRequired,
   saveState: PropTypes.func.isRequired,
   loadNewArticle: PropTypes.func.isRequired,
-  saveCurrentArticle: PropTypes.func.isRequired
+  saveCurrentArticle: PropTypes.func.isRequired,
 };
 
 export default Newspaper;

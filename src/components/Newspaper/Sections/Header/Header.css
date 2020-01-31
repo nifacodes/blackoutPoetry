@@ -21,6 +21,20 @@ h3 span {
   /* font-family: "Ultra", serif; */
   /* font-family: "Alfa Slab One", cursive; */
 }
+.learnmore-button {
+  /* transform: rotate(43deg); */
+  /* margin-bottom: 20% !important; */
+  /* background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); */ 
+  /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* height: 20%; */
+  /* background: linear-gradient(to right, #870000, #190a05); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+  color: whitesmoke !important;*/
+}
+
 
 .second-span {
   margin-left: 10px;
