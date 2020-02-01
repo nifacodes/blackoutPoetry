@@ -11,10 +11,8 @@ const Header = ({ handleOpen }) => (
   <Grid container className={styles['header-container']}>
     <Grid item xs={12} sm={8} md={8} lg={8}>
       <Typography variant="h1">
-        <span className={styles.first}>BLACKOUT</span>
-      </Typography>
-      <Typography variant="h1">
-        <span>POETRY</span>
+        <div>BLACKOUT</div>
+        <div>POETRY</div>
       </Typography>
     </Grid>
     <Grid item xs={12} sm={4} md={4} lg={4} className={styles['side-info']}>
@@ -46,3 +44,5 @@ Header.propTypes = {
 };
 
 export default Header;
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import _ from 'lodash';
 import Loader from 'react-loader';
 import Uniqid from 'uniqid';
@@ -292,9 +292,7 @@ class App extends React.Component {
 
   deleteSavedHandler = (i) => {
     const { savedArticles } = this.state;
-
     const updatedSavedArticles = _.omit(savedArticles, i);
-
     this.setState({ savedArticles: { ...updatedSavedArticles } });
   };
 
@@ -461,20 +459,20 @@ class App extends React.Component {
     return (
       <Grid container className={styles['main-container']}>
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        <Grid item className={styles['bg-showing']} md={2} lg={2} lx={2}>
-          {/* <Button
-            className='learnmore-button'
+        <Grid item className={styles['bg-showing-vl']} md={2} lg={2} lx={2}>
+          <Button
+            className={styles['learnmore-app-vl']}
             variant='contained'
             size='large'
             onClick={this.handleOpen}
           >
             Learn more
-          </Button> */}
+          </Button>
         </Grid>
         <Grid
           item
           xs={12}
-          sm={12}
+          sm={7}
           md={7}
           lg={7}
           lx={7}
@@ -503,7 +501,7 @@ class App extends React.Component {
             handleOpen={this.handleOpen}
           />
         </Grid>
-        <Grid item xs={12} md={3} lg={3}>
+        <Grid item xs={12} sm={3} md={3} lg={3}>
           <SavedNewspaper
             onSaveHandler={this.onSaveHandler}
             savedArticles={savedArticles}

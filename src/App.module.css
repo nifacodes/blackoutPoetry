@@ -36,13 +36,61 @@ body,
   justify-content: center;
 }
 
-.bg-showing {
-  margin-top: 10% !important;
-  height: 100%; 
+.bg-showing-hl {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  /* margin-left: 15%;
+  margin-bottom: 50%; */
+  /* padding-top: 100px; */
+  height: 100vh;
+  margin-top: 8% !important;
+  background-image: url("./img/phone2.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: green solid 5px; 
+  padding: 0% 3%;
+}
+
+
+.bg-showing-vl{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 8% !important;
   background-image: url("./img/iPhone.png");
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+  border: green solid 5px; 
+  padding: 0% 3%;
+}
+
+.learnmore-app-vl { 
+ background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  );  
+  color: whitesmoke !important;
+   font-family: "Inria Serif", serif !important;
+}
+
+.learnmore-app-hl{
+  background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  );  
+  color: whitesmoke !important;
+   transform: rotate(43deg);
+   font-family: "Inria Serif", serif !important;
+   margin-top: 550px !important;
+   margin-right: 20%;
 }
 
 .nav-container {
@@ -50,14 +98,27 @@ body,
   justify-content: center;
   align-items: center;
   color: whitesmoke !important;
-  border: purple solid 5px;
-
+  min-height: 6vh;
   background: linear-gradient(
     to right,
     #093028,
     #237a57
   ); 
   width: 100%;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  border: darkorange solid 5px;
+}
+
+.video-container iframe{
+  width: 80vw;
+  height: 70vh;
 }
 
 /* width */
@@ -77,6 +138,7 @@ body,
   background: #181818;
   border-radius: 5px;
 }
+
 
 /* button:focus {
   outline: 0;
@@ -115,42 +177,28 @@ body,
 }
 */
 
-.video-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  border: darkorange solid 5px;
-
-}
-
-/* @media only screen and (max-width: 1024px) {
-  .bg-showing {
+@media only screen and (max-width: 1024px) {
+  .bg-showing-vl {
     display: none;
   }
-  .saved-newspapers-container{
-    overflow-y: hidden;
+  .bg-showing-hl {
+    display: none;
   }
+
 }
 
 @media only screen and (min-width: 1024px) {
-  .bg-showing {
+  /* .bg-showing {
     display: visible;
-  }
-}
-
-@media only screen and (max-width: 1440px) {
-  .learnmore-button {
-    margin-right: 10% !important;
-  }
+  } */
 }
 
 @media only screen and (max-width: 768px) {
   .newspaper-container {
     margin-top: 0 !important;
     width: 100%;
-    overflow: auto;
+    height: 100vh;
+    overflow: scroll;
     background-color: #e6e6e6;
   }
 }
@@ -162,5 +210,5 @@ body,
     height: 100vh;
     overflow: scroll;
   }
-} */
+}
 

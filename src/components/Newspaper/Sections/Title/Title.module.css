@@ -5,6 +5,7 @@
   border-top: #808080 solid 3px;
   background-color: #d3d3d3;
   border-radius: 3px;
+  min-height: fit-content;
 }
 .title-container {
   display: flex;
@@ -16,7 +17,7 @@
   padding: 3px;
 }
 
-h4 {
+.article-title, h4{
   text-align: center;
 }
 
@@ -30,7 +31,6 @@ h4 {
   justify-content: flex-end;
 }
 
-
 .pencil-style {
   border: solid black 2px;
 }
@@ -43,17 +43,13 @@ strong {
   font-family: "Calistoga", cursive;
 }
 
-/* @media only screen and (max-width: 600px) {
-  .title-container {
-    margin-top: 5%;
-    margin-left: 3px;
+@media only screen and (max-width: 600px) {
+  .date-vol-container{
+   height: 3vh; 
+   font-size: 4vw;
   }
-
-  .title {
-    text-align: center;
+  strong {
+    font-size: 8vw;
   }
-
-  .title-text {
-    font-size: 1.6em !important;
-  }
-} */
+  
+}
