@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.30bff64d.chunk.css",
+    "main.js": "/static/js/main.3edafe8e.chunk.js",
+    "main.js.map": "/static/js/main.3edafe8e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.af022d2b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.af022d2b.js.map",
+    "static/js/2.4df7676c.chunk.js": "/static/js/2.4df7676c.chunk.js",
+    "static/js/2.4df7676c.chunk.js.map": "/static/js/2.4df7676c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.aa09fb388bf1d9706d889e79be48fd4b.js": "/precache-manifest.aa09fb388bf1d9706d889e79be48fd4b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.30bff64d.chunk.css.map": "/static/css/main.30bff64d.chunk.css.map",
+    "static/js/2.4df7676c.chunk.js.LICENSE": "/static/js/2.4df7676c.chunk.js.LICENSE",
+    "static/media/1.png": "/static/media/1.be86d7a1.png",
+    "static/media/2.png": "/static/media/2.53b4d42f.png",
+    "static/media/3.png": "/static/media/3.13735280.png",
+    "static/media/4.png": "/static/media/4.58af08ba.png",
+    "static/media/App.module.css": "/static/media/phone2.33da35c1.png",
+    "static/media/SavedNewspaper.module.css": "/static/media/folded_paper.62507078.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.af022d2b.js",
+    "static/js/2.4df7676c.chunk.js",
+    "static/css/main.30bff64d.chunk.css",
+    "static/js/main.3edafe8e.chunk.js"
+  ]
+}

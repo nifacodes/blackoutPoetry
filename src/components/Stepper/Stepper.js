@@ -215,6 +215,50 @@ const Stepper = ({
             ))}
           </MUIStepper>
         ) : null}
+        {isMobile ? (
+          <MobileStepper
+            steps={6}
+            className={styles.stepper}
+            position="static"
+            variant="text"
+            activeStep={activeStep}
+            nextButton={activeStep === steps.length - 1 ? (
+              <Button size="small" className={styles['step-btn']} onClick={handleReset}>
+                Finish
+                  <KeyboardArrowRight />
+              </Button>
+            ) : (
+                <Button size="small" className={styles['step-btn']} onClick={handleNext}>
+                  Next
+                  <KeyboardArrowRight />
+                </Button>
+              )}
+            backButton={(
+              <Button size="small" className={styles['step-btn']} onClick={handleReset}>
+                Reset
+                  <RotateLeftIcon />
+              </Button>
+            )}
+          />
+        ) : null}
+        {isMobile ? null : activeStep === steps.length - 1 ? (
+          <Button
+            className={styles['step-btn']}
+            variant="contained"
+            onClick={handleReset}
+          >
+            Finish
+            </Button>
+        ) : (
+            <Button
+              className={styles['step-btn']}
+              variant="contained"
+              size="medium"
+              onClick={handleNext}
+            >
+              Next
+            </Button>
+          )}
         <div className={styles.info}>
           <div className="w-100">
             <Typography className={styles.insructions}>
@@ -239,50 +283,6 @@ const Stepper = ({
                 <PrintableNewspaper />
               </>
             ) : null}
-            {isMobile ? (
-              <MobileStepper
-                steps={6}
-                className={styles.stepper}
-                position="static"
-                variant="text"
-                activeStep={activeStep}
-                nextButton={activeStep === steps.length - 1 ? (
-                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                    Finish
-                  <KeyboardArrowRight />
-                  </Button>
-                ) : (
-                    <Button size="small" className={styles['step-btn']} onClick={handleNext}>
-                      Next
-                  <KeyboardArrowRight />
-                    </Button>
-                  )}
-                backButton={(
-                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                    Reset
-                  <RotateLeftIcon />
-                  </Button>
-                )}
-              />
-            ) : null}
-            {isMobile ? null : activeStep === steps.length - 1 ? (
-              <Button
-                className={styles['step-btn']}
-                variant="contained"
-                onClick={handleReset}
-              >
-                Finish
-            </Button>
-            ) : (
-                <Button
-                  className={styles['step-btn']}
-                  variant="contained"
-                  size="medium"
-                  onClick={handleNext}
-                >
-                  Next
-            </Button>
-              )}
           </div>
         </div>
       </div>
