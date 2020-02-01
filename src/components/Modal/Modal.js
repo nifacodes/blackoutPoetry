@@ -9,6 +9,7 @@ const Modal = ({ handleClose, isOpen, isMobile }) => {
     return (
       <div className={styles['video-container']}>
         <iframe
+          className={styles.video}
           title="instructions"
           src="https://www.youtube.com/embed/wKpVgoGr6kE"
         />
