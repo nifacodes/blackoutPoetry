@@ -25,6 +25,7 @@ const Content = ({
     markerHandler = onMouseOverHandler;
   }
 
+  // what to display
   const content = Object.keys(currentContentWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
       isWordUsed = currentContentWordMap[i].isClicked
@@ -49,7 +50,9 @@ const Content = ({
       </span>
     ) : null;
   });
+  console.log("WHAT IS THE CONTENT: ", content);
 
+  // where and how to dislpay it
   return (
     <Grid container className={styles['content-container']}>
       <Grid item xs={12} className={styles.scroll}>

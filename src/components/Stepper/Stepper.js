@@ -222,6 +222,7 @@ const Stepper = ({
             </Typography>
             {activeStep === 0 ? (
               <Button className={styles.btn} onClick={loadExamples}>
+                {/*  <Button className={styles.btn} onClick={saveCurrentArticle}> */}
                 <i className={classNames('fas', 'fa-2x', 'fa-lightbulb')} />
               </Button>
             ) : null}

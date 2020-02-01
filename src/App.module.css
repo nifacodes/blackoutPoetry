@@ -3,7 +3,7 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  background-image: url("./img/blackout_bg_nobtn.png");
+  background-image: url("./img/bg-nophone.png");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0px;
@@ -11,6 +11,14 @@ body,
   overflow: hidden;
   box-sizing: border-box;
   font-family: "Inria Serif", serif !important;
+}
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .newspaper-container {
@@ -23,30 +31,18 @@ body,
   overflow: auto;
 }
 
-.main-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  overflow: scroll;
-}
-
 .loader {
   display: flex;
   justify-content: center;
 }
 
 .bg-showing {
-  margin-top: 15% !important;
-  width: 50%;
-  height: 40%; 
-  /* background-image: url("./img/phone2.png"); */
-  background-repeat: none;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10% !important;
+  height: 100%; 
+  background-image: url("./img/iPhone.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .nav-container {
@@ -54,23 +50,14 @@ body,
   justify-content: center;
   align-items: center;
   color: whitesmoke !important;
+  border: purple solid 5px;
 
   background: linear-gradient(
     to right,
     #093028,
     #237a57
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); 
   width: 100%;
-}
-
-.saved-newspapers-container {
-  overflow-y: scroll;
-  max-height: 70vh;
-  /* margin-bottom: 3px !important;
-  margin-top: 2% !important; */
-  /* background-color: whitesmoke; */
-  width: 100%;
-  
 }
 
 /* width */
@@ -90,6 +77,11 @@ body,
   background: #181818;
   border-radius: 5px;
 }
+
+/* button:focus {
+  outline: 0;
+} */
+
 
 /* Handle on hover
 ::-webkit-scrollbar-thumb:hover {
@@ -129,9 +121,11 @@ body,
   align-items: center;
   height: 100vh;
   width: 100vw;
+  border: darkorange solid 5px;
+
 }
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .bg-showing {
     display: none;
   }
@@ -168,8 +162,5 @@ body,
     height: 100vh;
     overflow: scroll;
   }
-}
+} */
 
-button:focus {
-  outline: 0;
-}

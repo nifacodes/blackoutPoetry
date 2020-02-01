@@ -2,7 +2,7 @@
   margin-top: 2%;
   height: 500px;
   margin-bottom: 5%;
-  font-family: "Inria Serif", serif !important;
+
 }
 
 .scroll {
@@ -12,6 +12,7 @@
 
 .text {
   margin-right: 1% !important;
+  font-family: "Inria Serif", serif !important;
 }
 
 .pencil-style {
@@ -32,7 +33,6 @@
   border-radius: 3px;
   margin-right: 1% !important;
   font-family: "Calistoga", cursive;
-
 }
 
 .image {

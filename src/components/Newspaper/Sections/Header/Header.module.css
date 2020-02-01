@@ -1,45 +1,46 @@
-h3 span {
-  font-family: "Calistoga", cursive;
-  font-size: 5rem;
+.header-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap:wrap;
+  width: 100%;
 }
 
-.header-title {
-  display: flex;
-  text-align: center;
-  flex-wrap: wrap;
-  padding-top: 5%;
+h1 span {
+  font-family: "Calistoga", cursive;
+  font-size: 5.5vw;
+}
 
+span strong {
+  font-family: "Calistoga", cursive;
+}
+
+span p { 
+  font-family: "Inria Serif", serif !important;
 }
 
 .learnmore-button {
-  width: 100%;
   /* transform: rotate(43deg); */
-  /* margin-bottom: 20% !important; */
-  /* background: linear-gradient(
+ background: linear-gradient(
     to right,
     #093028,
     #237a57
-  ); */ 
-  background: linear-gradient(
-      to right,
-      #093028,
-      #237a57
-    );  
+  );  
   color: whitesmoke !important;
 }
+
+
 
 .side-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   flex-wrap:wrap;
   width: 100%;
-  margin-top: 30px !important;
-  /* color: #dcdcdc; */
-  /* background-color: #353839; */
-}
+  border-left: solid 2px #353839;
+  padding: 10px 10px 0px 10px;
+} 
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .header-title {
     justify-content: center;
   }
@@ -66,4 +67,4 @@ h3 span {
   .first {
     margin:0 20px;
   }  
-}
+} */

@@ -1,4 +1,4 @@
-.title-container {
+.date-vol-container {
   margin-top: 2%;
   color: #3f2a14;
   border-bottom: #808080 solid 3px;
@@ -6,8 +6,17 @@
   background-color: #d3d3d3;
   border-radius: 3px;
 }
+.title-container {
+  display: flex;
+  color: #dcdcdc;
+  background-color: #353839;
+  justify-content: center;
+  margin-top: 3% !important;
+  border-radius: 3px;
+  padding: 3px;
+}
 
-.title-text {
+h4 {
   text-align: center;
 }
 
@@ -15,21 +24,13 @@
   padding-left: 5%;
 }
 
-.date-second {
+.vol {
   padding-right: 5%;
   display: flex;
   justify-content: flex-end;
 }
 
-.title {
-  color: #3f2a14;
-  display: flex;
-  color: #dcdcdc;
-  background-color: #353839;
-  justify-content: center;
-  margin-top: 3% !important;
-  border-radius: 3px;
-}
+
 .pencil-style {
   border: solid black 2px;
 }
@@ -38,12 +39,11 @@
   background-color: black;
   color: black;
 }
-.title-main {
-  
+strong {
   font-family: "Calistoga", cursive;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .title-container {
     margin-top: 5%;
     margin-left: 3px;
@@ -56,4 +56,4 @@
   .title-text {
     font-size: 1.6em !important;
   }
-}
+} */

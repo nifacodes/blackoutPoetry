@@ -4,11 +4,11 @@ import _ from 'lodash';
 import Loader from 'react-loader';
 import Uniqid from 'uniqid';
 import DehazeIcon from '@material-ui/icons/Dehaze';
+import classNames from 'classnames';
 import { createWordMap, getRandomNumber } from './utils';
 import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
-import classNames from 'classnames';
 
 const isMobile = window.innerWidth <= 768;
 
@@ -19,6 +19,7 @@ class App extends React.Component {
     this.state = {
       totalArticles: [],
       savedArticles: {},
+      // Entire Current Article in Original Format (OF)
       entireCurrentArticleOF: [],
       currentTitleWordMap: [],
       currentAuthorWordMap: [],
@@ -253,6 +254,23 @@ class App extends React.Component {
     }
   };
 
+  downloadCurrentArticle = () => {
+    // MAKE A POST REQUEST TO THE BACKEND => SEND THE NECESSARY DATA
+    // ON BACKEND, CREATE A PDF BASED ON A TEMPLATE USING THAT DATA
+    // MAKE A GET REQUEST TO GET THAT BLOB BACK FROM THE BACKEND
+    // CONVERT A BLOB TO A PDF
+    // USE FILE-SAVER TO DOWNLOAD THAT PDF
+    // const pdf = null;
+
+    // axios.post('/route', { data })
+    //   .then(() => {
+    //     axios.get('/route')
+    //       .then((response) => {
+    //         pdf = response.data;
+    //       });
+    //   });
+  }
+
   onSaveHandler = (i) => {
     const { savedArticles } = this.state;
 
@@ -368,7 +386,6 @@ class App extends React.Component {
                 markerState={this.markerState}
                 saveState={this.saveState}
                 saveCurrentArticle={this.saveCurrentArticle}
-
               />
             </Grid>
           );

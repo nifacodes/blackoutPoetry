@@ -10,7 +10,6 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler }) =>
     {Object.keys(savedArticles).map((articleObj, i) => (
       <Grid key={i} item className={styles['folded-bg']}>
         <div
-          className={styles['saved-container']}
           onClick={() => onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)}
         >
           <Typography variant="subtitle1">
@@ -24,7 +23,7 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler }) =>
             </span>
           </Typography>
           <button
-            className={classNames(styles.btn, styles['delete-btn'])}
+            className={styles['delete-btn']}
             type="button"
             onClick={() => deleteSavedHandler(
               savedArticles[articleObj].entireCurrentArticleOF.id,

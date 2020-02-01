@@ -56,7 +56,7 @@ const Title = ({
 
   return (
     <>
-      <Grid container className={styles['title-container']}>
+      <Grid container className={styles['date-vol-container']}>
         <Grid
           item
           xs={6}
@@ -66,13 +66,13 @@ const Title = ({
         <Grid
           item
           xs={6}
-          className={styles['date-second']}
+          className={styles.vol}
         >{`Vol. 1 No. ${volNum}`}
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item xs={12} className={styles.title}>
-          <Typography variant="h4" className={styles['title-text']}>
+      <Grid container className={styles['title-container']}>
+        <Grid item xs={12}>
+          <Typography variant="h4">
             {title}
           </Typography>
         </Grid>
