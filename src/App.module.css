@@ -134,7 +134,7 @@ body,
  .newspaper-container {
    margin-top: 0 !important;
    width: 100%;
-   height: 100vh;
+   min-height: 100vh;
    overflow: scroll;
    background-color: #e6e6e6;
    border: red solid 2px;
