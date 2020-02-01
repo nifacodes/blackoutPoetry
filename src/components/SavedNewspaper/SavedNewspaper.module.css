@@ -2,7 +2,8 @@
   overflow-y: scroll;
   max-height: 70vh;
   width: 100%;
-  padding: 0% 5%;}
+  padding: 0% 5%;
+}
 
 .folded-bg {
   background-image: url("../../img/folded_paper.png");
@@ -18,7 +19,6 @@
   border-top: #808080 solid 3px;
   background-color: #d3d3d3;
   font-size: 1vw;
-  
 }
 
 .saved-author{
@@ -32,7 +32,7 @@
   margin: 0px;
   justify-content: center;
   align-items: center;
-  color: whitesmoke;
+  color: whitesmoke !important;
   background-image: linear-gradient(
     to right,
     #093028,
@@ -52,3 +52,10 @@
   }
 } */
 
+
+@media only screen and (max-width: 768px) {
+  .folded-bg {
+    padding: 8% 5% 5% 5%;
+    background-size: cover;
+  }
+}

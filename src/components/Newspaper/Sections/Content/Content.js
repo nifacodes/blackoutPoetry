@@ -61,20 +61,19 @@ const Content = ({
       </span>
     ) : null;
   });
-  console.log("WHAT IS THE CONTENT: ", content);
   const wordss = usedWords.map((word) => `${word} `);
 
   const styless = StyleSheet.create({
     page: { backgroundColor: 'black' },
-    section: { color: 'white', textAlign: 'center', margin: 30 }
+    section: { color: 'white', textAlign: 'center', margin: 30, border: '3 solid white' },
+    border: { border: '3 solid white' },
   });
 
   MyDocument = (
     <Document>
       <Page size="A4" style={styless.page}>
         <View style={styless.section}>
-          {/* <Text>Section #1</Text> */}
-          <Text>{wordss}</Text>
+          <Text stlye={styless.border}>{wordss}</Text>
         </View>
       </Page>
     </Document>

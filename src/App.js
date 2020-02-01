@@ -10,8 +10,7 @@ import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
-// const isMobile = window.innerWidth <= 768;
-const isMobile = window.innerWidth <= 425;
+const isMobile = window.innerWidth <= 768;
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class App extends React.Component {
       isLoading: true,
       isDisplayFromSaved: false,
       isPoetryFinished: false,
-      isOpen: false,
+      isOpen: isMobile ? true : false,
       isNavOpen: false,
       volNum: 1,
       step: 0,
@@ -61,7 +60,6 @@ class App extends React.Component {
       currentContentWordMap: createWordMap(articles[0].fullContentText),
       isLoading: false,
     });
-    console.log('all IDS SET?', this.state.totalArticles);
   }
 
   pencilState = () => this.setState({
@@ -126,8 +124,6 @@ class App extends React.Component {
         totalArticles[randomNum].fullContentText,
       ),
     });
-    console.log('great, new find, so now the current is set to',
-      entireCurrentArticleOF.id);
   };
 
   saveCurrentArticle = () => {
@@ -282,6 +278,7 @@ class App extends React.Component {
     } = savedArticles[i];
 
     this.setState({
+      step: 1,
       isDisplayFromSaved: true,
       isPoetryFinished: false,
       isInspiration: false,
@@ -298,7 +295,6 @@ class App extends React.Component {
   };
 
   handleOpen = () => {
-    console.log('handleOpen');
     this.setState({ isOpen: true });
   };
 
@@ -346,13 +342,7 @@ class App extends React.Component {
       switch (step) {
         case 0:
           return (
-            <div className={styles['video-container']}>
-              <iframe
-                title="instructions"
-                className={styles.video}
-                src="https://www.youtube.com/embed/wKpVgoGr6kE"
-              />
-            </div>
+            <Modal handleClose={this.handleClose} isOpen={isOpen} isMobile={isMobile} />
           );
         case 1:
           return (
@@ -430,28 +420,20 @@ class App extends React.Component {
     if (isMobile) {
       return (
         <>
-          <button
+          <Button
             type="button"
             className={styles['nav-container']}
             onClick={this.toggleNav}
           >
             <DehazeIcon />
-          </button>
+          </Button>
           <MobileNav
             toggleNav={this.toggleNav}
             isNavOpen={isNavOpen}
             displayComponent={displayComponent}
           />
           {
-            componentToBeRendered() || (
-              <div className={styles['video-container']}>
-                <iframe
-                  title="instructions"
-                  className={styles.video}
-                  src="https://www.youtube.com/embed/wKpVgoGr6kE"
-                />
-              </div>
-            )
+            componentToBeRendered() || <Modal handleClose={this.handleClose} isOpen={isOpen} isMobile={isMobile} />
           }
         </>
       );

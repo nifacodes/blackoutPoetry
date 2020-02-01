@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -12,24 +12,25 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler }) =>
         <div
           onClick={() => onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)}
         >
-          <Typography variant="subtitle1">
-            <div className={styles['saved-title']}>
+          <div className={styles['saved-title']}>
+            <Typography variant="subtitle1">
               {savedArticles[articleObj].entireCurrentArticleOF.title}
-            </div>
-          </Typography>
+            </Typography>
+          </div>
           <Typography variant="body1">
             <span className={classNames(styles['main-font'], styles['saved-author'])}>
               Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
             </span>
           </Typography>
-          <button
+          <Button
             className={styles['delete-btn']}
             type="button"
+            size="small"
             onClick={() => deleteSavedHandler(
               savedArticles[articleObj].entireCurrentArticleOF.id,
             )}
           >Delete
-          </button>
+          </Button>
         </div>
       </Grid>
     ))}

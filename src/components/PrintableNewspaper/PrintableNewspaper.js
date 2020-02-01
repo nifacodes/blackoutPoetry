@@ -1,10 +1,7 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import { MyDocument } from '../Newspaper/Sections/Content/Content';
-
-
-console.log(MyDocument);
 
 const PrintableNewspaper = () => (
   <div>

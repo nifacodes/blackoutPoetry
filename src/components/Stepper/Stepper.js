@@ -5,8 +5,7 @@ import {
   StepLabel,
   Button,
   Typography,
-  FormHelperText,
-  MobileStepper,
+  MobileStepper
 } from '@material-ui/core';
 import StepConnector from '@material-ui/core/StepConnector';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
@@ -17,9 +16,7 @@ import classNames from 'classnames';
 import styles from './Stepper.module.css';
 import { PrintableNewspaper } from '..';
 
-
-// const isMobile = window.innerWidth <= 768;
-const isMobile = window.innerWidth <= 425;
+const isMobile = window.innerWidth <= 768;
 
 const getSteps = () => [
   <span className={styles['main-font']}>{`Get Inspired`}</span>,
@@ -219,7 +216,7 @@ const Stepper = ({
           </MUIStepper>
         ) : null}
         <div className={styles.info}>
-          <div>
+          <div className="w-100">
             <Typography className={styles.insructions}>
               {getStepContent(activeStep)}
             </Typography>

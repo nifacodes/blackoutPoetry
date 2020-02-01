@@ -4,13 +4,26 @@ import PropTypes from 'prop-types';
 
 import styles from './Modal.module.css';
 
-const Modal = ({ handleClose, isOpen }) => (
-  <ModalMUI open={isOpen} onClose={handleClose}>
-    <div className={styles['video-container']} onClick={handleClose}>
-      <iframe className={styles.video} title="instructions" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
-    </div>
-  </ModalMUI>
-);
+const Modal = ({ handleClose, isOpen, isMobile }) => {
+  if (isMobile) {
+    return (
+      <div className={styles['video-container']}>
+        <iframe
+          title="instructions"
+          src="https://www.youtube.com/embed/wKpVgoGr6kE"
+        />
+      </div>
+    )
+  }
+  return (
+    <ModalMUI open={isOpen} onClose={handleClose}>
+      <div className={styles['video-container']} onClick={handleClose}>
+        <iframe className={styles.video} title="instructions" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
+      </div>
+    </ModalMUI>
+  );
+
+}
 
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,

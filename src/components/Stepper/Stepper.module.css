@@ -16,12 +16,17 @@
   ); 
    color: whitesmoke !important;
    font-family: "Inria Serif", serif !important;
-  padding: 3% !important; 
+  /* padding: 3% !important;  */
 }
 
 .main-font{  font-family: "Inria Serif", serif !important;
 
 }
+
+.w-100 {
+  width: 100%;
+}
+
 button:focus {
   outline: 0;
 }
