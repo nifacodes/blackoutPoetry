@@ -15,15 +15,18 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Stepper.module.css';
+import { PrintableNewspaper } from '..';
 
-const isMobile = window.innerWidth <= 768;
+
+// const isMobile = window.innerWidth <= 768;
+const isMobile = window.innerWidth <= 425;
 
 const getSteps = () => [
-  'Get Inspired',
-  'Browse Articles',
-  'Box the words',
-  'Black-out the Rest',
-  'Save Poetry',
+  <span className={styles['main-font']}>{`Get Inspired`}</span>,
+  <span className={styles['main-font']}>{`Browse Articles`}</span>,
+  <span className={styles['main-font']}>{`Box the words`}</span>,
+  <span className={styles['main-font']}>{`Black-out the Rest`}</span>,
+  <span className={styles['main-font']}>{`Save Poetry`}</span>,
 ];
 
 const browseSentence = (
@@ -196,7 +199,7 @@ const Stepper = ({
   }
 
   return isDisplayFromSaved ? (
-    <Button className={classNames(styles['next-btn'], styles['reset-btn'])} onClick={handleReset}>
+    <Button className={styles['step-btn']} onClick={handleReset}>
       Reset
     </Button>
   ) : (
@@ -232,9 +235,12 @@ const Stepper = ({
               </Button>
             ) : null}
             {activeStep === 4 ? (
-              <Button className={styles.btn} onClick={saveCurrentArticle}>
-                <i className={classNames('fas', 'fa-2x', 'fa-save')} />
-              </Button>
+              <>
+                <Button className={styles.btn} onClick={saveCurrentArticle}>
+                  <i className={classNames('fas', 'fa-2x', 'fa-save')} />
+                </Button>
+                <PrintableNewspaper />
+              </>
             ) : null}
             {isMobile ? (
               <MobileStepper
@@ -244,18 +250,18 @@ const Stepper = ({
                 variant="text"
                 activeStep={activeStep}
                 nextButton={activeStep === steps.length - 1 ? (
-                  <Button size="small" className={styles['next-btn']} onClick={handleReset}>
+                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
                     Finish
                   <KeyboardArrowRight />
                   </Button>
                 ) : (
-                    <Button size="small" className={styles['next-btn']} onClick={handleNext}>
+                    <Button size="small" className={styles['step-btn']} onClick={handleNext}>
                       Next
                   <KeyboardArrowRight />
                     </Button>
                   )}
                 backButton={(
-                  <Button size="small" className={styles['next-btn']} onClick={handleReset}>
+                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
                     Reset
                   <RotateLeftIcon />
                   </Button>
@@ -264,7 +270,7 @@ const Stepper = ({
             ) : null}
             {isMobile ? null : activeStep === steps.length - 1 ? (
               <Button
-                className={styles['next-btn']}
+                className={styles['step-btn']}
                 variant="contained"
                 onClick={handleReset}
               >
@@ -272,8 +278,9 @@ const Stepper = ({
             </Button>
             ) : (
                 <Button
-                  className={styles['next-btn']}
+                  className={styles['step-btn']}
                   variant="contained"
+                  size="medium"
                   onClick={handleNext}
                 >
                   Next

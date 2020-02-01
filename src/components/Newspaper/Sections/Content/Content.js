@@ -2,8 +2,11 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 import styles from './Content.module.css';
+
+let MyDocument = null;
 
 const Content = ({
   entireCurrentArticleOF,
@@ -18,18 +21,26 @@ const Content = ({
   let pencilHandler = null;
   let markerHandler = null;
   let isWordUsed = true;
+  let isClickedWord = true;
 
   if (isPencilState) {
     pencilHandler = onClickHandler;
   } else if (isMarkerState) {
     markerHandler = onMouseOverHandler;
   }
+  const usedWords = [];
+
 
   // what to display
   const content = Object.keys(currentContentWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
       isWordUsed = currentContentWordMap[i].isClicked
         || currentContentWordMap[i].isMouseOver;
+      isClickedWord = currentContentWordMap[i].isClicked;
+    }
+
+    if (isClickedWord) {
+      usedWords.push(currentContentWordMap[i].word);
     }
 
     return isWordUsed ? (
@@ -51,7 +62,23 @@ const Content = ({
     ) : null;
   });
   console.log("WHAT IS THE CONTENT: ", content);
+  const wordss = usedWords.map((word) => `${word} `);
 
+  const styless = StyleSheet.create({
+    page: { backgroundColor: 'black' },
+    section: { color: 'white', textAlign: 'center', margin: 30 }
+  });
+
+  MyDocument = (
+    <Document>
+      <Page size="A4" style={styless.page}>
+        <View style={styless.section}>
+          {/* <Text>Section #1</Text> */}
+          <Text>{wordss}</Text>
+        </View>
+      </Page>
+    </Document>
+  );
   // where and how to dislpay it
   return (
     <Grid container className={styles['content-container']}>
@@ -78,7 +105,7 @@ const Content = ({
   );
 };
 
-export default Content;
+export { MyDocument, Content };
 
 Content.propTypes = {
   entireCurrentArticleOF: PropTypes.shape({

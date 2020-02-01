@@ -5,7 +5,8 @@ import classNames from 'classnames';
 
 import styles from './Header.module.css';
 
-const isMobile = window.innerWidth <= 768;
+// const isMobile = window.innerWidth <= 768;
+const isMobile = window.innerWidth <= 425;
 
 const Header = ({ handleOpen }) => (
   <Grid container className={styles['header-container']}>
@@ -33,7 +34,7 @@ const Header = ({ handleOpen }) => (
           size="medium"
           fullWidth
           onClick={handleOpen}>
-          <p>LEARN MORE</p>
+          LEARN MORE
         </Button>
       ) : null}
     </Grid>

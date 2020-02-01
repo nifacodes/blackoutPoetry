@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Newspaper.module.css';
-import { Header, Title, Content } from './Sections';
+// import { Header, Title } from './Sections';
+import { Header, Title } from './Sections';
+import { Content } from './Sections/Content/Content';
 
 import Stepper from '../Stepper/Stepper';
 

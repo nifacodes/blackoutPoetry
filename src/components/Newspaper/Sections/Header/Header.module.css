@@ -3,6 +3,7 @@
   justify-content: center;
   flex-wrap:wrap;
   width: 100%;
+  /* border: red solid 2px; */
 }
 
 h1 div {
@@ -25,12 +26,16 @@ span p {
     #237a57
   );  
   color: whitesmoke !important;
+  font-family: "Inria Serif", serif !important;
+
 }
 
 .side-info {
   display: flex;
   flex-direction: column;
   flex-wrap:wrap;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border-left: solid 2px #353839;
   padding: 10px 10px 0px 10px;
@@ -48,5 +53,11 @@ span p {
   h1 div {
     font-size: 15vw;
     text-align: center;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .side-info{
+    padding: 10% 10px 0px 10px;
   }
 }

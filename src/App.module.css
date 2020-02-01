@@ -50,7 +50,6 @@ body,
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  border: green solid 5px; 
   padding: 0% 3%;
 }
 
@@ -66,8 +65,7 @@ body,
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
-  border: green solid 5px; 
-  padding: 0% 3%;
+ padding: 0% 3%;
 }
 
 .learnmore-app-vl { 
@@ -139,6 +137,43 @@ body,
   border-radius: 5px;
 }
 
+/* TABLET OR ABOVE KEEP EVERYTHING THE SAME*/
+/* @media only screen and (min-width: 768px) {
+  .bg-showing-vl {
+   display: visible;
+ }
+ .bg-showing-hl {
+   display: visible;
+ }
+ .newspaper-container {
+   margin-top: 0 !important;
+   width: 100%;
+   height: 100vh;
+   overflow: scroll;
+   background-color: #e6e6e6;
+ }
+} */
+
+
+/* ANYTING BELOW A TABLET */
+@media only screen and (max-width: 768px) {
+ .bg-showing-vl {
+   display: none;
+ }
+ .bg-showing-hl {
+   display: none;
+ }
+ .newspaper-container {
+   margin-top: 0 !important;
+   width: 100%;
+   height: 100vh;
+   overflow: scroll;
+   background-color: #e6e6e6;
+ }
+}
+
+
+
 
 /* button:focus {
   outline: 0;
@@ -177,7 +212,7 @@ body,
 }
 */
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .bg-showing-vl {
     display: none;
   }
@@ -185,22 +220,6 @@ body,
     display: none;
   }
 
-}
-
-@media only screen and (min-width: 1024px) {
-  /* .bg-showing {
-    display: visible;
-  } */
-}
-
-@media only screen and (max-width: 768px) {
-  .newspaper-container {
-    margin-top: 0 !important;
-    width: 100%;
-    height: 100vh;
-    overflow: scroll;
-    background-color: #e6e6e6;
-  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -211,4 +230,9 @@ body,
     overflow: scroll;
   }
 }
+
+*/
+
+
+
 

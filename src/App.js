@@ -10,7 +10,8 @@ import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
-const isMobile = window.innerWidth <= 768;
+// const isMobile = window.innerWidth <= 768;
+const isMobile = window.innerWidth <= 425;
 
 class App extends React.Component {
   constructor(props) {

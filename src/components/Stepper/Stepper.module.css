@@ -8,14 +8,22 @@
 
 }
 
-.next-btn {
+.step-btn {
   background: linear-gradient(
     to right,
     #093028,
     #237a57
   ); 
    color: whitesmoke !important;
- 
+   font-family: "Inria Serif", serif !important;
+  padding: 3% !important; 
+}
+
+.main-font{  font-family: "Inria Serif", serif !important;
+
+}
+button:focus {
+  outline: 0;
 }
 
 /* .reset-btn {
