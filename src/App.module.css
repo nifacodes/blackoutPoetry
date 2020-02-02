@@ -2,7 +2,7 @@ html,
 body,
 #root {
   width: 100vw;
-  max-height: 100vh;
+  min-height: 100vh;
   background-image: url("./img/bg-nophone.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,14 +20,14 @@ body,
   justify-content: center;
   width: 100%;
   height: 100vh;
-  /* overflow: scroll; */
+  overflow: auto;
 }
 
 .newspaper-container {
   background-image: url("./img/paper.png");
   background-size: cover;
   margin-bottom: 3px !important;
-  margin-top: 2% !important;
+  margin-top: 0.5% !important;
   width: 100%;
   padding: 5% 5% 1% 5%;
   /* overflow: auto; */
@@ -47,7 +47,7 @@ body,
   margin-bottom: 50%; */
   /* padding-top: 100px; */
   height: 100vh;
-  margin-top: 8% !important;
+  margin-top: 10% !important;
   background-image: url("./img/phone2.png");
   background-size: contain;
   background-position: center center;
@@ -61,7 +61,7 @@ body,
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top: 8% !important;
+  margin-top: 12% !important;
   background-image: url("./img/iPhone.png");
   background-size: contain;
   background-position: center center;
@@ -108,12 +108,12 @@ body,
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: .7%;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #181818;
+  background: #093028;
   border-radius: 5px;
 }
 
@@ -132,13 +132,16 @@ body,
    display: none;
  }
  .newspaper-container {
-   margin-top: 0 !important;
+   /* margin-top: 0 !important; */
    width: 100%;
+   background:none;
+   background-color: #D6D6D6;
+   /* border-radius: 3%; */
    /* min-height: 100vh; */
    /* overflow: auto !important; */
    /* background-color: #e6e6e6; */
  }
- #root, html, body{
+ #root{
    overflow: auto;
  }
  .learnmore-app-vl {

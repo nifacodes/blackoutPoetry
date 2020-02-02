@@ -31,35 +31,34 @@ const getSteps = () => [
 
 const browseSentence = (
   <span className={styles['main-font']}>
-    Click the Plus button below to browse through articles, choose one you like!
+    {`Click the Plus button below to browse through articles until you find one that you like!`}
   </span>
 );
 
 const lightBulbSentence = (
   <span className={styles['main-font']}>
-    Click the Lightbulb button below to see real examples. Once you are
-    inspired, click Next button to choose your own article.
+    {` Click the Lightbulb button below to see real examples. Once you are
+    inspired, click Next to choose your own article.`}
   </span>
 );
 
 const saveSentence = (
   <span className={styles['main-font']}>
-    Congrats you completed your First Poetry...Great! If you want to save
-    this, click the Save button below or click Finish!
+    {`Congrats you made your very own Newspaper Blackout Poetry! If you want to save
+    this, click the Save button below or click Finish! Afterwards, you may also download your poetry by clicking the download button.`}
   </span>
 );
 
 const boxWords = (
   <span className={styles['main-font']}>
-    {`Find words from the article that you like. Click them to 'box the word'.
-    This will form your poem. Once you're done, click Next to continue`}
+    {`Find words from the article that you like. Click to 'box the word' which will
+    form your poem. Once you're done, click Next to continue`}
   </span>
 );
 
 const blackOutWords = (
   <span className={styles['main-font']}>
-    Hover over the rest of the words to black them out! Once you&aposre done, click
-    Next to continue
+    {`With your mouse, hover over the rest of the words to black them out! Once you&aposre done, click Next to continue`}
   </span>
 );
 
@@ -135,7 +134,7 @@ const Stepper = ({
   loadNewArticle,
   pencilState,
   isDisplayFromSaved,
-  isPoetryFinished,
+  // isPoetryFinished,
   markerState,
   saveState,
   saveCurrentArticle,
@@ -224,8 +223,8 @@ const Stepper = ({
               {getStepContent(activeStep)}
             </Typography>
             {activeStep === 0 ? (
-              <Button className={styles.btn} onClick={loadExamples}>
-                {/*  <Button className={styles.btn} onClick={saveCurrentArticle}> */}
+              // <Button className={styles.btn} onClick={loadExamples}>
+              <Button className={styles.btn} onClick={saveCurrentArticle}>
                 <i className={classNames('fas', 'fa-2x', 'fa-lightbulb')} />
               </Button>
             ) : null}
@@ -300,7 +299,7 @@ Stepper.propTypes = {
   saveState: PropTypes.func.isRequired,
   saveCurrentArticle: PropTypes.func.isRequired,
   isDisplayFromSaved: PropTypes.bool.isRequired,
-  isPoetryFinished: PropTypes.bool.isRequired,
+  // isPoetryFinished: PropTypes.bool.isRequired,
 };
 
 export default Stepper;

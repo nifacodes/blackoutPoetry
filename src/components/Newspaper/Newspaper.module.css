@@ -1,6 +1,12 @@
-.center-inspiration {
+.skew {
     display: flex;
     flex-direction: column;
     justify-content: center;
     transform: rotate(-0.5deg);
+}
+
+@media only screen and (max-width: 768px) {
+    .skew{
+        transform: none;
+    }
 }

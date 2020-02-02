@@ -38,7 +38,7 @@ const Newspaper = ({
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour];
   return (
-    <div className={styles['center-inspiration']}>
+    <div className={styles['skew']}>
       <Header handleOpen={handleOpen} />
       {isInspiration ? (<img src={inspirationImgs[getRandomNumberUpTo4()]} alt="" />) : (
         <>

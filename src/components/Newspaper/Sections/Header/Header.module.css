@@ -1,13 +1,21 @@
 .header-container{
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap:wrap;
   width: 100%;
-  /* border: red solid 2px; */
 }
 
-h1 div {
+/* h1 span {
   font-family: "Calistoga", cursive;
+  font-size: 6vw !important;
+  border: purple solid 2px;
+  text-align: center;
+} */
+
+.main-font{  
+  font-family: "Calistoga", cursive !important;
+  text-align: center !important;
   font-size: 6vw !important;
 }
 
@@ -42,7 +50,7 @@ span p {
   text-align: center;
 } 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
  
   .side-info {
     display: none;
@@ -50,9 +58,16 @@ span p {
   .learnmore-button{
     display: none;
   }
-  h1 div {
+  /* h1 div {
     font-size: 15vw !important;
     text-align: center;
+  } */
+
+  .main-font{  
+    font-family: "Calistoga", cursive !important;
+    text-align: center !important;
+    font-size: 15vw !important;
+
   }
 }
 

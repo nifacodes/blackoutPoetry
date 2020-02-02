@@ -9,9 +9,11 @@ const isMobile = window.innerWidth <= 768;
 const Header = ({ handleOpen }) => (
   <Grid container className={styles['header-container']}>
     <Grid item xs={12} sm={8} md={8} lg={8}>
-      <Typography variant="h1">
-        <div>BLACKOUT</div>
-        <div>POETRY</div>
+      <Typography variant="h1" className={styles['main-font']}>
+        BLACKOUT
+      </Typography>
+      <Typography variant="h1" className={styles['main-font']}>
+        POETRY
       </Typography>
     </Grid>
     <Grid item xs={12} sm={4} md={4} lg={4} className={styles['side-info']}>

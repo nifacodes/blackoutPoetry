@@ -13,24 +13,40 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler }) =>
           onClick={() => onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)}
         >
           <div className={styles['saved-title']}>
+
             <Typography variant="subtitle1">
-              {savedArticles[articleObj].entireCurrentArticleOF.title}
+              <span className={styles['main-font']}>
+                {savedArticles[articleObj].entireCurrentArticleOF.title}
+              </span>
             </Typography>
           </div>
           <Typography variant="body1">
-            <span className={classNames(styles['main-font'], styles['saved-author'])}>
+            <span className={styles['main-font']}>
               Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
             </span>
           </Typography>
-          <Button
-            className={styles['delete-btn']}
-            type="button"
-            size="small"
-            onClick={() => deleteSavedHandler(
-              savedArticles[articleObj].entireCurrentArticleOF.id,
-            )}
-          >Delete
+          <div className={styles.btns}>
+            <Button
+              className={styles['delete-btn']}
+              type="button"
+              size="small"
+              onClick={() => deleteSavedHandler(
+                savedArticles[articleObj].entireCurrentArticleOF.id,
+              )}
+            >Delete
           </Button>
+            <span>
+              <Button
+                className={styles['download-btn']}
+                type="button"
+                size="small"
+                onClick={() => deleteSavedHandler(
+                  savedArticles[articleObj].entireCurrentArticleOF.id,
+                )}
+              >Download
+          </Button>
+            </span>
+          </div>
         </div>
       </Grid>
     ))}
