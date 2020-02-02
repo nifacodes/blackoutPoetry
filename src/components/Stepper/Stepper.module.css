@@ -5,7 +5,10 @@
   text-align: center;
   margin-bottom: 10% !important;
   margin-top: 5% !important;
-
+     border-top: #808080 solid 3px;
+    border-radius: 3px;
+    padding-top: 3%;
+    padding-bottom: 6%;
 }
 
 .step-btn {
@@ -45,9 +48,3 @@ button:focus {
   background-color: whitesmoke !important;
 
 }
-/* ANYTING BELOW A TABLET */
-@media only screen and (min-width: 1024px) {
-  .main-font{
-    /* font-size: 1.1vw !important; */
-  }
- }

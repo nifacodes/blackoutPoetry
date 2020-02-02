@@ -12,6 +12,8 @@
   background-repeat: no-repeat;
   cursor: pointer;
   padding: 39% 10% 20% 8%;
+  border: red solid 2px;
+  margin-top: 30%;
 }
 
 .saved-title{
@@ -32,6 +34,7 @@
   margin: 0px;
   justify-content: center;
   align-items: center;
+  align-self: flex-end;
   color: whitesmoke !important;
   background-image: linear-gradient(
     to right,
@@ -39,6 +42,8 @@
     #237a57
   ); 
   outline: none !important; 
+  font-family: "Inria Serif", serif !important;
+
 } 
 
 /* width */
