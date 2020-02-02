@@ -239,7 +239,7 @@ const Stepper = ({
                 <Button className={styles.btn} onClick={saveCurrentArticle}>
                   <i className={classNames('fas', 'fa-2x', 'fa-save')} />
                 </Button>
-                <PrintableNewspaper />
+                {/* <PrintableNewspaper /> */}
               </>
             ) : null}
             {isMobile ? (

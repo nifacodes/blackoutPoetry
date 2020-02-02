@@ -94,6 +94,7 @@ class App extends React.Component {
     });
   };
 
+
   loadNewArticle = async () => {
     const { totalArticles, savedArticles, entireCurrentArticleOF } = this.state;
 
@@ -124,6 +125,7 @@ class App extends React.Component {
         totalArticles[randomNum].fullContentText,
       ),
     });
+
   };
 
   saveCurrentArticle = () => {

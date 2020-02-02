@@ -1,14 +1,14 @@
 html,
 body,
 #root {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  max-height: 100vh;
   background-image: url("./img/bg-nophone.png");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0px;
   padding: 0px;
-  overflow: scroll;
+  overflow: auto;
   box-sizing: border-box;
   font-family: "Inria Serif", serif;
   font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
@@ -29,8 +29,8 @@ body,
   margin-bottom: 3px !important;
   margin-top: 2% !important;
   width: 100%;
-  padding: 5%;
-  overflow: auto;
+  padding: 5% 5% 1% 5%;
+  /* overflow: auto; */
 }
 
 .loader {
@@ -135,9 +135,19 @@ body,
    margin-top: 0 !important;
    width: 100%;
    /* min-height: 100vh; */
-   overflow: scroll;
-   background-color: #e6e6e6;
+   /* overflow: auto !important; */
+   /* background-color: #e6e6e6; */
  }
+ #root, html, body{
+   overflow: auto;
+ }
+ .learnmore-app-vl {
+   font-size: 5px !important;
+  }
+
+ .learnmore-app-hl {
+   font-size: 5px !important;
+  }
 }
 
 
