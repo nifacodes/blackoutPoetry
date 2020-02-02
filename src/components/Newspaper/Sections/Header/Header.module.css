@@ -8,7 +8,7 @@
 
 h1 div {
   font-family: "Calistoga", cursive;
-  font-size: 5.5vw;
+  font-size: 6vw !important;
 }
 
 span strong {
@@ -51,7 +51,7 @@ span p {
     display: none;
   }
   h1 div {
-    font-size: 15vw;
+    font-size: 15vw !important;
     text-align: center;
   }
 }

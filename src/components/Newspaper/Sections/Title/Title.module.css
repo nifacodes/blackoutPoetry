@@ -17,8 +17,9 @@
   padding: 3px;
 }
 
-.article-title, h4{
+.article-title, h5{
   text-align: center;
+  padding: 2%;
 }
 
 .date {
@@ -46,10 +47,10 @@ strong {
 @media only screen and (max-width: 600px) {
   .date-vol-container{
    height: 3vh; 
-   font-size: 4vw;
+   /* font-size: 4vw; */
   }
   strong {
-    font-size: 8vw;
+    /* font-size: 8vw; */
   }
   
 }

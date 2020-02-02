@@ -13,6 +13,7 @@
 .text {
   margin-right: 1% !important;
   font-family: "Inria Serif", serif !important;
+  /* font-size: 2vw; */
 }
 
 .pencil-style {
@@ -48,5 +49,11 @@
   .content-container {
     margin-top: 3%;
   }
- 
 }
+
+/* ANYTING BELOW A TABLET */
+@media only screen and (min-width: 1024px) {
+  .text{
+    /* font-size: 1.2vw !important; */
+  }
+ }

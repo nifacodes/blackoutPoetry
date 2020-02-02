@@ -10,7 +10,8 @@ body,
   padding: 0px;
   overflow: scroll;
   box-sizing: border-box;
-  font-family: "Inria Serif", serif !important;
+  font-family: "Inria Serif", serif;
+  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .main-container {
@@ -18,7 +19,7 @@ body,
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   /* overflow: scroll; */
 }
 
@@ -110,16 +111,15 @@ body,
   width: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 5px;
-}
- 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #181818;
   border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
 
 
@@ -137,23 +137,9 @@ body,
    /* min-height: 100vh; */
    overflow: scroll;
    background-color: #e6e6e6;
-   border: red solid 2px;
  }
 }
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #353839;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #353839;
-}
 
 
 

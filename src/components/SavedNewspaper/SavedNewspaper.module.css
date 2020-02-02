@@ -18,12 +18,12 @@
   border-bottom: #808080 solid 3px;
   border-top: #808080 solid 3px;
   background-color: #d3d3d3;
-  font-size: 1vw;
+  /* font-size: 1vw; */
 }
 
 .saved-author{
   font-family: "Inria Serif", serif !important;
-  font-size: 1vw;
+  /* font-size: 1vw; */
 }
 
 

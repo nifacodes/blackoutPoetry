@@ -5,7 +5,8 @@ import {
   StepLabel,
   Button,
   Typography,
-  MobileStepper
+  FormHelperText,
+  MobileStepper,
 } from '@material-ui/core';
 import StepConnector from '@material-ui/core/StepConnector';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
@@ -16,7 +17,9 @@ import classNames from 'classnames';
 import styles from './Stepper.module.css';
 import { PrintableNewspaper } from '..';
 
-const isMobile = window.innerWidth <= 768;
+
+// const isMobile = window.innerWidth <= 768;
+const isMobile = window.innerWidth <= 425;
 
 const getSteps = () => [
   <span className={styles['main-font']}>{`Get Inspired`}</span>,
@@ -215,52 +218,8 @@ const Stepper = ({
             ))}
           </MUIStepper>
         ) : null}
-        {isMobile ? (
-          <MobileStepper
-            steps={6}
-            className={styles.stepper}
-            position="static"
-            variant="text"
-            activeStep={activeStep}
-            nextButton={activeStep === steps.length - 1 ? (
-              <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                Finish
-                  <KeyboardArrowRight />
-              </Button>
-            ) : (
-                <Button size="small" className={styles['step-btn']} onClick={handleNext}>
-                  Next
-                  <KeyboardArrowRight />
-                </Button>
-              )}
-            backButton={(
-              <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                Reset
-                  <RotateLeftIcon />
-              </Button>
-            )}
-          />
-        ) : null}
-        {isMobile ? null : activeStep === steps.length - 1 ? (
-          <Button
-            className={styles['step-btn']}
-            variant="contained"
-            onClick={handleReset}
-          >
-            Finish
-            </Button>
-        ) : (
-            <Button
-              className={styles['step-btn']}
-              variant="contained"
-              size="medium"
-              onClick={handleNext}
-            >
-              Next
-            </Button>
-          )}
         <div className={styles.info}>
-          <div className="w-100">
+          <div>
             <Typography className={styles.insructions}>
               {getStepContent(activeStep)}
             </Typography>
@@ -283,6 +242,50 @@ const Stepper = ({
                 <PrintableNewspaper />
               </>
             ) : null}
+            {isMobile ? (
+              <MobileStepper
+                steps={6}
+                className={styles.stepper}
+                position="static"
+                variant="text"
+                activeStep={activeStep}
+                nextButton={activeStep === steps.length - 1 ? (
+                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
+                    Finish
+                  <KeyboardArrowRight />
+                  </Button>
+                ) : (
+                    <Button size="small" className={styles['step-btn']} onClick={handleNext}>
+                      Next
+                  <KeyboardArrowRight />
+                    </Button>
+                  )}
+                backButton={(
+                  <Button size="small" className={styles['step-btn']} onClick={handleReset}>
+                    Reset
+                  <RotateLeftIcon />
+                  </Button>
+                )}
+              />
+            ) : null}
+            {isMobile ? null : activeStep === steps.length - 1 ? (
+              <Button
+                className={styles['step-btn']}
+                variant="contained"
+                onClick={handleReset}
+              >
+                Finish
+            </Button>
+            ) : (
+                <Button
+                  className={styles['step-btn']}
+                  variant="contained"
+                  size="medium"
+                  onClick={handleNext}
+                >
+                  Next
+            </Button>
+              )}
           </div>
         </div>
       </div>

@@ -72,7 +72,7 @@ const Title = ({
       </Grid>
       <Grid container className={styles['title-container']}>
         <Grid item xs={12}>
-          <Typography variant="h4" classNames={styles['article-title']}>
+          <Typography variant="h5" classNames={styles['article-title']}>
             {title}
           </Typography>
         </Grid>
