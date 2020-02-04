@@ -13,6 +13,17 @@ body,
   font-family: "Inria Serif", serif;
   font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
+.intro{
+  /* background-color: black; */
+  color: black;
+  width: 80%;
+  padding: 5%;
+  margin:2%;
+  background-image: url("./img/paper-ss.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+   
+}
 
 .main-container {
   display: flex;
@@ -33,6 +44,20 @@ body,
   /* overflow: auto; */
 }
 
+a{
+  color: #237a57 !important;
+}
+.learnmore-button {
+  background: linear-gradient(
+     to right,
+     #093028,
+     #237a57
+   );  
+   color: whitesmoke !important;
+   font-family: "Inria Serif", serif !important;
+ 
+ }
+
 .loader {
   display: flex;
   justify-content: center;
@@ -44,18 +69,6 @@ body,
   padding: 0% 3%;
 }
 
-.learnmore-app-hl{
-  background: linear-gradient(
-    to right,
-    #093028,
-    #237a57
-  );  
-  color: whitesmoke !important;
-   transform: rotate(43deg);
-   font-family: "Inria Serif", serif !important;
-   margin-top: 550px !important;
-   margin-right: 20%;
-}
 .nav-container {
   display: flex;
   justify-content: center;

@@ -5,10 +5,11 @@ import PropTypes from 'prop-types';
 import styles from './Header.module.css';
 
 const isMobile = window.innerWidth <= 768;
+// const isMobile = false;
 
-const Header = ({ handleOpen }) => (
+const Header = ({ handleOpen, isIntro }) => (
   <Grid container className={styles['header-container']}>
-    <Grid item xs={12} sm={8} md={8} lg={8}>
+    <Grid item xs={12} sm={8} md={8} lg={8} className={isIntro ? styles.intro : null}>
       <Typography variant="h1" className={styles['main-font']}>
         BLACKOUT
       </Typography>
@@ -21,16 +22,14 @@ const Header = ({ handleOpen }) => (
         <span><p>
           Welcome! Traditional poetry is written completely from scratch. Austin Kleon, a modern poet and blogger writes his poetry by choosing words that stand out to him from newspapers. Blackout Poetry is a digitized tool for his method. It allows you to make poetry the way Austin Kleon does with Newspapers. To learn more visit <span><a href="https://austinkleon.com/category/newspaper-blackout-poems/">his blog.</a></span> To watch a video of the method, click the button below.</p></span>
       </Typography>
-      {!isMobile ? (
-        <Button
-          className={styles['learnmore-button']}
-          variant="contained"
-          size="medium"
-          fullWidth
-          onClick={handleOpen}>
-          WATCH VIEDO
+      <Button
+        className={styles['learnmore-button']}
+        variant="contained"
+        size="medium"
+        fullWidth
+        onClick={handleOpen}>
+        WATCH VIEDO
         </Button>
-      ) : null}
     </Grid>
   </Grid>
 );
@@ -39,5 +38,3 @@ Header.propTypes = {
 };
 
 export default Header;
-
-

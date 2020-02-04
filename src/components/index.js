@@ -6,4 +6,6 @@ export { default as Modal } from './Modal/Modal';
 export { default as MobileNav } from './MobileNav/MobileNav';
 export { default as PrintableNewspaper } from './PrintableNewspaper/PrintableNewspaper';
 
+export { default as MobileLanding } from './MobileLanding/MobileLanding';
+
 

@@ -48,6 +48,7 @@ const Newspaper = ({
   return (
     <div className={styles['skew']}>
       <Header handleOpen={handleOpen} />
+
       {isInspiration ? (<div className={styles['insp-container']}><img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>) : (
         <>
           <Title

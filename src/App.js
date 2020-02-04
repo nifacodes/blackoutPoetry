@@ -6,7 +6,8 @@ import Uniqid from 'uniqid';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import classNames from 'classnames';
 import { createWordMap, getRandomNumberUpTo } from './utils';
-import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
+import { Modal, Newspaper, SavedNewspaper, MobileNav, MobileLanding } from './components';
+import { Header } from "./components";
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
@@ -30,7 +31,8 @@ class App extends React.Component {
       isLoading: true,
       isDisplayFromSaved: false,
       isPoetryFinished: false,
-      isOpen: isMobile ? true : false,
+      // isOpen: isMobile ? true : false,
+      isOpen: false,
       isNavOpen: false,
       volNum: 1,
       step: 0,
@@ -326,12 +328,15 @@ class App extends React.Component {
 
     const displayComponent = (i) => {
       switch (i) {
+        // mobile view instruction
         case 0:
           this.setState({ step: 0 });
           break;
+        // newspaper view
         case 1:
           this.setState({ step: 1 });
           break;
+        // saved Newspaper
         case 2:
           this.setState({ step: 2 });
           break;
@@ -344,7 +349,10 @@ class App extends React.Component {
       switch (step) {
         case 0:
           return (
-            <Modal handleClose={this.handleClose} isOpen={isOpen} isMobile={isMobile} />
+            <>
+              <MobileLanding handleOpen={this.handleOpen} />
+              <Modal handleClose={this.handleClose} isOpen={isOpen} />
+            </>
           );
         case 1:
           return (

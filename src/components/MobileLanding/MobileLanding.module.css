@@ -1,0 +1,46 @@
+.landing-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 100vh;
+    color: black;
+    padding: 5%;
+  }
+  
+.main-font{  
+    font-family: "Calistoga", cursive !important;
+    text-align: center !important;
+    /* font-family: 'Pirata One', cursive !important; */
+    font-size: 10vw !important;
+  }
+  
+  span { 
+    font-family: "Inria Serif", serif !important;
+  }
+  
+  .learnmore-button {
+   background: linear-gradient(
+      to right,
+      #093028,
+      #237a57
+    );  
+    color: whitesmoke !important;
+    font-family: "Inria Serif", serif !important;
+  }
+ 
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom: solid 2px #353839;
+    padding: 3%;
+    text-align: center;  
+    background-color: #DCDCDC;
+
+  } 
+  

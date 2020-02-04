@@ -6,6 +6,13 @@
   width: 100%;
 }
 
+.intro{
+  background-color: whitesmoke;
+  color: black;
+  padding: 5%;
+  margin:2%;
+}
+
 /* h1 span {
   font-family: "Calistoga", cursive;
   font-size: 6vw !important;
@@ -46,7 +53,6 @@ span p {
   border-left: solid 2px #353839;
   padding: 10px 10px 0px 10px;
   text-align: center;
-
 } 
 
 @media only screen and (max-width: 768px) {
@@ -56,12 +62,12 @@ span p {
   }
   .learnmore-button{
     display: none;
-  }
+  } 
   /* h1 div {
     font-size: 15vw !important;
     text-align: center;
   } */
-
+  
   .main-font{  
     font-family: "Calistoga", cursive !important;
     text-align: center !important;
