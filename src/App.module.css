@@ -130,6 +130,22 @@ a{
   }
 }
 
+/* portrait */
+@media screen and (orientation:portrait) {
+  /* portrait-specific styles */
+  #root{width: 100vw;
+  height: 100vh;
+border: red solid 2px;}
+  
+}
+/* landscape */
+@media screen and (orientation:landscape) {
+  /* landscape-specific styles */
+  #root{width: 100vw;
+    height: 100vh;
+  border: solid 2px green}
+}
+
 
 
 

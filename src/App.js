@@ -7,7 +7,6 @@ import DehazeIcon from '@material-ui/icons/Dehaze';
 import classNames from 'classnames';
 import { createWordMap, getRandomNumberUpTo } from './utils';
 import { Modal, Newspaper, SavedNewspaper, MobileNav, MobileLanding } from './components';
-import { Header } from "./components";
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
