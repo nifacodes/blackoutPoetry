@@ -4,6 +4,21 @@
     justify-content: center;
     transform: rotate(-0.5deg);
 }
+.insp-container{
+    margin: 5% 0%;
+
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insp{
+   padding: 5%;
+    width: 85%;
+    height: 95%;
+}
+
 
 @media only screen and (max-width: 768px) {
     .skew{

@@ -16,15 +16,13 @@
 .main-font{  
   font-family: "Calistoga", cursive !important;
   text-align: center !important;
+  /* font-family: 'Pirata One', cursive !important; */
   font-size: 6vw !important;
-}
-
-span strong {
-  font-family: "Calistoga", cursive;
 }
 
 span p { 
   font-family: "Inria Serif", serif !important;
+  font-size: 0.7rem !important;
 }
 
 .learnmore-button {
@@ -48,6 +46,7 @@ span p {
   border-left: solid 2px #353839;
   padding: 10px 10px 0px 10px;
   text-align: center;
+
 } 
 
 @media only screen and (max-width: 768px) {
@@ -71,8 +70,8 @@ span p {
   }
 }
 
-@media only screen and (min-width: 2000px) {
+/* @media only screen and (min-width: 2000px) {
   .side-info{
     padding: 10% 10px 0px 10px;
   }
-}
+} */

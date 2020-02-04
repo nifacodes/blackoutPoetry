@@ -18,14 +18,8 @@ const Header = ({ handleOpen }) => (
     </Grid>
     <Grid item xs={12} sm={4} md={4} lg={4} className={styles['side-info']}>
       <Typography variant="subtitle1">
-
-        <span><strong className={styles['']}>Inspiration:</strong></span>
-        <span><p>Austin Kleon </p></span>
-      </Typography>
-      <Typography variant="subtitle1">
-        <span><strong>Powered By:</strong></span>
-        <span><p>NewsAPI and LexperAPI </p></span>
-
+        <span><p>
+          Welcome! Traditional poetry is written completely from scratch. Austin Kleon, a modern poet and blogger writes his poetry by choosing words that stand out to him from newspapers. Blackout Poetry is a digitized tool for his method. It allows you to make poetry the way Austin Kleon does with Newspapers. To learn more visit <span><a href="https://austinkleon.com/category/newspaper-blackout-poems/">his blog.</a></span> To watch a video of the method, click the button below.</p></span>
       </Typography>
       {!isMobile ? (
         <Button
@@ -34,7 +28,7 @@ const Header = ({ handleOpen }) => (
           size="medium"
           fullWidth
           onClick={handleOpen}>
-          LEARN MORE
+          WATCH VIEDO
         </Button>
       ) : null}
     </Grid>

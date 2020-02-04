@@ -8,12 +8,20 @@ import { Content } from './Sections/Content/Content';
 
 import Stepper from '../Stepper/Stepper';
 
-import { getRandomNumberUpTo4 } from '../../utils';
+import { getRandomNumberUpTo } from '../../utils';
 
 import imageOne from '../../img/1.png';
 import imageTwo from '../../img/2.png';
 import imageThree from '../../img/3.png';
 import imageFour from '../../img/4.png';
+import imageFive from '../../img/5.png';
+import imageSix from '../../img/6.png';
+import imageSeven from '../../img/7.png';
+import imageEight from '../../img/8.png';
+import imageNine from '../../img/9.png';
+import imageTen from '../../img/10.png';
+import imageEleven from '../../img/11.png';
+import imageTwelve from '../../img/12.png';
 
 const Newspaper = ({
   entireCurrentArticleOF,
@@ -36,11 +44,11 @@ const Newspaper = ({
   isPoetryFinished,
   handleOpen,
 }) => {
-  const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour];
+  const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
   return (
     <div className={styles['skew']}>
       <Header handleOpen={handleOpen} />
-      {isInspiration ? (<img src={inspirationImgs[getRandomNumberUpTo4()]} alt="" />) : (
+      {isInspiration ? (<div className={styles['insp-container']}><img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>) : (
         <>
           <Title
             entireCurrentArticleOF={entireCurrentArticleOF}

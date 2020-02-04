@@ -5,7 +5,7 @@ import Loader from 'react-loader';
 import Uniqid from 'uniqid';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import classNames from 'classnames';
-import { createWordMap, getRandomNumber } from './utils';
+import { createWordMap, getRandomNumberUpTo } from './utils';
 import { Modal, Newspaper, SavedNewspaper, MobileNav } from './components';
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
@@ -98,12 +98,12 @@ class App extends React.Component {
   loadNewArticle = async () => {
     const { totalArticles, savedArticles, entireCurrentArticleOF } = this.state;
 
-    let randomNum = getRandomNumber();
+    let randomNum = getRandomNumberUpTo(10);
     if (!(_.isEmpty(savedArticles))) {
       // console.log(savedArticles, "savedArticles")
       while (totalArticles[randomNum].id in savedArticles) {
         // console.log(totalArticles[randomNum].id, " is in ", savedArticles, "so lets find another number")
-        randomNum = getRandomNumber();
+        randomNum = getRandomNumberUpTo(10);
       }
     }
 
@@ -445,14 +445,6 @@ class App extends React.Component {
       <Grid container className={styles['main-container']}>
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
         <Grid item className={styles['bg-showing-vl']} md={2} lg={2} lx={2}>
-          <Button
-            className={styles['learnmore-app-vl']}
-            variant='contained'
-            size='large'
-            onClick={this.handleOpen}
-          >
-            Learn more
-          </Button>
         </Grid>
         <Grid
           item

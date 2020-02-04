@@ -3,7 +3,7 @@ body,
 #root {
   min-width: 100vw;
   min-height: 100vh;
-  background-image: url("./img/bg-nophone.png");
+  background-image: url("./img/lm.png");
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0px;
@@ -24,7 +24,7 @@ body,
 }
 
 .newspaper-container {
-  background-image: url("./img/paper.png");
+  background-image: url("./img/paper-o.png");
   background-size: cover;
   margin-bottom: 3px !important;
   margin-top: 0.5% !important;
@@ -39,44 +39,9 @@ body,
 }
 
 .bg-showing-hl {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  /* margin-left: 15%;
-  margin-bottom: 50%; */
-  /* padding-top: 100px; */
   height: 100vh;
   margin-top: 10% !important;
-  background-image: url("./img/phone2.png");
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
   padding: 0% 3%;
-}
-
-.bg-showing-vl{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin-top: 12% !important;
-  background-image: url("./img/iPhone.png");
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
- padding: 0% 3%;
-}
-
-.learnmore-app-vl { 
- background: linear-gradient(
-    to right,
-    #093028,
-    #237a57
-  );  
-  color: whitesmoke !important;
-   font-family: "Inria Serif", serif !important;
 }
 
 .learnmore-app-hl{
@@ -91,7 +56,6 @@ body,
    margin-top: 550px !important;
    margin-right: 20%;
 }
-
 .nav-container {
   display: flex;
   justify-content: center;
