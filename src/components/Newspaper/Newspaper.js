@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Newspaper.module.css';
@@ -45,36 +45,49 @@ const Newspaper = ({
   handleOpen,
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
+
+  const [ranNum, setRanNum] = useState(0);
+
+
+  // console.log(ranNum, "hooks ranNum");
+  const handleRanNum = () => {
+    let newRanNum = getRandomNumberUpTo(12);
+    setRanNum(newRanNum);
+    console.log(ranNum, "randomNums");
+  }
+
   return (
     <div className={styles['skew']}>
       <Header handleOpen={handleOpen} />
 
-      {isInspiration ? (<div className={styles['insp-container']}><img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>) : (
-        <>
-          <Title
-            entireCurrentArticleOF={entireCurrentArticleOF}
-            volNum={volNum}
-            isDisplayFromSaved={isDisplayFromSaved}
-            isPencilState={isPencilState}
-            isMarkerState={isMarkerState}
-            isPoetryFinished={isPoetryFinished}
-            currentTitleWordMap={currentTitleWordMap}
-            onClickHandler={onClickHandler}
-            onMouseOverHandler={onMouseOverHandler}
-          />
-          <Content
-            entireCurrentArticleOF={entireCurrentArticleOF}
-            isDisplayFromSaved={isDisplayFromSaved}
-            isPoetryFinished={isPoetryFinished}
-            isPencilState={isPencilState}
-            isMarkerState={isMarkerState}
-            currentAuthorWordMap={currentAuthorWordMap}
-            onClickHandler={onClickHandler}
-            onMouseOverHandler={onMouseOverHandler}
-            currentContentWordMap={currentContentWordMap}
-          />
-        </>
-      )}
+      {isInspiration ? (<div className={styles['insp-container']}>
+        {/* {handleRanNum()} */}
+        <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>) : (
+          <>
+            <Title
+              entireCurrentArticleOF={entireCurrentArticleOF}
+              volNum={volNum}
+              isDisplayFromSaved={isDisplayFromSaved}
+              isPencilState={isPencilState}
+              isMarkerState={isMarkerState}
+              isPoetryFinished={isPoetryFinished}
+              currentTitleWordMap={currentTitleWordMap}
+              onClickHandler={onClickHandler}
+              onMouseOverHandler={onMouseOverHandler}
+            />
+            <Content
+              entireCurrentArticleOF={entireCurrentArticleOF}
+              isDisplayFromSaved={isDisplayFromSaved}
+              isPoetryFinished={isPoetryFinished}
+              isPencilState={isPencilState}
+              isMarkerState={isMarkerState}
+              currentAuthorWordMap={currentAuthorWordMap}
+              onClickHandler={onClickHandler}
+              onMouseOverHandler={onMouseOverHandler}
+              currentContentWordMap={currentContentWordMap}
+            />
+          </>
+        )}
       <Stepper
         loadNewArticle={loadNewArticle}
         loadExamples={loadExamples}
@@ -109,7 +122,7 @@ Newspaper.propTypes = {
   onClickHandler: PropTypes.func.isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   isInspiration: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func,
   isPoetryFinished: PropTypes.bool.isRequired,
   loadExamples: PropTypes.func.isRequired,
   pencilState: PropTypes.func.isRequired,

@@ -35,10 +35,34 @@ class App extends React.Component {
       isNavOpen: false,
       volNum: 1,
       step: 0,
+      screenOrientation: 'portrait',
     };
   }
 
+  isPortraitMode = () => {
+    console.log(this.state);
+    const { screenOrientation } = this.state;
+    return screenOrientation === 'portrait';
+  }
+
+  setScreenOrientation = () => {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      console.log('orientation: portrait');
+      this.setState({
+        screenOrientation: 'portrait'
+      });
+    }
+
+    if (window.matchMedia("(orientation: landscape)").matches) {
+      console.log('orientation: landscape');
+      this.setState({
+        screenOrientation: 'landscape'
+      });
+    }
+  }
+
   async componentDidMount() {
+    window.addEventListener('orientationchange', this.setScreenOrientation);
     const articles = await getArticles();
 
     const pendingContents = articles.map(async (article) => getLexperContent(article.url));
@@ -61,6 +85,8 @@ class App extends React.Component {
       currentContentWordMap: createWordMap(articles[0].fullContentText),
       isLoading: false,
     });
+
+
   }
 
   pencilState = () => this.setState({
@@ -88,6 +114,7 @@ class App extends React.Component {
   });
 
   loadExamples = () => {
+
     this.setState({
       isInspiration: true,
       isDisplayFromSaved: false,
@@ -442,15 +469,17 @@ class App extends React.Component {
             displayComponent={displayComponent}
           />
           {
-            componentToBeRendered() || <Modal handleClose={this.handleClose} isOpen={isOpen} isMobile={isMobile} />
+            componentToBeRendered() || <Modal handleClose={this.handleClose} isOpen={isOpen} />
           }
         </>
       );
     }
 
     return (
+
       <Grid container className={styles['main-container']}>
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
+        {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
         <Grid item className={styles['bg-showing-vl']} md={2} lg={2} lx={2}>
         </Grid>
         <Grid

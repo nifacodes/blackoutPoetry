@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 
 import styles from './Header.module.css';
 
-const isMobile = window.innerWidth <= 768;
-// const isMobile = false;
-
 const Header = ({ handleOpen, isIntro }) => (
   <Grid container className={styles['header-container']}>
     <Grid item xs={12} sm={8} md={8} lg={8} className={isIntro ? styles.intro : null}>
@@ -34,7 +31,7 @@ const Header = ({ handleOpen, isIntro }) => (
   </Grid>
 );
 Header.propTypes = {
-  handleOpen: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func,
 };
 
 export default Header;

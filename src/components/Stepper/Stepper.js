@@ -18,7 +18,6 @@ import styles from './Stepper.module.css';
 import { PrintableNewspaper } from '..';
 
 
-// const isMobile = window.innerWidth <= 768;
 const isMobile = window.innerWidth <= 425;
 
 const getSteps = () => [
@@ -58,7 +57,7 @@ const boxWords = (
 
 const blackOutWords = (
   <span className={styles['main-font']}>
-    {`With your mouse, hover over the rest of the words to black them out! Once you&aposre done, click Next to continue`}
+    {`With your mouse, hover over the rest of the words to black them out! Once you're done, click Next to continue`}
   </span>
 );
 

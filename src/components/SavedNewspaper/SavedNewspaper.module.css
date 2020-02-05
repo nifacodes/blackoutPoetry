@@ -27,7 +27,7 @@
   border-bottom: #808080 solid 3px;
   border-top: #808080 solid 3px;
   background-color: #d3d3d3;
-  /* font-size: 1vw; */
+  padding: 1%;
 }
 .main-font{  font-family: "Inria Serif", serif !important;
 }

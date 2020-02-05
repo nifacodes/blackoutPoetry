@@ -12,12 +12,13 @@
     font-family: "Calistoga", cursive !important;
     text-align: center !important;
     /* font-family: 'Pirata One', cursive !important; */
-    font-size: 10vw !important;
+    /* font-size: 10vw !important; */
   }
   
-  span { 
+.sec-font{ 
     font-family: "Inria Serif", serif !important;
-  }
+    padding: 3%;
+}
   
   .learnmore-button {
    background: linear-gradient(

@@ -14,16 +14,14 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler }) =>
         >
           <div className={styles['saved-title']}>
 
-            <Typography variant="subtitle1">
-              <span className={styles['main-font']}>
-                {savedArticles[articleObj].entireCurrentArticleOF.title}
-              </span>
+            <Typography variant="subtitle1" display="inline-block" className={styles['main-font']}>
+
+              {savedArticles[articleObj].entireCurrentArticleOF.title}
+
             </Typography>
           </div>
-          <Typography variant="body1">
-            <span className={styles['main-font']}>
-              Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
-            </span>
+          <Typography variant="body" display="inline-block">
+            Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
           </Typography>
           <div className={styles.btns}>
             <Button
