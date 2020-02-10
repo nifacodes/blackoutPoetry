@@ -1,29 +1,33 @@
 import React from 'react';
 import { Drawer, List, ListItem, ListItemText } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import {
 
+  Grid
+
+} from '@material-ui/core';
 
 const MobileNav = ({ isNavOpen, toggleNav, handleDrawerItem, isSmall }) => (
 
   <Drawer open={isNavOpen} onClose={toggleNav}>
-    <div role="presentation" onClick={toggleNav}>
+    <Grid container alignContent='center' justify='center' onClick={toggleNav}>
 
-      {isSmall ? (<List>
+      {isSmall ? (<Grid item><List>
         {['Newspaper', 'Saved'].map((text, index) => (
           <ListItem button onClick={() => handleDrawerItem(index)} key={text}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>) : (<List>
+      </List></Grid>) : (<Grid item><List>
         {['Instructions', 'Newspaper', 'Saved'].map((text, index) => (
           <ListItem button onClick={() => handleDrawerItem(index)} key={text}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>)}
+      </List></Grid>)}
 
 
-    </div>
+    </Grid>
   </Drawer>
 );
 

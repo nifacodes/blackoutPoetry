@@ -271,7 +271,7 @@ const Stepper = ({
                   </Button>
                 )}
               backButton={(
-                <Button size="small" className={styles['step-btn-reset']} onClick={handleReset}>
+                <Button size="small" className={styles['step-btn']} onClick={handleReset}>
                   Reset
                   <RotateLeftIcon />
                 </Button>
