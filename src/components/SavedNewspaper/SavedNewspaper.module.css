@@ -1,16 +1,7 @@
 .saved-newspapers-container {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* overflow-y: scroll;
-   max-height: 70%;
-  width: 100%;
-  /*padding: 0% 5%; 
-  border: solid purple 3px; */
+  
   overflow-y: auto;
-  /* border: solid purple 3px; */
   max-height: 70%;
-  /* margin-top: 3.7%; */
 }
 
 .saved-header{
@@ -21,8 +12,6 @@
   color: #D0D0D0;
   background-color: #353839;
   border: 1px dashed #dcdcdc; 
-  /* border: 1px dashed #b5651c;  */
-
   width: 95%;
   border-radius: 3%;
   font-family: "Calistoga", cursive !important;
@@ -32,10 +21,7 @@
 
 
 .folded-bg {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap; */
+  
   background-image: url("../../img/folded_paper-3.png");
   background-size: contain;
   background-position: center center;
@@ -44,12 +30,6 @@
   padding: 39% 10% 25% 8%;
     margin-top: 3.7%;
 
-  /* border: red solid 2px; */
-  /* margin-top: 30%; */
-}
-
-.saved-content{
-  border:red solid 2px;
 }
 
 .saved-title{
@@ -136,38 +116,3 @@
 }
   
 }
-
-
-
-/* width */
-/* ::-webkit-scrollbar {
-  width: .8%;
-} */
-
-/* @media only screen and (max-width: 425px) {
-  .folded-bg {
-    padding: 20% 5% 6% 8%;
-    background-size: 100% 100%;
-    border: solid purple 3px;
-  }
-  .saved-newspapers-container{
-    min-height: 100vh;
-  }
-}
-
-@media only screen and (min-width: 425px) {
-  .folded-bg {
-    padding: 17% 5% 6% 8%;
-    background-size: contain;
-  }
-} */
-/* @media only screen and (max-width: 768px) {
-  .folded-bg {
-    /* padding: 6% 4% 2% 4%; 
-    padding: 0;
-    min-height: fit-content;
-    background-size:contain ;
-
-    border: solid darkorange 2px;
-  }
-} */

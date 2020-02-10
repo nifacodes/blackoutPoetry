@@ -1,46 +1,26 @@
 .header-title{
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  
   padding: 0% 2% !important;
 }
 
-.header-container{
-  /* border: red solid 3px; */
-}
 
 .header-title-container{
   height: 100%;
   width:100%;
-  /* border: green solid 3px; */
+  
 }
-/* 
-.intro{
-  background-color: whitesmoke;
-  color: black;
-  padding: 5%;
-  margin:2%;
-} */
 
-/* h1 span {
-  font-family: "Calistoga", cursive;
-  font-size: 6vw !important;
-  border: purple solid 2px;
-  text-align: center;
-} */
 
 .main-font{  
   font-family: "Calistoga", cursive !important;
   text-align: center !important;
-  /* font-family: 'Pirata One', cursive !important; */
-  /* 10 on xs, sm, 6 on md, 4.5 on lg+ */
+ 
   font-size: 10vw !important;
 }
 
 .sec-font { 
   font-family: "Inria Serif", serif !important;
-  /* font-size: 1vw !important; */
-  /* border: red solid 2px; */
+  
 }
 
 .learnmore-button {
@@ -51,15 +31,10 @@
   );  
   color: whitesmoke !important;
   font-family: "Inria Serif", serif !important;
-  /* font-size: 1.4vw !important; */
 }
 
 .side-info {
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap:wrap;
-  justify-content: center;
-  align-items: center; */
+  
   border-left: solid 2px #353839;
   padding: 2%;
   text-align: center;
@@ -96,29 +71,3 @@
   }
 
 
-@media only screen and (max-width: 768px) {
- 
-  .side-info {
-    /* display: none; */
-  }
-  .learnmore-button{
-    /* display: none; */
-  } 
-  /* h1 div {
-    font-size: 15vw !important;
-    text-align: center;
-  } */
-  
-  .main-font{  
-    /* font-family: "Calistoga", cursive !important;
-    text-align: center !important;
-    font-size: 15vw !important; */
-
-  }
-}
-
-/* @media only screen and (min-width: 2000px) {
-  .side-info{
-    padding: 10% 10px 0px 10px;
-  }
-} */

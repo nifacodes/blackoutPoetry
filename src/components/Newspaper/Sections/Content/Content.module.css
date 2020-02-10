@@ -12,12 +12,10 @@
 
 .main-font {
   font-family: "Inria Serif", serif !important;
-  /* font-size: 1.4vw !important; */
 
 }
 .author{
   font-family: "Calistoga", cursive !important;
-  /* font-size: 1.8vw !important; */
   text-align: center;
 }
 
@@ -49,9 +47,7 @@
     display: none;
     
   }
-  .content-container {
-    /* margin-top: 3%; */
-  }
+  
 }
 
 
@@ -70,12 +66,3 @@
   }
   
   }
-
-@media only screen and (max-width: 768px) {
- 
-  .content-container{
-    /* font-size: 1.2vw !important; */
-    /* border-bottom: #808080 solid 3px;
-    border-radius: 3px; */
-  }
- }

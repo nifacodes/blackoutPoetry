@@ -31,23 +31,23 @@ class App extends React.Component {
       isLoading: true,
       isDisplayFromSaved: false,
       isPoetryFinished: false,
-      // isOpen: isMobile ? true : false,
       isOpen: false,
       isNavOpen: false,
       volNum: 1,
       screenOrientation: 'portrait',
-      isSmallStepper: ((window.innerWidth <= 425) ? true : false),
-      step: "instructions",
-      screenOrientation: "portrait",
+      isSmallStepper: ((window.innerWidth <= 425)),
+      step: 'instructions',
+      screenOrientation: 'portrait',
       width: window.innerWidth,
       height: window.innerHeight,
-      isExtraSmall: ((window.innerWidth <= 600) ? true : false),
-      isSmall: ((window.innerWidth > 600 && window.innerWidth <= 960) ? true : false),
-      isSNBP1: ((window.innerWidth > 425 && window.innerWidth <= 500) ? true : false),
-      isSNBP2: ((window.innerWidth > 500 && window.innerWidth <= 760) ? true : false),
-      isSNBP3: ((window.innerWidth > 760 && window.innerWidth <= 960) ? true : false)
+      isExtraSmall: ((window.innerWidth <= 600)),
+      isSmall: (!!((window.innerWidth > 600 && window.innerWidth <= 960))),
+      isSNBP1: (!!((window.innerWidth > 425 && window.innerWidth <= 500))),
+      isSNBP2: (!!((window.innerWidth > 500 && window.innerWidth <= 760))),
+      isSNBP3: (!!((window.innerWidth > 760 && window.innerWidth <= 960))),
     };
   }
+
   isPortraitMode = () => {
     console.log(this.state);
     const { screenOrientation } = this.state;
@@ -55,64 +55,59 @@ class App extends React.Component {
   }
 
   setScreenOrientation = () => {
-    if (window.matchMedia("(orientation: portrait)").matches) {
+    if (window.matchMedia('(orientation: portrait)').matches) {
       console.log('orientation: portrait');
       this.setState({
-        screenOrientation: 'portrait'
+        screenOrientation: 'portrait',
       });
     }
 
-    if (window.matchMedia("(orientation: landscape)").matches) {
+    if (window.matchMedia('(orientation: landscape)').matches) {
       console.log('orientation: landscape');
       this.setState({
-        screenOrientation: 'landscape'
+        screenOrientation: 'landscape',
       });
     }
   }
 
   updateDimensions = () => {
-    if (this.state.width < 600) {
-      if (this.state.width <= 425) {
-        this.setState({ isSmallStepper: true })
+    if (window.innerWidth < 600) {
+      if (window.innerWidth <= 425) {
+        this.setState({ isSmallStepper: true });
       } else {
-        this.setState({ isSmallStepper: false })
+        this.setState({ isSmallStepper: false });
       }
 
       if (window.innerWidth > 425 && window.innerWidth <= 500) {
-        this.setState({ isSNBP1: true, isSNBP2: false, isSNBP3: false })
+        this.setState({ isSNBP1: true, isSNBP2: false, isSNBP3: false });
       }
 
       if (window.innerWidth > 500) {
-        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false })
+        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false });
       }
 
       this.setState({ isExtraSmall: true, isSmall: false });
-
-      console.log("up to mobile, show 3 drawers", this.state);
-
-    } else if ((this.state.width >= 600 && this.state.width <= 959)) {
-      console.log("WHY AM I HERE", this.state.width);
+    } else if ((window.innerWidth >= 600 && window.innerWidth <= 959)) {
       if (window.innerWidth <= 760) {
-        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false })
+        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false, step: 'instructions' });
+      } else {
+        this.setState({ step: 'newspaper' });
       }
-      this.setState({ isExtraSmall: false, isSmall: true, step: "newspaper", isSNBP1: false, isSNBP2: false, isSNBP3: true });
-      console.log("up to Tablet, show 2 drawers", this.state)
-
-    } else if ((this.state.width >= 960)) {
+      this.setState({ isExtraSmall: false, isSmall: true, isSNBP1: false, isSNBP2: false, isSNBP3: true });
+    } else if ((window.innerWidth >= 960)) {
       this.setState({ isExtraSmall: false, isSmall: false, isSNBP1: false, isSNBP2: false, isSNBP3: false });
-      console.log("up to infinity and beyond, show [3,6,3]")
     }
 
     this.setState({ width: window.innerWidth, height: window.innerHeight });
-    console.log("updating dimentions: ", this.state.width, this.state.height)
   }
 
   async componentDidMount() {
     window.addEventListener('orientationchange', this.setScreenOrientation);
     this.updateDimensions();
-    this.state.isExtraSmall ? this.setState({ step: "instructions" }) : this.setState({ step: "newspaper" });
-    window.addEventListener("resize", this.updateDimensions);
-    console.log("MOUNTING DIMENTIONS", this.state);
+
+    this.state.isExtraSmall ? this.setState({ step: 'instructions' }) : this.setState({ step: 'newspaper' });
+    window.addEventListener('resize', this.updateDimensions);
+
     const articles = await getArticles();
 
     const pendingContents = articles.map(async (article) => getLexperContent(article.url));
@@ -135,14 +130,11 @@ class App extends React.Component {
       currentContentWordMap: createWordMap(articles[0].fullContentText),
       isLoading: false,
     });
-
-
   }
-
 
   componentWillUnmount() {
     window.removeEventListener('orientationchange', this.setScreenOrientation);
-    window.removeEventListener("resize", this.updateDimensions);
+    window.removeEventListener('resize', this.updateDimensions);
   }
 
   pencilState = () => this.setState({
@@ -170,14 +162,12 @@ class App extends React.Component {
   });
 
   loadExamples = () => {
-
     this.setState({
       isInspiration: true,
       isDisplayFromSaved: false,
       isPoetryFinished: false,
     });
   };
-
 
   loadNewArticle = async () => {
     const { totalArticles, savedArticles, entireCurrentArticleOF } = this.state;
@@ -209,7 +199,6 @@ class App extends React.Component {
         totalArticles[randomNum].fullContentText,
       ),
     });
-
   };
 
   saveCurrentArticle = () => {
@@ -364,7 +353,7 @@ class App extends React.Component {
     } = savedArticles[i];
 
     this.setState({
-      step: "newspaper",
+      step: 'newspaper',
       isDisplayFromSaved: true,
       isPoetryFinished: false,
       isInspiration: false,
@@ -381,9 +370,8 @@ class App extends React.Component {
     this.setState({
       isPoetryFinished: false,
       isDisplayFromSaved: false,
-      savedArticles: { ...updatedSavedArticles }
+      savedArticles: { ...updatedSavedArticles },
     });
-    console.log("Deteleinggg", this.state.isDisplayFromSaved, this.state.isPoetryFinished)
   };
 
   handleOpen = () => {
@@ -396,7 +384,7 @@ class App extends React.Component {
 
   // simple functional component
   displayLoader = () => (
-    <Grid container alignContent='center' justify='center' className={styles['main-container']}>
+    <Grid container alignContent="center" justify="center" className={styles['main-container']}>
       <Loader
         loaded={false}
         scale={2.0}
@@ -429,17 +417,17 @@ class App extends React.Component {
       isSmallStepper,
       isSNBP1,
       isSNBP2,
-      isSNBP3
+      isSNBP3,
     } = this.state;
     switch (step) {
-      case "instructions":
+      case 'instructions':
         return (
           <>
             <MobileLanding handleOpen={this.handleOpen} />
             <Modal handleClose={this.handleClose} isOpen={isOpen} />
           </>
         );
-      case "newspaper":
+      case 'newspaper':
         return (
           <Grid item sm={12} className={styles['newspaper-container']}>
             <Newspaper
@@ -468,7 +456,7 @@ class App extends React.Component {
             />
           </Grid>
         );
-      case "saved":
+      case 'saved':
         return (
           <Grid
             item
@@ -496,52 +484,49 @@ class App extends React.Component {
 
   handleDrawerItem = (i) => {
     if (this.state.isSmall) {
-      console.log("HI IM SMALL STILL")
       switch (i) {
         // mobile view instruction
         case 0:
-          this.setState({ step: "newspaper" });
+          this.setState({ step: 'newspaper' });
           // this.updateDimensions();
-          console.log("NEWSPAPER")
+
           return;
           break;
         // saved Newspaper
         case 1:
           // this.updateDimensions();
-          console.log("SAVED")
-          this.setState({ step: "saved" });
-          return;
+
+          this.setState({ step: 'saved' });
+
           break;
         default:
           break;
       }
     } else if (this.state.isExtraSmall) {
-      console.log("HI IM EXTRASMALL STILL")
       switch (i) {
         // mobile view instruction
         case 0:
-          this.setState({ step: "instructions" });
+          this.setState({ step: 'instructions' });
           // this.updateDimensions();
-          console.log("MOBILE")
+
           return;
           break;
         // newspaper view
         case 1:
-          this.setState({ step: "newspaper" });
-          console.log("NEWSPAPER")
+          this.setState({ step: 'newspaper' });
+
           return;
           break;
         // saved Newspaper
         case 2:
 
-          this.setState({ step: "saved" });
-          return;
+          this.setState({ step: 'saved' });
+
           break;
         default:
           break;
       }
     }
-
   };
 
   render() {
@@ -564,7 +549,7 @@ class App extends React.Component {
       step,
       isExtraSmall,
       isMedium,
-      isSmall
+      isSmall,
     } = this.state;
 
     if ((_.isEmpty(entireCurrentArticleOF))) {
@@ -572,89 +557,98 @@ class App extends React.Component {
     }
 
     if (isExtraSmall) {
-      console.log("if extra small")
-      return <>
-        <Button type="button" className={styles['nav-container']}
-          onClick={this.toggleNav}>
-          <DehazeIcon />
-        </Button>
-        <MobileNav
-          toggleNav={this.toggleNav}
-          isNavOpen={isNavOpen}
-          handleDrawerItem={this.handleDrawerItem}
-        />
-        {this.displayDrawerComponent()}
+      return (
+        <>
+          <Button
+            type="button"
+            className={styles['nav-container']}
+            onClick={this.toggleNav}
+          >
+            <DehazeIcon />
+          </Button>
+          <MobileNav
+            toggleNav={this.toggleNav}
+            isNavOpen={isNavOpen}
+            handleDrawerItem={this.handleDrawerItem}
+          />
+          {this.displayDrawerComponent()}
 
-      </>
+        </>
+      );
     }
 
     if (isSmall) {
-      console.log("if small")
-      return <>
-        <Button type="button" className={styles['nav-container']}
-          onClick={this.toggleNav}>
-          <DehazeIcon />
-        </Button>
-        <MobileNav
-          toggleNav={this.toggleNav}
-          isNavOpen={isNavOpen}
-          handleDrawerItem={this.handleDrawerItem}
-          isSmall={isSmall}
-        />
-        <Modal handleClose={this.handleClose} isOpen={isOpen} />
+      return (
+        <>
+          <Button
+            type="button"
+            className={styles['nav-container']}
+            onClick={this.toggleNav}
+          >
+            <DehazeIcon />
+          </Button>
+          <MobileNav
+            toggleNav={this.toggleNav}
+            isNavOpen={isNavOpen}
+            handleDrawerItem={this.handleDrawerItem}
+            isSmall={isSmall}
+          />
+          <Modal handleClose={this.handleClose} isOpen={isOpen} />
 
-        {this.displayDrawerComponent()}
+          {this.displayDrawerComponent()}
 
-      </>
+        </>
+      );
     }
 
     // default
-    return <><Grid container alignContent='center' justify='center' className={styles['']}>
-      <Modal handleClose={this.handleClose} isOpen={isOpen} />
-      {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
-      <Grid item className={styles['bg-showing']} md={2} lg={3}>
+    return (
+      <><Grid container alignContent="center" justify="center">
+        <Modal handleClose={this.handleClose} isOpen={isOpen} />
+        {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
+        <Grid item className={styles['bg-showing']} md={2} lg={3} />
+        <Grid
+          item
+          xs={12}
+          md={7}
+          lg={6}
+          className={classNames(styles['newspaper-container'], isLoading ? styles.loader : '')}
+        >
+          <Newspaper
+            volNum={volNum}
+            entireCurrentArticleOF={entireCurrentArticleOF}
+            isPencilState={isPencilState}
+            isMarkerState={isMarkerState}
+            isInspiration={isInspiration}
+            isDisplayFromSaved={isDisplayFromSaved}
+            isPoetryFinished={isPoetryFinished}
+            inspirationImg={inspirationImg}
+            currentTitleWordMap={currentTitleWordMap}
+            currentAuthorWordMap={currentAuthorWordMap}
+            currentContentWordMap={currentContentWordMap}
+            onClickHandler={this.onClickHandler}
+            onMouseOverHandler={this.onMouseOverHandler}
+            loadNewArticle={this.loadNewArticle}
+            loadExamples={this.loadExamples}
+            pencilState={this.pencilState}
+            markerState={this.markerState}
+            saveState={this.saveState}
+            saveCurrentArticle={this.saveCurrentArticle}
+            handleOpen={this.handleOpen}
+          />
+        </Grid>
+        <Grid item xs={12} md={3} className={styles['saved-np']}>
+          <SavedNewspaper
+            onSaveHandler={this.onSaveHandler}
+            savedArticles={savedArticles}
+            volNum={volNum}
+            deleteSavedHandler={this.deleteSavedHandler}
+            isPoetryFinished={isPoetryFinished}
+          />
+        </Grid>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        md={7}
-        lg={6}
-        className={classNames(styles['newspaper-container'], isLoading ? styles.loader : '')}
-      >
-        <Newspaper
-          volNum={volNum}
-          entireCurrentArticleOF={entireCurrentArticleOF}
-          isPencilState={isPencilState}
-          isMarkerState={isMarkerState}
-          isInspiration={isInspiration}
-          isDisplayFromSaved={isDisplayFromSaved}
-          isPoetryFinished={isPoetryFinished}
-          inspirationImg={inspirationImg}
-          currentTitleWordMap={currentTitleWordMap}
-          currentAuthorWordMap={currentAuthorWordMap}
-          currentContentWordMap={currentContentWordMap}
-          onClickHandler={this.onClickHandler}
-          onMouseOverHandler={this.onMouseOverHandler}
-          loadNewArticle={this.loadNewArticle}
-          loadExamples={this.loadExamples}
-          pencilState={this.pencilState}
-          markerState={this.markerState}
-          saveState={this.saveState}
-          saveCurrentArticle={this.saveCurrentArticle}
-          handleOpen={this.handleOpen}
-        />
-      </Grid>
-      <Grid item xs={12} md={3} className={styles['saved-np']}>
-        <SavedNewspaper
-          onSaveHandler={this.onSaveHandler}
-          savedArticles={savedArticles}
-          volNum={volNum}
-          deleteSavedHandler={this.deleteSavedHandler}
-          isPoetryFinished={isPoetryFinished}
-        />
-      </Grid>
-    </Grid ></>
-
+      </>
+    );
   }
 }
 

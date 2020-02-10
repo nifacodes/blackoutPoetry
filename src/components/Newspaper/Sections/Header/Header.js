@@ -8,18 +8,18 @@ import styles from './Header.module.css';
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 const Header = ({ handleOpen }) => (
-  <Grid container alignContent='center' justify='center' className={styles['header-container']}>
+  <Grid container alignContent="center" justify="center" className={styles['header-container']}>
     <Grid item xs={12} sm={7} className={styles['header-title']}>
-      <Grid container alignContent='center' justify='center' className={styles['header-title-container']}>
+      <Grid container alignContent="center" justify="center" className={styles['header-title-container']}>
         <Grid item>
           <ThemeProvider theme={theme}>
             <Typography variant="h2" className={styles['main-font']}>
               BLACKOUT
-      </Typography>
+            </Typography>
 
             <Typography variant="h2" className={styles['main-font']}>
               POETRY
-      </Typography>
+            </Typography>
           </ThemeProvider>
         </Grid>
       </Grid>
@@ -34,7 +34,8 @@ const Header = ({ handleOpen }) => (
           variant="contained"
           size="medium"
           fullWidth
-          onClick={handleOpen}>
+          onClick={handleOpen}
+        >
           WATCH VIEDO
         </Button>
       </Grid>

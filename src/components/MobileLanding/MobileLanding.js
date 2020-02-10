@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 import styles from './MobileLanding.module.css';
 
 const MobileLanding = ({ handleOpen }) => (
-    <Grid container alignContent='center' justify='center'
-        className={styles['landing-container']}>
+    <Grid
+        container
+        alignContent="center"
+        justify="center"
+        className={styles['landing-container']}
+    >
         <Grid item xs={12} className={styles.intro}>
             <Typography variant="h3" className={styles['main-font']}>
                 BLACKOUT

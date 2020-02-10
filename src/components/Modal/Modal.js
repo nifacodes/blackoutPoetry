@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import styles from './Modal.module.css';
 // Only had video as its content
 const Modal = ({ handleClose, isOpen }) => {
-  console.log("modal status", handleClose, isOpen);
   return (
     <ModalMUI open={isOpen} onClose={handleClose} >
       <Grid container alignContent='center' justify='center' className={styles['video-container']} onClick={handleClose}>

@@ -7,12 +7,9 @@
   border-radius: 3px;
   padding: .5% !important;
 
-  /* min-height: fit-content; */
 }
 .title-container {
-  /* display: flex; */
   background-color: #353839;
-  /* justify-content: center; */
   margin-top: 1% !important;
   border-radius: 3px;
   text-align: center;
@@ -22,13 +19,11 @@
 
 .article-title{
   font-family: "Calistoga", cursive !important;
-  /* font-size: 1.9vw !important; */
 }
 
 
 .sec-font{
   font-family: "Inria Serif", serif !important;
-  /* font-size: 1.4vw !important; */
 }
 
 .date {
@@ -59,13 +54,4 @@
 
 
 
-@media only screen and (max-width: 600px) {
-  .date-vol-container{
-   /* height: 3vh;  */
-   /* font-size: 4vw; */
-  }
-  strong {
-    /* font-size: 8vw; */
-  }
-  
-}
+

@@ -10,46 +10,18 @@ body, #root{
   
 }
 
-body{
-  /* padding: 2% 0 !important; */
-}
-.intro{
-  /* background-color: black; */
-  /* color: black;
-  width: 80%;
-  padding: 5%;
-  margin:2%;
-  background-image: url("./img/paper-ss.png");
-  background-repeat: no-repeat;
-  background-size: cover; */
-   
-}
-
 .main-container {
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   width: 100vw;
   height: 100vh;
-    /* overflow: auto; */
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
     
 }
 
-.hey{
-  border: purple solid 5px;
-}
+
 .saved-np{
-  /* border: salmon solid 3px; */
-  /* background-image: url("./img/cork.png");
-  background-size: cover;
-  background-repeat: no-repeat; */
   overflow-y: scroll;
-  /* border: solid purple 3px; */
   max-height: 90vh;
-  /*padding: 0% 5%; */
-  /* border: solid yellow 3px; */
 }
 
 
@@ -57,57 +29,21 @@ body{
   background-image: url("./img/paper-o.png");
   background-size: cover;
   background-repeat: no-repeat;
-     /* border: salmon solid 3px; */
-
-  /* object-fit: contain; */
-
-  /* border: green solid 5px; */
-  /* max-height: 90vh !important; */
-  /* max-width: 60% !important; */
-  /* margin-bottom: 3px !important; */
-  /* margin-top: 0.5% !important; */
-  /* width: 100%; */
   padding: 3.7%;
-  /* overflow: auto; */
-  /* border: purple solid 5px; */
-  /* margin-top: 15% !important;
-  margin-bottom: 2% !important; */
-
-}
+  }
 
 a{
   color: #237a57 !important;
 }
-.learnmore-button {
-  /* background: linear-gradient(
-     to right,
-     #093028,
-     #237a57
-   );  
-   color: whitesmoke !important;
-   font-family: "Inria Serif", serif !important; */
- 
- }
 
 .loader {
   display: flex;
   justify-content: center;
 }
 
-.bg-showing {
-  /* height: 100vh;
-  margin-top: 10% !important;
-  padding: 0% 3%; */
-  /* border: blue solid 5px; */
-
-}
 
 .nav-container {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   color: whitesmoke !important;
-  /* min-height: 6vh; */
   background: linear-gradient(
     to right,
     #093028,
@@ -143,9 +79,6 @@ a{
   border-radius: 10px;
 }
 
-
-
-
 @media only screen and (max-width: 600px) {
   .newspaper-container{
     background-image: none;
@@ -153,16 +86,6 @@ a{
   }
 }
 
-/* bcbcbd #DDDDDD*/
-/* MUI's breakpoints upto max sm */
-@media only screen and (min-width: 959px) {
-  /* .newspaper-container{
-    padding: 2% !important;    
-  }
-  body{
-    padding: 0 !important;
-  } */
-}
 
 @media only screen and (min-width: 960px) {
 .newspaper-container{
@@ -180,22 +103,3 @@ a{
 
 }
 
-
-
-/* According to DevTools Extra extra small devices (phones, 425px and down) */
-@media only screen and (max-width: 425px) {}
-
-/* Extra small devices MUI (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}

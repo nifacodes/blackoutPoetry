@@ -6,7 +6,6 @@ import {
   Button,
   Grid,
   Typography,
-  FormHelperText,
   MobileStepper,
 } from '@material-ui/core';
 import StepConnector from '@material-ui/core/StepConnector';
@@ -34,8 +33,9 @@ const browseSentence = (
 );
 
 const lightBulbSentence = (
+
   <Typography variant="body2" className={styles['main-font']}>
-    {` Click the Lightbulb button below to see real examples. Once you are
+    {`Click the Lightbulb button below to see real examples. Once you are
     inspired, click Next to choose your own article.`}
   </Typography>
 );
@@ -128,6 +128,28 @@ const getStepContent = (stepIndex) => {
   }
 };
 
+const ColorlibStepIcon = (props) => {
+  const classes = useColorlibStepIconStyles();
+  const { active, completed, icon } = props;
+  const icons = {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+  };
+  return (
+    <div
+      className={classNames(classes.root, {
+        [classes.active]: active,
+        [classes.completed]: completed,
+      })}
+    >
+      {icons[String(icon)]}
+    </div>
+  );
+}
+
 const Stepper = ({
   loadExamples,
   loadNewArticle,
@@ -143,13 +165,6 @@ const Stepper = ({
   // (one being the state property (activeStep) and the second being the setter function for that state) (setActive)
   // we can also specify the default value for the state property (activeStep), useState takes in a default value
   const [activeStep, setActiveStep] = useState(0);
-  // const [isMobile, setMobile] = useState(window.innerWidth <= 425);
-
-  // const checkIsMobileDimension = () =>{
-  //   setMobile(window.innerWidth <=425)
-  // }
-
-
   const steps = getSteps();
 
   const handleNext = () => {
@@ -169,7 +184,6 @@ const Stepper = ({
       default:
         break;
     }
-
     setActiveStep(activeStep + 1);
   };
 
@@ -178,126 +192,123 @@ const Stepper = ({
     loadNewArticle();
   };
 
-  function ColorlibStepIcon(props) {
-    const classes = useColorlibStepIconStyles();
-    console.log("DISPLAY FROM SAVED+ISPOETRYFINISHED", isDisplayFromSaved, isPoetryFinished)
 
-    const { active, completed, icon } = props;
+  const displayMUIStepper = () => {
+    // handleActiveSteps();
+    return <MUIStepper
+      className={styles.stepper}
+      activeStep={activeStep}
+      alternativeLabel
+      connector={<ColorlibConnector />}
+    >
+      {steps.map((label) => (
+        <Step key={label}>
+          <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+        </Step>
+      ))}
+    </MUIStepper>
 
-    const icons = {
-      1: 1,
-      2: 2,
-      3: 3,
-      4: 4,
-      5: 5,
-    };
+  };
 
-    return (
-      <div
-        className={classNames(classes.root, {
-          [classes.active]: active,
-          [classes.completed]: completed,
-        })}
-      >
-        {icons[String(icon)]}
-      </div>
-    );
+  const displayMUIMobileStepper = () => (
+    <MobileStepper
+      steps={6}
+      className={styles.stepper}
+      position="static"
+      variant="text"
+      activeStep={activeStep}
+      nextButton={activeStep === steps.length - 1 ? (
+        <Button size="small" className={styles['step-btn']} onClick={handleReset}>Finish <KeyboardArrowRight />
+        </Button>
+      ) : (
+          <Button size="small" className={styles['step-btn']} onClick={handleNext}>
+            Next
+        <KeyboardArrowRight />
+          </Button>
+        )}
+      backButton={(
+        <Button size="small" className={styles['step-btn']} onClick={handleReset}>
+          Reset
+        <RotateLeftIcon />
+        </Button>
+      )}
+    />
+  )
+
+  const handleActiveSteps = () => {
+    switch (activeStep) {
+      case 0:
+        return <>
+          <Button className={styles.btn} onClick={loadExamples}>
+            <i className={classNames('fas', 'fa-lg', 'fa-lightbulb')} />
+          </Button>
+        </>
+        break;
+      case 1:
+        return <>
+          <Button className={styles.btn} onClick={loadNewArticle}>
+            <i className={classNames('fas', 'fa-lg', 'fa-plus-circle')} />
+          </Button>
+        </>
+        break;
+      case 4:
+        return <>
+          <Button className={styles.btn} onClick={saveCurrentArticle}>
+            <i className={classNames('fas', 'fa-lg', 'fa-save')} />
+          </Button>
+          <PrintableNewspaper />
+        </>
+        break;
+      default:
+        break;
+    }
+    if (activeStep === steps.length - 1) {
+      displayButton("Finish", handleReset)
+    } else {
+      displayButton("Next", handleNext)
+    }
+
   }
+
+  const displayButton = (text, handler) => (
+    <Button
+      className={styles['step-btn']}
+      variant="contained"
+      onClick={handler}>
+      {`${text}`}
+    </Button>
+  );
+
 
   return isDisplayFromSaved ? (
     <Button className={styles['step-btn-reset']} onClick={handleReset}>
       Reset
-    </Button>
+        </Button>
   ) : (
       <div className={styles.root}>
-        {!isSmallStepper ? (
-          <MUIStepper
-            className={styles.stepper}
-            activeStep={activeStep}
-            alternativeLabel
-            connector={<ColorlibConnector />}
-          >
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-              </Step>
-            ))}
-          </MUIStepper>
-        ) : null}
-        <Grid container alignContent='center' justify='center' className={styles.info}>
+        {isSmallStepper ? (
+          <Grid container alignContent='center' justify='center' className={styles.info}>
+            <Grid item>
+              {getStepContent(activeStep)}
+            </Grid>
+            {handleActiveSteps()}
+            {displayMUIMobileStepper()}
+          </Grid>
 
-          <Typography variant="body2" className={styles['step-content']}>
-            {getStepContent(activeStep)}
-          </Typography>
-          {activeStep === 0 ? (
-            // <Button className={styles.btn} onClick={loadExamples}>
-            <>
-              <Button className={styles.btn} onClick={loadExamples}>
-                <i className={classNames('fas', 'fa-lg', 'fa-lightbulb')} />
-              </Button>
-            </>
-          ) : null}
-          {activeStep === 1 ? (
-            <>
-              <Button className={styles.btn} onClick={loadNewArticle}>
-                <i className={classNames('fas', 'fa-lg', 'fa-plus-circle')} />
-              </Button>
-            </>
-          ) : null}
-          {activeStep === 4 ? (
-            <>
-              <Button className={styles.btn} onClick={saveCurrentArticle}>
-                <i className={classNames('fas', 'fa-lg', 'fa-save')} />
-              </Button>
-              <PrintableNewspaper />
-            </>
-          ) : null}
-          {isSmallStepper ? (
-            <MobileStepper
-              steps={6}
-              className={styles.stepper}
-              position="static"
-              variant="text"
-              activeStep={activeStep}
-              nextButton={activeStep === steps.length - 1 ? (
-                <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                  Finish
-                  <KeyboardArrowRight />
-                </Button>
+        ) : (
+            <Grid container alignContent='center' justify='center' className={styles.info}>
+              {displayMUIStepper()}
+              <Grid item>
+                {getStepContent(activeStep)}
+              </Grid>
+              {handleActiveSteps()}
+              {activeStep === steps.length - 1 ? (
+                displayButton("Finsihed", handleReset)
               ) : (
-                  <Button size="small" className={styles['step-btn']} onClick={handleNext}>
-                    Next
-                  <KeyboardArrowRight />
-                  </Button>
+                  displayButton("Next", handleNext)
                 )}
-              backButton={(
-                <Button size="small" className={styles['step-btn']} onClick={handleReset}>
-                  Reset
-                  <RotateLeftIcon />
-                </Button>
-              )}
-            />
-          ) : null}
-          {isSmallStepper ? null : activeStep === steps.length - 1 ? (
-            <Button
-              className={styles['step-btn']}
-              variant="contained"
-              onClick={handleReset}
-            >
-              Finish
-            </Button>
-          ) : (
-              <Button
-                className={styles['step-btn']}
-                variant="contained"
-                size="medium"
-                onClick={handleNext}
-              >
-                Next
-            </Button>
-            )}
-
-        </Grid>
+            </Grid>
+          )}
       </div>
     );
 };

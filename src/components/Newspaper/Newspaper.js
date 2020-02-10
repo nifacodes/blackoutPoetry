@@ -24,7 +24,6 @@ import imageTen from '../../img/10.png';
 import imageEleven from '../../img/11.png';
 import imageTwelve from '../../img/12.png';
 
-
 const Newspaper = ({
   entireCurrentArticleOF,
   isDisplayFromSaved,
@@ -48,7 +47,7 @@ const Newspaper = ({
   isSmallStepper,
   isSNBP1,
   isSNBP2,
-  isSNBP3
+  isSNBP3,
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
 
@@ -57,19 +56,18 @@ const Newspaper = ({
   const InspirationImages = () => (
     <div className={styles['insp-container']}>
       {/* {handleRanNum()} */}
-      <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>
+      <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" />
+    </div>
   );
-
 
   // console.log(ranNum, "hooks ranNum");
   const handleRanNum = () => {
-    let newRanNum = getRandomNumberUpTo(12);
+    const newRanNum = getRandomNumberUpTo(12);
     setRanNum(newRanNum);
-    console.log(ranNum, "randomNums");
-  }
+  };
 
   return (
-    <Grid container className={styles['skew']}>
+    <Grid container className={styles.skew}>
       <Header handleOpen={handleOpen} />
 
       {isInspiration ? (<InspirationImages />) : (
@@ -97,8 +95,7 @@ const Newspaper = ({
             currentContentWordMap={currentContentWordMap}
           />
         </>
-      )
-      }
+      )}
       <Stepper
         loadNewArticle={loadNewArticle}
         loadExamples={loadExamples}
@@ -113,7 +110,7 @@ const Newspaper = ({
         isSNBP3={isSNBP3}
         isPoetryFinished={isPoetryFinished}
       />
-    </Grid >
+    </Grid>
   );
 };
 
@@ -122,6 +119,10 @@ Newspaper.propTypes = {
   isDisplayFromSaved: PropTypes.bool.isRequired,
   isPencilState: PropTypes.bool.isRequired,
   isMarkerState: PropTypes.bool.isRequired,
+  isSmallStepper: PropTypes.bool,
+  isSNBP1: PropTypes.bool,
+  isSNBP2: PropTypes.bool,
+  isSNBP3: PropTypes.bool,
   currentTitleWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
     PropTypes.shape({}),

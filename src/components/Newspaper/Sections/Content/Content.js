@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
-import Background from "../../../../img/1.png";
+import Background from '../../../../img/1.png';
 import styles from './Content.module.css';
 
 let MyDocument = null;
@@ -30,10 +30,8 @@ const Content = ({
   }
   const usedWords = [];
 
-
   // what to display
   const content = Object.keys(currentContentWordMap).map((e, i) => {
-    console.log("CONTENT DISPLAY FROM SAVED+ISPOETRYFINISHED", isDisplayFromSaved, isPoetryFinished);
     if (isDisplayFromSaved || isPoetryFinished) {
       isWordUsed = currentContentWordMap[i].isClicked
         || currentContentWordMap[i].isMouseOver;

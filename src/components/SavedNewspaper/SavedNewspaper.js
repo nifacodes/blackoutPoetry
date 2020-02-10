@@ -5,27 +5,23 @@ import classNames from 'classnames';
 
 import styles from './SavedNewspaper.module.css';
 
-// aiming at device widths 
-
-// const bp2 = (window.innerWidth > 425 && window.innerWidth <= 500);
-// const bp3 = (window.innerWidth > 500 && window.innerWidth <= 760);
-// const bp4 = (window.innerWidth > 760 && window.innerWidth <= 960);
-
-
-
 const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler, isSmallStepper, isSNBP1, isSNBP2, isSNBP3 }) => {
-
   const updateGridSize = (size) => (
     Object.keys(savedArticles).map((articleObj, i) => (
-      <Grid key={i} item xs={size} className={styles['folded-bg']}
-        onClick={() => onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)}>
+      <Grid
+        key={i}
+        item
+        xs={size}
+        className={styles['folded-bg']}
+        onClick={() => onSaveHandler(savedArticles[articleObj].entireCurrentArticleOF.id)}
+      >
         <Typography variant="subtitle1" className={classNames(styles['saved-title'], styles['main-font'])}>
           {savedArticles[articleObj].entireCurrentArticleOF.title}
         </Typography>
         <Typography variant="body" className={styles['main-font']}>
           Author: {savedArticles[articleObj].entireCurrentArticleOF.author}
         </Typography>
-        <Grid container alignContent='center' justify='center' className={styles.btns}>
+        <Grid container alignContent="center" justify="center" className={styles.btns}>
           <Button
             className={styles['delete-btn']}
             type="button"
@@ -34,7 +30,7 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler, isSm
               savedArticles[articleObj].entireCurrentArticleOF.id,
             )}
           >Delete
-        </Button>
+          </Button>
           <Button
             className={styles['download-btn']}
             type="button"
@@ -43,24 +39,23 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler, isSm
               savedArticles[articleObj].entireCurrentArticleOF.id,
             )}
           >Download
-        </Button>
+          </Button>
         </Grid>
       </Grid>
     ))
-  )
+  );
   // const updateGridSize = () => (
   //   if()
 
   // )
 
+  return (
+    <Grid container alignContent="center" justify="center">
+      <Grid item className={styles['saved-header']}>Saved Poetry</Grid>
 
-
-
-  return (<Grid container alignContent='center' justify='center' >
-    <Grid item className={styles['saved-header']}>Saved Poetry</Grid>
-
-    {isSmallStepper ? updateGridSize(12) : isSNBP1 ? updateGridSize(10) : isSNBP2 ? updateGridSize(8) : isSNBP3 ? updateGridSize(6) : updateGridSize(11)}
-  </Grid >)
+      {isSmallStepper ? updateGridSize(12) : isSNBP1 ? updateGridSize(10) : isSNBP2 ? updateGridSize(8) : isSNBP3 ? updateGridSize(6) : updateGridSize(11)}
+    </Grid>
+  );
 
   // return (<Grid container alignContent='center' justify='center' >
   //   <Grid item className={styles['saved-header']}>Saved Poetry</Grid>
