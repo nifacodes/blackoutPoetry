@@ -102,7 +102,7 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    window.addEventListener('orientationchange', this.setScreenOrientation);
+    // window.addEventListener('orientationchange', this.setScreenOrientation);
     this.updateDimensions();
 
     this.state.isExtraSmall ? this.setState({ step: 'instructions' }) : this.setState({ step: 'newspaper' });
@@ -133,7 +133,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('orientationchange', this.setScreenOrientation);
+    // window.removeEventListener('orientationchange', this.setScreenOrientation);
     window.removeEventListener('resize', this.updateDimensions);
   }
 
