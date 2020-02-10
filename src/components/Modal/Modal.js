@@ -1,15 +1,16 @@
 import React from 'react';
-import { Modal as ModalMUI } from '@material-ui/core';
+import { Modal as ModalMUI, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import styles from './Modal.module.css';
 // Only had video as its content
 const Modal = ({ handleClose, isOpen }) => {
+  console.log("modal status", handleClose, isOpen);
   return (
-    <ModalMUI open={isOpen} onClose={handleClose}>
-      <div className={styles['video-container']} onClick={handleClose}>
+    <ModalMUI open={isOpen} onClose={handleClose} >
+      <Grid container alignContent='center' justify='center' className={styles['video-container']} onClick={handleClose}>
         <iframe className={styles.video} title="instructions" src="https://www.youtube.com/embed/wKpVgoGr6kE" />
-      </div>
+      </Grid>
     </ModalMUI>
   );
 }

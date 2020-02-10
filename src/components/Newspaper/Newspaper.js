@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Grid } from '@material-ui/core';
 
 import styles from './Newspaper.module.css';
 // import { Header, Title } from './Sections';
@@ -23,6 +24,7 @@ import imageTen from '../../img/10.png';
 import imageEleven from '../../img/11.png';
 import imageTwelve from '../../img/12.png';
 
+
 const Newspaper = ({
   entireCurrentArticleOF,
   isDisplayFromSaved,
@@ -43,10 +45,20 @@ const Newspaper = ({
   saveCurrentArticle,
   isPoetryFinished,
   handleOpen,
+  isSmallStepper,
+  isSNBP1,
+  isSNBP2,
+  isSNBP3
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
 
   const [ranNum, setRanNum] = useState(0);
+
+  const InspirationImages = () => (
+    <div className={styles['insp-container']}>
+      {/* {handleRanNum()} */}
+      <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>
+  );
 
 
   // console.log(ranNum, "hooks ranNum");
@@ -57,37 +69,36 @@ const Newspaper = ({
   }
 
   return (
-    <div className={styles['skew']}>
+    <Grid container className={styles['skew']}>
       <Header handleOpen={handleOpen} />
 
-      {isInspiration ? (<div className={styles['insp-container']}>
-        {/* {handleRanNum()} */}
-        <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" /></div>) : (
-          <>
-            <Title
-              entireCurrentArticleOF={entireCurrentArticleOF}
-              volNum={volNum}
-              isDisplayFromSaved={isDisplayFromSaved}
-              isPencilState={isPencilState}
-              isMarkerState={isMarkerState}
-              isPoetryFinished={isPoetryFinished}
-              currentTitleWordMap={currentTitleWordMap}
-              onClickHandler={onClickHandler}
-              onMouseOverHandler={onMouseOverHandler}
-            />
-            <Content
-              entireCurrentArticleOF={entireCurrentArticleOF}
-              isDisplayFromSaved={isDisplayFromSaved}
-              isPoetryFinished={isPoetryFinished}
-              isPencilState={isPencilState}
-              isMarkerState={isMarkerState}
-              currentAuthorWordMap={currentAuthorWordMap}
-              onClickHandler={onClickHandler}
-              onMouseOverHandler={onMouseOverHandler}
-              currentContentWordMap={currentContentWordMap}
-            />
-          </>
-        )}
+      {isInspiration ? (<InspirationImages />) : (
+        <>
+          <Title
+            entireCurrentArticleOF={entireCurrentArticleOF}
+            volNum={volNum}
+            isDisplayFromSaved={isDisplayFromSaved}
+            isPencilState={isPencilState}
+            isMarkerState={isMarkerState}
+            isPoetryFinished={isPoetryFinished}
+            currentTitleWordMap={currentTitleWordMap}
+            onClickHandler={onClickHandler}
+            onMouseOverHandler={onMouseOverHandler}
+          />
+          <Content
+            entireCurrentArticleOF={entireCurrentArticleOF}
+            isDisplayFromSaved={isDisplayFromSaved}
+            isPoetryFinished={isPoetryFinished}
+            isPencilState={isPencilState}
+            isMarkerState={isMarkerState}
+            currentAuthorWordMap={currentAuthorWordMap}
+            onClickHandler={onClickHandler}
+            onMouseOverHandler={onMouseOverHandler}
+            currentContentWordMap={currentContentWordMap}
+          />
+        </>
+      )
+      }
       <Stepper
         loadNewArticle={loadNewArticle}
         loadExamples={loadExamples}
@@ -96,8 +107,13 @@ const Newspaper = ({
         saveState={saveState}
         saveCurrentArticle={saveCurrentArticle}
         isDisplayFromSaved={isDisplayFromSaved}
+        isSmallStepper={isSmallStepper}
+        isSNBP1={isSNBP1}
+        isSNBP2={isSNBP2}
+        isSNBP3={isSNBP3}
+        isPoetryFinished={isPoetryFinished}
       />
-    </div>
+    </Grid >
   );
 };
 

@@ -1,12 +1,8 @@
 .skew {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     transform: rotate(-0.5deg);
 }
 .insp-container{
     margin: 5% 0%;
-
     background-color: black;
     display: flex;
     align-items: center;

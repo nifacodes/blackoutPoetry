@@ -1,8 +1,8 @@
 .content-container {
-  margin-top: 2%;
-  height: 500px;
-  margin-bottom: 5%;
- 
+  margin: 2% 0;
+  height: 45vh;
+  padding: 2%;
+
 }
 
 .scroll {
@@ -10,11 +10,15 @@
   overflow: auto;
 }
 
-.text {
-  margin-right: 1% !important;
+.main-font {
   font-family: "Inria Serif", serif !important;
-  /* font-size: 2vw; */
+  /* font-size: 1.4vw !important; */
 
+}
+.author{
+  font-family: "Calistoga", cursive !important;
+  /* font-size: 1.8vw !important; */
+  text-align: center;
 }
 
 .pencil-style {
@@ -25,17 +29,14 @@
   background-color: black;
 }
 
-.author {
+.author-item {
   color: #e7e7e7;
   background-color: #353839;
   border-radius: 3px;
   width: 100%;
 }
 
-.author h6 {
-  text-align: center;
-  font-family: "Calistoga", cursive !important;
-}
+
 
 .image {
   float: right;
@@ -43,15 +44,32 @@
   width: 67%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 425px) {
   .image {
-    width: 100%;
+    display: none;
+    
   }
   .content-container {
-    margin-top: 3%;
+    /* margin-top: 3%; */
   }
 }
 
+
+
+/* MUI's breakpoints md+ */
+@media only screen and (min-width: 960px) {
+  .main-font{
+    font-size: 1.25vw !important;
+  }
+  }
+
+  /* lg + */
+@media only screen and (min-width: 1280px) {
+  .main-font{
+    font-size: 1.1vw !important;
+  }
+  
+  }
 
 @media only screen and (max-width: 768px) {
  

@@ -1,17 +1,26 @@
-.header-container{
-  display: flex;
+.header-title{
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap:wrap;
-  width: 100%;
+  align-items: center; */
+  padding: 0% 2% !important;
 }
 
+.header-container{
+  /* border: red solid 3px; */
+}
+
+.header-title-container{
+  height: 100%;
+  width:100%;
+  /* border: green solid 3px; */
+}
+/* 
 .intro{
   background-color: whitesmoke;
   color: black;
   padding: 5%;
   margin:2%;
-}
+} */
 
 /* h1 span {
   font-family: "Calistoga", cursive;
@@ -24,12 +33,14 @@
   font-family: "Calistoga", cursive !important;
   text-align: center !important;
   /* font-family: 'Pirata One', cursive !important; */
-  font-size: 6vw !important;
+  /* 10 on xs, sm, 6 on md, 4.5 on lg+ */
+  font-size: 10vw !important;
 }
 
-span p { 
+.sec-font { 
   font-family: "Inria Serif", serif !important;
-  font-size: 0.7rem !important;
+  /* font-size: 1vw !important; */
+  /* border: red solid 2px; */
 }
 
 .learnmore-button {
@@ -40,28 +51,58 @@ span p {
   );  
   color: whitesmoke !important;
   font-family: "Inria Serif", serif !important;
-
+  /* font-size: 1.4vw !important; */
 }
 
 .side-info {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   flex-wrap:wrap;
   justify-content: center;
-  align-items: center;
-  width: 100%;
+  align-items: center; */
   border-left: solid 2px #353839;
-  padding: 10px 10px 0px 10px;
+  padding: 2%;
   text-align: center;
 } 
+
+/* MUI's breakpoints md+ */
+@media screen and (min-width: 601px) and (max-width:720px) {
+  
+  .sec-font{
+    font-size: 1.45vw !important;
+  }
+  }
+
+
+/* MUI's breakpoints md+ */
+@media only screen and (min-width: 960px) {
+.main-font{
+  font-size: 5.55vw !important;
+}
+.sec-font{
+  font-size: 1.1vw !important;
+}
+
+}
+
+/* lg + */
+@media only screen and (min-width: 1280px) {
+  .main-font{
+    font-size: 4.7vw !important;
+  }
+  .sec-font{
+    font-size: .9vw !important;
+  }
+  }
+
 
 @media only screen and (max-width: 768px) {
  
   .side-info {
-    display: none;
+    /* display: none; */
   }
   .learnmore-button{
-    display: none;
+    /* display: none; */
   } 
   /* h1 div {
     font-size: 15vw !important;
@@ -69,9 +110,9 @@ span p {
   } */
   
   .main-font{  
-    font-family: "Calistoga", cursive !important;
+    /* font-family: "Calistoga", cursive !important;
     text-align: center !important;
-    font-size: 15vw !important;
+    font-size: 15vw !important; */
 
   }
 }

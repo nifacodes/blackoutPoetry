@@ -1,60 +1,91 @@
-html,
-body,
-#root {
-  min-width: 100vw;
-  min-height: 100vh;
-  background-image: url("./img/lm.png");
-  background-repeat: no-repeat;
+body, #root{
+  background: url("./img/lm.png") no-repeat fixed; 
   background-size: cover;
-  margin: 0px;
-  padding: 0px;
-  overflow: auto;
-  box-sizing: border-box;
-  font-family: "Inria Serif", serif;
-  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:100%;
+  width:100%;
+  
+}
+
+body{
+  /* padding: 2% 0 !important; */
 }
 .intro{
   /* background-color: black; */
-  color: black;
+  /* color: black;
   width: 80%;
   padding: 5%;
   margin:2%;
   background-image: url("./img/paper-ss.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
    
 }
 
 .main-container {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: center; */
+  width: 100vw;
   height: 100vh;
-  overflow: auto;
+    /* overflow: auto; */
+    padding: 0;
+    margin: 0;
+    
 }
+
+.hey{
+  border: purple solid 5px;
+}
+.saved-np{
+  /* border: salmon solid 3px; */
+  /* background-image: url("./img/cork.png");
+  background-size: cover;
+  background-repeat: no-repeat; */
+  overflow-y: scroll;
+  /* border: solid purple 3px; */
+  max-height: 90vh;
+  /*padding: 0% 5%; */
+  /* border: solid yellow 3px; */
+}
+
 
 .newspaper-container {
   background-image: url("./img/paper-o.png");
   background-size: cover;
-  margin-bottom: 3px !important;
-  margin-top: 0.5% !important;
-  width: 100%;
-  padding: 5% 5% 1% 5%;
+  background-repeat: no-repeat;
+     /* border: salmon solid 3px; */
+
+  /* object-fit: contain; */
+
+  /* border: green solid 5px; */
+  /* max-height: 90vh !important; */
+  /* max-width: 60% !important; */
+  /* margin-bottom: 3px !important; */
+  /* margin-top: 0.5% !important; */
+  /* width: 100%; */
+  padding: 3.7%;
   /* overflow: auto; */
+  /* border: purple solid 5px; */
+  /* margin-top: 15% !important;
+  margin-bottom: 2% !important; */
+
 }
 
 a{
   color: #237a57 !important;
 }
 .learnmore-button {
-  background: linear-gradient(
+  /* background: linear-gradient(
      to right,
      #093028,
      #237a57
    );  
    color: whitesmoke !important;
-   font-family: "Inria Serif", serif !important;
+   font-family: "Inria Serif", serif !important; */
  
  }
 
@@ -63,18 +94,20 @@ a{
   justify-content: center;
 }
 
-.bg-showing-hl {
-  height: 100vh;
+.bg-showing {
+  /* height: 100vh;
   margin-top: 10% !important;
-  padding: 0% 3%;
+  padding: 0% 3%; */
+  /* border: blue solid 5px; */
+
 }
 
 .nav-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   color: whitesmoke !important;
-  min-height: 6vh;
+  /* min-height: 6vh; */
   background: linear-gradient(
     to right,
     #093028,
@@ -94,64 +127,75 @@ a{
   border-radius: 5px;
 }
 
+
+.saved-np::-webkit-scrollbar-thumb {
+  background: #237a57;
+  border-radius: 5px;
+}
+
+.saved-np::-webkit-scrollbar {
+  width: 1.19% !important;
+}
+
+
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
 
-/* ANYTING BELOW A TABLET */
-@media only screen and (max-width: 768px) {
- .bg-showing-vl {
-   display: none;
- }
- .bg-showing-hl {
-   display: none;
- }
- .newspaper-container {
-   /* margin-top: 0 !important; */
-   width: 100%;
-   background:none;
-   background-color: #D6D6D6;
-   /* border-radius: 3%; */
-   /* min-height: 100vh; */
-   /* overflow: auto !important; */
-   /* background-color: #e6e6e6; */
- }
- #root{
-   overflow: auto;
- }
- .learnmore-app-vl {
-   font-size: 5px !important;
-  }
 
- .learnmore-app-hl {
-   font-size: 5px !important;
+
+@media only screen and (max-width: 600px) {
+  .newspaper-container{
+    background-image: none;
+    background-color: #DDDDDD ;
   }
 }
 
-/* portrait */
-@media screen and (orientation:portrait) {
-  /* portrait-specific styles */
-  html,
-body,
-#root{width: 100vw;
-  height: 100vh;
-border: red solid 1px;}
-  
-}
-/* landscape */
-@media screen and (orientation:landscape) {
-  /* landscape-specific styles */
-  html,
-body,
-#root{width: 100vw;
-    height: 100vh;
-  border: solid 2px green;}
+/* bcbcbd #DDDDDD*/
+/* MUI's breakpoints upto max sm */
+@media only screen and (min-width: 959px) {
+  /* .newspaper-container{
+    padding: 2% !important;    
+  }
+  body{
+    padding: 0 !important;
+  } */
 }
 
+@media only screen and (min-width: 960px) {
+.newspaper-container{
+  margin: 3% 0 !important;
+}
+.saved-np{
+  margin: 3% 0 !important;
+}
+}
+/* MUI breakpoint Lg+ */
+@media only screen and (min-width: 1279px) {
+  .newspaper-container{
+    padding: 3% !important;
+  }
+
+}
 
 
 
+/* According to DevTools Extra extra small devices (phones, 425px and down) */
+@media only screen and (max-width: 425px) {}
 
+/* Extra small devices MUI (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

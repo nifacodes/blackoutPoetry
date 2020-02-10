@@ -1,33 +1,42 @@
 .date-vol-container {
-  margin-top: 2%;
+  margin-top: 5% !important;
   color: #3f2a14;
   border-bottom: #808080 solid 3px;
   border-top: #808080 solid 3px;
   background-color: #d3d3d3;
   border-radius: 3px;
-  min-height: fit-content;
+  padding: .5% !important;
+
+  /* min-height: fit-content; */
 }
 .title-container {
-  display: flex;
-  color: #dcdcdc;
+  /* display: flex; */
   background-color: #353839;
-  justify-content: center;
-  margin-top: 3% !important;
+  /* justify-content: center; */
+  margin-top: 1% !important;
   border-radius: 3px;
-  padding: 3px;
+  text-align: center;
+  padding: 1.5% !important;
+  color: #dcdcdc;
 }
 
-.article-title, h5{
-  text-align: center;
-  padding: 2%;
+.article-title{
+  font-family: "Calistoga", cursive !important;
+  /* font-size: 1.9vw !important; */
+}
+
+
+.sec-font{
+  font-family: "Inria Serif", serif !important;
+  /* font-size: 1.4vw !important; */
 }
 
 .date {
-  padding-left: 5%;
+  padding-left: 6%;
 }
 
 .vol {
-  padding-right: 5%;
+  padding-right: 6%;
   display: flex;
   justify-content: flex-end;
 }
@@ -40,13 +49,19 @@
   background-color: black;
   color: black;
 }
-strong {
-  font-family: "Calistoga", cursive;
-}
+
+/* MUI's breakpoints md+ */
+@media only screen and (min-width: 960px) {
+  .date-vol-container{
+    margin-top: 2% !important;
+  }
+  }
+
+
 
 @media only screen and (max-width: 600px) {
   .date-vol-container{
-   height: 3vh; 
+   /* height: 3vh;  */
    /* font-size: 4vw; */
   }
   strong {

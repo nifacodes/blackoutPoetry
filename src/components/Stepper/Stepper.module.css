@@ -1,15 +1,40 @@
+.stepper-container{
+  border: blue solid 3px;
+}
+
 .info {
-  display: flex;
+  text-align: center;
+  padding: 1% 2% !important;
+  /* border: red solid 2px; */
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: center; */
   /* margin-bottom: 3% !important; */
   /* margin-top: 5% !important; */
-     border-top: #808080 solid 3px;
+     /* border-top: #808080 solid 3px;
     border-radius: 3px;
     padding-top: 3%;
-    padding-bottom: 5%;
+    padding-bottom: 5%; */
 }
+.step-content{
+  width:100%;
+}
+
+.stepper {
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* margin:2%; */
+  border-top: #808080 solid 3px;
+  border-bottom: #808080 solid 3px;
+  border-radius: 3px;
+  background-color: whitesmoke !important;
+  margin: 0 !important;
+  padding: 2% !important;
+  /* border: yellow solid 2px; */
+  width: 100%;
+}
+
 
 .step-btn {
   background: linear-gradient(
@@ -18,33 +43,71 @@
     #237a57
   ); 
    color: whitesmoke !important;
-   font-family: "Inria Serif", serif !important;
-  /* padding: 3% !important;  */
+   font-family: "Inria Serif", serif !important; 
+   /* font-size: 1.3vw !important; */
 }
 
-.main-font{  font-family: "Inria Serif", serif !important;
+.step-btn-reset {
+  background: linear-gradient(
+    to right,
+    #093028,
+    #237a57
+  ); 
+   color: whitesmoke !important;
+   font-family: "Inria Serif", serif !important; 
+   width:100%;
+   /* font-size: 1.3vw !important; */
+}
 
+.main-font{  
+  font-family: "Inria Serif", serif !important; 
+  /* font-size: 1.4vw !important; */
+}
+.sec-font{
+  font-family: "Inria Serif", serif !important; 
+  /* font-size: 1.1vw  !important; */
 }
 
 .w-100 {
-  width: 100%;
+  /* width: 100%; */
 }
 
 button:focus {
   outline: 0;
 }
 
-/* .reset-btn {
-  margin-bottom: 10% !important;
-  border: green solid 5px;
-} */
-
-.stepper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  border-top: #808080 solid 3px;
-  border-radius: 3px;
-  background-color: whitesmoke !important;
-
+.reset-btn {
+  /* margin-bottom: 10% !important; */
 }
+
+@media only screen and (min-width: 960px) {
+  .main-font{
+    font-size: 1.1vw !important;
+  }
+  .sec-font{
+    font-size: 1vw !important;
+  }
+  .step-btn{
+    font-size: 1vw !important;
+  }
+  .root{
+    font-size: 1.1vw !important;
+  }
+  }
+
+  /* lg + */
+  @media only screen and (min-width: 1280px) {
+    .main-font{
+      font-size: 1vw !important;
+    }
+    .sec-font{
+      font-size: .9vw !important;
+    }
+    .step-btn{
+      font-size: .9vw !important;
+    }
+    .root{
+      font-size: 1vw !important;
+    }
+    
+    }

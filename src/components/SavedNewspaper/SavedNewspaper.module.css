@@ -1,12 +1,35 @@
 .saved-newspapers-container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-y: scroll;
-  max-height: 70vh;
+  align-items: center; */
+  /* overflow-y: scroll;
+   max-height: 70%;
   width: 100%;
-  padding: 0% 5%;
+  /*padding: 0% 5%; 
+  border: solid purple 3px; */
+  overflow-y: auto;
+  /* border: solid purple 3px; */
+  max-height: 70%;
+  /* margin-top: 3.7%; */
 }
+
+.saved-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4vh;
+  color: #D0D0D0;
+  background-color: #353839;
+  border: 1px dashed #dcdcdc; 
+  /* border: 1px dashed #b5651c;  */
+
+  width: 95%;
+  border-radius: 3%;
+  font-family: "Calistoga", cursive !important;
+  text-align: center !important;
+   
+}
+
 
 .folded-bg {
   /* display: flex;
@@ -14,13 +37,19 @@
   align-items: center;
   flex-wrap: wrap; */
   background-image: url("../../img/folded_paper-3.png");
-  background-size: 100% 75%;
+  background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
   padding: 39% 10% 25% 8%;
+    margin-top: 3.7%;
+
   /* border: red solid 2px; */
-  margin-top: 30%;
+  /* margin-top: 30%; */
+}
+
+.saved-content{
+  border:red solid 2px;
 }
 
 .saved-title{
@@ -29,7 +58,8 @@
   background-color: #d3d3d3;
   padding: 1%;
 }
-.main-font{  font-family: "Inria Serif", serif !important;
+.main-font{  
+  font-family: "Inria Serif", serif !important;
 }
 
 .delete-btn {
@@ -56,14 +86,56 @@
 } 
 
 .btns{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.btn span{
-  margin-right: 5%;
+  margin-top: 1% !important;
 }
 
+
+@media only screen and (max-width: 960px) {
+  .saved-header{
+    margin-top: 2% !important;
+  }
+ 
+  }
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+  .main-font{
+    font-size: 2.45vw !important;
+  }
+  .folded-bg{
+    padding: 25% 8% 15% 8%;
+  }
+  }
+
+
+  @media screen and (min-width: 600px) and (max-width: 750px) {
+    .main-font, .delete-btn, .download-btn{
+      font-size: 2vw !important;
+    }
+    .folded-bg{
+      padding: 20% 8% 15% 8%;
+    }
+    }
+
+
+@media screen and (min-width: 750px) and (max-width: 960px) {
+    
+    .folded-bg{
+      padding: 20% 8% 15% 8%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .main-font, .delete-btn, .download-btn{
+    font-size: .8vw !important;
+  } 
+  .folded-bg{
+    padding: 20% 8% 15% 11%;
+} 
+.saved-newspapers-container{
+  margin: 3% 0 !important;
+}
+  
+}
 
 
 

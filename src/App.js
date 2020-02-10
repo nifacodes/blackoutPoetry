@@ -10,7 +10,8 @@ import { Modal, Newspaper, SavedNewspaper, MobileNav, MobileLanding } from './co
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
-const isMobile = window.innerWidth <= 768;
+// const isMobile = window.innerWidth <= 959;
+// const isMobile = (window.innerWidth <= 850 || window.innerWidth >= 1100);
 
 class App extends React.Component {
   constructor(props) {
@@ -34,11 +35,19 @@ class App extends React.Component {
       isOpen: false,
       isNavOpen: false,
       volNum: 1,
-      step: 0,
       screenOrientation: 'portrait',
+      isSmallStepper: ((window.innerWidth <= 425) ? true : false),
+      step: "instructions",
+      screenOrientation: "portrait",
+      width: window.innerWidth,
+      height: window.innerHeight,
+      isExtraSmall: ((window.innerWidth <= 600) ? true : false),
+      isSmall: ((window.innerWidth > 600 && window.innerWidth <= 960) ? true : false),
+      isSNBP1: ((window.innerWidth > 425 && window.innerWidth <= 500) ? true : false),
+      isSNBP2: ((window.innerWidth > 500 && window.innerWidth <= 760) ? true : false),
+      isSNBP3: ((window.innerWidth > 760 && window.innerWidth <= 960) ? true : false)
     };
   }
-
   isPortraitMode = () => {
     console.log(this.state);
     const { screenOrientation } = this.state;
@@ -61,8 +70,49 @@ class App extends React.Component {
     }
   }
 
+  updateDimensions = () => {
+    if (this.state.width < 600) {
+      if (this.state.width <= 425) {
+        this.setState({ isSmallStepper: true })
+      } else {
+        this.setState({ isSmallStepper: false })
+      }
+
+      if (window.innerWidth > 425 && window.innerWidth <= 500) {
+        this.setState({ isSNBP1: true, isSNBP2: false, isSNBP3: false })
+      }
+
+      if (window.innerWidth > 500) {
+        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false })
+      }
+
+      this.setState({ isExtraSmall: true, isSmall: false });
+
+      console.log("up to mobile, show 3 drawers", this.state);
+
+    } else if ((this.state.width >= 600 && this.state.width <= 959)) {
+      console.log("WHY AM I HERE", this.state.width);
+      if (window.innerWidth <= 760) {
+        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false })
+      }
+      this.setState({ isExtraSmall: false, isSmall: true, step: "newspaper", isSNBP1: false, isSNBP2: false, isSNBP3: true });
+      console.log("up to Tablet, show 2 drawers", this.state)
+
+    } else if ((this.state.width >= 960)) {
+      this.setState({ isExtraSmall: false, isSmall: false, isSNBP1: false, isSNBP2: false, isSNBP3: false });
+      console.log("up to infinity and beyond, show [3,6,3]")
+    }
+
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    console.log("updating dimentions: ", this.state.width, this.state.height)
+  }
+
   async componentDidMount() {
     window.addEventListener('orientationchange', this.setScreenOrientation);
+    this.updateDimensions();
+    this.state.isExtraSmall ? this.setState({ step: "instructions" }) : this.setState({ step: "newspaper" });
+    window.addEventListener("resize", this.updateDimensions);
+    console.log("MOUNTING DIMENTIONS", this.state);
     const articles = await getArticles();
 
     const pendingContents = articles.map(async (article) => getLexperContent(article.url));
@@ -87,6 +137,12 @@ class App extends React.Component {
     });
 
 
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('orientationchange', this.setScreenOrientation);
+    window.removeEventListener("resize", this.updateDimensions);
   }
 
   pencilState = () => this.setState({
@@ -308,7 +364,7 @@ class App extends React.Component {
     } = savedArticles[i];
 
     this.setState({
-      step: 1,
+      step: "newspaper",
       isDisplayFromSaved: true,
       isPoetryFinished: false,
       isInspiration: false,
@@ -321,7 +377,13 @@ class App extends React.Component {
   deleteSavedHandler = (i) => {
     const { savedArticles } = this.state;
     const updatedSavedArticles = _.omit(savedArticles, i);
-    this.setState({ savedArticles: { ...updatedSavedArticles } });
+
+    this.setState({
+      isPoetryFinished: false,
+      isDisplayFromSaved: false,
+      savedArticles: { ...updatedSavedArticles }
+    });
+    console.log("Deteleinggg", this.state.isDisplayFromSaved, this.state.isPoetryFinished)
   };
 
   handleOpen = () => {
@@ -331,6 +393,156 @@ class App extends React.Component {
   handleClose = () => this.setState({ isOpen: false });
 
   toggleNav = () => this.setState((prevState) => ({ isNavOpen: !prevState.isNavOpen }));
+
+  // simple functional component
+  displayLoader = () => (
+    <Grid container alignContent='center' justify='center' className={styles['main-container']}>
+      <Loader
+        loaded={false}
+        scale={2.0}
+        top="50%"
+        left="50%"
+        position="relative"
+        loadedClassName={styles.loader}
+      />
+    </Grid>
+  );
+
+  displayDrawerComponent = () => {
+    const {
+      entireCurrentArticleOF,
+      savedArticles,
+      isInspiration,
+      currentTitleWordMap,
+      currentAuthorWordMap,
+      currentContentWordMap,
+      volNum,
+      isPoetryFinished,
+      isDisplayFromSaved,
+      inspirationImg,
+      isPencilState,
+      isMarkerState,
+      isLoading,
+      isNavOpen,
+      isOpen,
+      step,
+      isSmallStepper,
+      isSNBP1,
+      isSNBP2,
+      isSNBP3
+    } = this.state;
+    switch (step) {
+      case "instructions":
+        return (
+          <>
+            <MobileLanding handleOpen={this.handleOpen} />
+            <Modal handleClose={this.handleClose} isOpen={isOpen} />
+          </>
+        );
+      case "newspaper":
+        return (
+          <Grid item sm={12} className={styles['newspaper-container']}>
+            <Newspaper
+              volNum={volNum}
+              entireCurrentArticleOF={entireCurrentArticleOF}
+              isPencilState={isPencilState}
+              isMarkerState={isMarkerState}
+              isInspiration={isInspiration}
+              isDisplayFromSaved={isDisplayFromSaved}
+              inspirationImg={inspirationImg}
+              currentTitleWordMap={currentTitleWordMap}
+              currentAuthorWordMap={currentAuthorWordMap}
+              isPoetryFinished={isPoetryFinished}
+              currentContentWordMap={currentContentWordMap}
+              onClickHandler={this.onClickHandler}
+              onMouseOverHandler={this.onMouseOverHandler}
+              loadNewArticle={this.loadNewArticle}
+              loadExamples={this.loadExamples}
+              pencilState={this.pencilState}
+              markerState={this.markerState}
+              saveState={this.saveState}
+              saveCurrentArticle={this.saveCurrentArticle}
+              handleOpen={this.handleOpen}
+              isSmallStepper={isSmallStepper}
+
+            />
+          </Grid>
+        );
+      case "saved":
+        return (
+          <Grid
+            item
+            xs={12}
+            className={styles['saved-newspapers-container']}
+          >
+            <SavedNewspaper
+              onSaveHandler={this.onSaveHandler}
+              savedArticles={savedArticles}
+              volNum={volNum}
+              deleteSavedHandler={this.deleteSavedHandler}
+              isPoetryFinished={isPoetryFinished}
+              isSmallStepper={isSmallStepper}
+              isSNBP1={isSNBP1}
+              isSNBP2={isSNBP2}
+              isSNBP3={isSNBP3}
+
+            />
+          </Grid>
+        );
+      default:
+        return null;
+    }
+  };
+
+  handleDrawerItem = (i) => {
+    if (this.state.isSmall) {
+      console.log("HI IM SMALL STILL")
+      switch (i) {
+        // mobile view instruction
+        case 0:
+          this.setState({ step: "newspaper" });
+          // this.updateDimensions();
+          console.log("NEWSPAPER")
+          return;
+          break;
+        // saved Newspaper
+        case 1:
+          // this.updateDimensions();
+          console.log("SAVED")
+          this.setState({ step: "saved" });
+          return;
+          break;
+        default:
+          break;
+      }
+    } else if (this.state.isExtraSmall) {
+      console.log("HI IM EXTRASMALL STILL")
+      switch (i) {
+        // mobile view instruction
+        case 0:
+          this.setState({ step: "instructions" });
+          // this.updateDimensions();
+          console.log("MOBILE")
+          return;
+          break;
+        // newspaper view
+        case 1:
+          this.setState({ step: "newspaper" });
+          console.log("NEWSPAPER")
+          return;
+          break;
+        // saved Newspaper
+        case 2:
+
+          this.setState({ step: "saved" });
+          return;
+          break;
+        default:
+          break;
+      }
+    }
+
+  };
 
   render() {
     const {
@@ -350,181 +562,99 @@ class App extends React.Component {
       isNavOpen,
       isOpen,
       step,
+      isExtraSmall,
+      isMedium,
+      isSmall
     } = this.state;
 
-    const displayComponent = (i) => {
-      switch (i) {
-        // mobile view instruction
-        case 0:
-          this.setState({ step: 0 });
-          break;
-        // newspaper view
-        case 1:
-          this.setState({ step: 1 });
-          break;
-        // saved Newspaper
-        case 2:
-          this.setState({ step: 2 });
-          break;
-        default:
-          break;
-      }
-    };
-
-    const componentToBeRendered = () => {
-      switch (step) {
-        case 0:
-          return (
-            <>
-              <MobileLanding handleOpen={this.handleOpen} />
-              <Modal handleClose={this.handleClose} isOpen={isOpen} />
-            </>
-          );
-        case 1:
-          return (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={7}
-              lg={7}
-              lx={7}
-              className={styles['newspaper-container']}
-            >
-              <Newspaper
-                volNum={volNum}
-                entireCurrentArticleOF={entireCurrentArticleOF}
-                isPencilState={isPencilState}
-                isMarkerState={isMarkerState}
-                isInspiration={isInspiration}
-                isDisplayFromSaved={isDisplayFromSaved}
-                inspirationImg={inspirationImg}
-                currentTitleWordMap={currentTitleWordMap}
-                currentAuthorWordMap={currentAuthorWordMap}
-                isPoetryFinished={isPoetryFinished}
-                currentContentWordMap={currentContentWordMap}
-                onClickHandler={this.onClickHandler}
-                onMouseOverHandler={this.onMouseOverHandler}
-                loadNewArticle={this.loadNewArticle}
-                loadExamples={this.loadExamples}
-                pencilState={this.pencilState}
-                markerState={this.markerState}
-                saveState={this.saveState}
-                saveCurrentArticle={this.saveCurrentArticle}
-              />
-            </Grid>
-          );
-        case 2:
-          return (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={3}
-              lg={3}
-              className={styles['saved-newspapers-container']}
-            >
-              <SavedNewspaper
-                onSaveHandler={this.onSaveHandler}
-                savedArticles={savedArticles}
-                volNum={volNum}
-                deleteSavedHandler={this.deleteSavedHandler}
-                isPoetryFinished={isPoetryFinished}
-              />
-            </Grid>
-          );
-        default:
-          return null;
-      }
-    };
-
-    if (_.isEmpty(entireCurrentArticleOF)) {
-      return (
-        <Grid container className={styles['main-container']}>
-          <Loader
-            loaded={false}
-            scale={2.0}
-            top="50%"
-            left="50%"
-            position="relative"
-            loadedClassName={styles.loader}
-          />
-        </Grid>
-      );
+    if ((_.isEmpty(entireCurrentArticleOF))) {
+      return this.displayLoader();
     }
 
-    if (isMobile) {
-      return (
-        <>
-          <Button
-            type="button"
-            className={styles['nav-container']}
-            onClick={this.toggleNav}
-          >
-            <DehazeIcon />
-          </Button>
-          <MobileNav
-            toggleNav={this.toggleNav}
-            isNavOpen={isNavOpen}
-            displayComponent={displayComponent}
-          />
-          {
-            componentToBeRendered() || <Modal handleClose={this.handleClose} isOpen={isOpen} />
-          }
-        </>
-      );
+    if (isExtraSmall) {
+      console.log("if extra small")
+      return <>
+        <Button type="button" className={styles['nav-container']}
+          onClick={this.toggleNav}>
+          <DehazeIcon />
+        </Button>
+        <MobileNav
+          toggleNav={this.toggleNav}
+          isNavOpen={isNavOpen}
+          handleDrawerItem={this.handleDrawerItem}
+        />
+        {this.displayDrawerComponent()}
+
+      </>
     }
 
-    return (
-
-      <Grid container className={styles['main-container']}>
+    if (isSmall) {
+      console.log("if small")
+      return <>
+        <Button type="button" className={styles['nav-container']}
+          onClick={this.toggleNav}>
+          <DehazeIcon />
+        </Button>
+        <MobileNav
+          toggleNav={this.toggleNav}
+          isNavOpen={isNavOpen}
+          handleDrawerItem={this.handleDrawerItem}
+          isSmall={isSmall}
+        />
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
-        <Grid item className={styles['bg-showing-vl']} md={2} lg={2} lx={2}>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={7}
-          md={7}
-          lg={7}
-          lx={7}
-          className={classNames(styles['newspaper-container'], isLoading ? styles.loader : '')}
-        >
-          <Newspaper
-            volNum={volNum}
-            entireCurrentArticleOF={entireCurrentArticleOF}
-            isPencilState={isPencilState}
-            isMarkerState={isMarkerState}
-            isInspiration={isInspiration}
-            isDisplayFromSaved={isDisplayFromSaved}
-            isPoetryFinished={isPoetryFinished}
-            inspirationImg={inspirationImg}
-            currentTitleWordMap={currentTitleWordMap}
-            currentAuthorWordMap={currentAuthorWordMap}
-            currentContentWordMap={currentContentWordMap}
-            onClickHandler={this.onClickHandler}
-            onMouseOverHandler={this.onMouseOverHandler}
-            loadNewArticle={this.loadNewArticle}
-            loadExamples={this.loadExamples}
-            pencilState={this.pencilState}
-            markerState={this.markerState}
-            saveState={this.saveState}
-            saveCurrentArticle={this.saveCurrentArticle}
-            handleOpen={this.handleOpen}
-          />
-        </Grid>
-        <Grid item xs={12} sm={3} md={3} lg={3}>
-          <SavedNewspaper
-            onSaveHandler={this.onSaveHandler}
-            savedArticles={savedArticles}
-            volNum={volNum}
-            deleteSavedHandler={this.deleteSavedHandler}
-            isPoetryFinished={isPoetryFinished}
-          />
-        </Grid>
+
+        {this.displayDrawerComponent()}
+
+      </>
+    }
+
+    // default
+    return <><Grid container alignContent='center' justify='center' className={styles['']}>
+      <Modal handleClose={this.handleClose} isOpen={isOpen} />
+      {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
+      <Grid item className={styles['bg-showing']} md={2} lg={3}>
       </Grid>
-    );
+      <Grid
+        item
+        xs={12}
+        md={7}
+        lg={6}
+        className={classNames(styles['newspaper-container'], isLoading ? styles.loader : '')}
+      >
+        <Newspaper
+          volNum={volNum}
+          entireCurrentArticleOF={entireCurrentArticleOF}
+          isPencilState={isPencilState}
+          isMarkerState={isMarkerState}
+          isInspiration={isInspiration}
+          isDisplayFromSaved={isDisplayFromSaved}
+          isPoetryFinished={isPoetryFinished}
+          inspirationImg={inspirationImg}
+          currentTitleWordMap={currentTitleWordMap}
+          currentAuthorWordMap={currentAuthorWordMap}
+          currentContentWordMap={currentContentWordMap}
+          onClickHandler={this.onClickHandler}
+          onMouseOverHandler={this.onMouseOverHandler}
+          loadNewArticle={this.loadNewArticle}
+          loadExamples={this.loadExamples}
+          pencilState={this.pencilState}
+          markerState={this.markerState}
+          saveState={this.saveState}
+          saveCurrentArticle={this.saveCurrentArticle}
+          handleOpen={this.handleOpen}
+        />
+      </Grid>
+      <Grid item xs={12} md={3} className={styles['saved-np']}>
+        <SavedNewspaper
+          onSaveHandler={this.onSaveHandler}
+          savedArticles={savedArticles}
+          volNum={volNum}
+          deleteSavedHandler={this.deleteSavedHandler}
+          isPoetryFinished={isPoetryFinished}
+        />
+      </Grid>
+    </Grid ></>
+
   }
 }
 

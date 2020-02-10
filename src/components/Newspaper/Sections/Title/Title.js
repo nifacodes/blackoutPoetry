@@ -30,6 +30,7 @@ const Title = ({
     markerHandler = onMouseOverHandler;
   }
 
+  // easier to read if ternary + ifs logic is outside of render
   const title = Object.keys(currentTitleWordMap).map((e, i) => {
     if (isDisplayFromSaved || isPoetryFinished) {
       isWordUsed = currentTitleWordMap[i].isClicked || currentTitleWordMap[i].isMouseOver;
@@ -49,7 +50,7 @@ const Title = ({
               : null
         }
       >
-        <strong className={styles['title-main']}>{`${currentTitleWordMap[i].word} `}</strong>
+        {`${currentTitleWordMap[i].word} `}
       </span>
     ) : null;
   });
@@ -57,22 +58,20 @@ const Title = ({
   return (
     <>
       <Grid container className={styles['date-vol-container']}>
-        <Grid
-          item
-          xs={8}
-          className={styles.date}
-        >{`Published on: ${dateString}`}
+        <Grid item xs={8} className={styles.date}>
+          <Typography variant="body2" className={styles['sec-font']}>
+            {`Published on: ${dateString}`}
+          </Typography>
         </Grid>
-        <Grid
-          item
-          xs={4}
-          className={styles.vol}
-        >{`Vol. 1 No. ${volNum}`}
+        <Grid item xs={4} className={styles.vol}>
+          <Typography variant="body2" className={styles['sec-font']}>
+            {`Vol. 1 No. ${volNum}`}
+          </Typography>
         </Grid>
       </Grid>
       <Grid container className={styles['title-container']}>
         <Grid item xs={12}>
-          <Typography variant="h5" className={styles['article-title']}>
+          <Typography variant="h6" className={styles['article-title']}>
             {title}
           </Typography>
         </Grid>

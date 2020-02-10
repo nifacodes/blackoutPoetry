@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
-
+import Background from "../../../../img/1.png";
 import styles from './Content.module.css';
 
 let MyDocument = null;
@@ -33,6 +33,7 @@ const Content = ({
 
   // what to display
   const content = Object.keys(currentContentWordMap).map((e, i) => {
+    console.log("CONTENT DISPLAY FROM SAVED+ISPOETRYFINISHED", isDisplayFromSaved, isPoetryFinished);
     if (isDisplayFromSaved || isPoetryFinished) {
       isWordUsed = currentContentWordMap[i].isClicked
         || currentContentWordMap[i].isMouseOver;
@@ -64,13 +65,13 @@ const Content = ({
   const wordss = usedWords.map((word) => `${word} `);
 
   const styless = StyleSheet.create({
-    page: { backgroundColor: 'black' },
-    section: { color: 'white', textAlign: 'center', margin: 30, border: '3 solid white' },
+    page: { background: `url(${Background})`, height: '100', width: '100', border: '3 solid green' },
+    section: { color: 'black', textAlign: 'center', margin: 30, border: '3 solid red', backgroundImage: `url(${Background})`, height: '100', width: '100' },
     border: { border: '3 solid white' },
   });
 
   MyDocument = (
-    <Document>
+    <Document style={styless.page}>
       <Page size="A4" style={styless.page}>
         <View style={styless.section}>
           <Text stlye={styless.border}>{wordss}</Text>
@@ -89,16 +90,15 @@ const Content = ({
             className={styles.image}
           />
         ) : null}
-        <Typography variant="subtitle1" className={styles.text}>
+        <Typography variant="body1" className={styles['main-font']}>
           {content}
         </Typography>
-        <div className={styles.author}>
+        <Grid item xs={12} className={styles['author-item']}>
           {!isDisplayFromSaved && !isPoetryFinished ? (
-            <Typography variant="h6">
-              <span className={styles['main-font']}>{entireCurrentArticleOF.author}</span>
+            <Typography variant="h6" className={styles.author}>{entireCurrentArticleOF.author}
             </Typography>
           ) : null}
-        </div>
+        </Grid>
       </Grid>
     </Grid>
   );
