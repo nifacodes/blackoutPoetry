@@ -11,9 +11,6 @@ import { Modal, Newspaper, SavedNewspaper, MobileNav, MobileLanding } from './co
 import { getLexperContent, getArticles } from './api';
 import styles from './App.module.css';
 
-// const isMobile = window.innerWidth <= 959;
-// const isMobile = (window.innerWidth <= 850 || window.innerWidth >= 1100);
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,28 +44,6 @@ class App extends React.Component {
       isSNBP2: window.innerWidth > 500 && window.innerWidth <= 760,
       isSNBP3: window.innerWidth > 760 && window.innerWidth <= 960,
     };
-  }
-
-  isPortraitMode = () => {
-    console.log(this.state);
-    const { screenOrientation } = this.state;
-    return screenOrientation === 'portrait';
-  }
-
-  setScreenOrientation = () => {
-    if (window.matchMedia('(orientation: portrait)').matches) {
-      console.log('orientation: portrait');
-      this.setState({
-        screenOrientation: 'portrait',
-      });
-    }
-
-    if (window.matchMedia('(orientation: landscape)').matches) {
-      console.log('orientation: landscape');
-      this.setState({
-        screenOrientation: 'landscape',
-      });
-    }
   }
 
   updateDimensions = () => {
@@ -150,7 +125,6 @@ class App extends React.Component {
 
 
   componentWillUnmount() {
-    // window.removeEventListener('orientationchange', this.setScreenOrientation);
     window.removeEventListener('resize', this.updateDimensions);
   }
 
@@ -620,7 +594,6 @@ class App extends React.Component {
     return (
       <><Grid container alignContent="center" justify="center">
         <Modal handleClose={this.handleClose} isOpen={isOpen} />
-        {console.log(`orientation: from render: isPortraitMode = ${this.isPortraitMode()}`)}
         <Grid item className={styles['bg-showing']} md={2} lg={3} />
         <Grid
           item

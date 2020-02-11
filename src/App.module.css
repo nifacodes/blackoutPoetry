@@ -25,10 +25,11 @@ body, #root{
 
 .newspaper-container {
   background-image: url("./img/paper-o.png");
-  background-size: cover;
+  background-size: 100% 100%;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   padding: 3.7%;
-  }
+}
 
 a{
   color: #237a57 !important;
