@@ -1,3 +1,4 @@
+
 .stepper-container{
   border: blue solid 3px;
 }
@@ -21,6 +22,17 @@
 
 
 .step-btn {
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+  background: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
   background: linear-gradient(
     to right,
     #093028,
@@ -31,6 +43,17 @@
 }
 
 .step-btn-reset {
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+  background: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
   background: linear-gradient(
     to right,
     #093028,

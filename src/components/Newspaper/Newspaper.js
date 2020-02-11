@@ -50,24 +50,26 @@ const Newspaper = ({
   isSNBP3,
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
+  let ranNum = [getRandomNumberUpTo(12)];
 
-  const [ranNum, setRanNum] = useState(0);
-
-  const InspirationImages = () => (
-    <div className={styles['insp-container']}>
-      {/* {handleRanNum()} */}
-      <img className={styles.insp} src={inspirationImgs[getRandomNumberUpTo(12)]} alt="" />
-    </div>
-  );
-
-  // console.log(ranNum, "hooks ranNum");
   const handleRanNum = () => {
-    const newRanNum = getRandomNumberUpTo(12);
-    setRanNum(newRanNum);
+    let newRanNum = getRandomNumberUpTo(12);
+
+    while (newRanNum in ranNum) {
+      // console.log(totalArticles[randomNum].id, " is in ", savedArticles, "so lets find another number")
+      newRanNum = getRandomNumberUpTo(10);
+    }
+    return newRanNum;
   };
 
+  const InspirationImages = () => (
+
+    <Grid item xs={8} className={styles.bg}> <img className={styles.insp} src={inspirationImgs[handleRanNum()]} alt="" /></Grid>
+
+  );
+
   return (
-    <Grid container className={styles.skew}>
+    <Grid container alignContent="center" justify="center" className={styles.skew}>
       <Header handleOpen={handleOpen} />
 
       {isInspiration ? (<InspirationImages />) : (

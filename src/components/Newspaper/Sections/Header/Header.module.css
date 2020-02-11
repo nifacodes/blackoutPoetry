@@ -14,7 +14,6 @@
 .main-font{  
   font-family: "Calistoga", cursive !important;
   text-align: center !important;
- 
   font-size: 10vw !important;
 }
 
@@ -24,6 +23,17 @@
 }
 
 .learnmore-button {
+ background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+ background: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
  background: linear-gradient(
     to right,
     #093028,
@@ -69,5 +79,3 @@
     font-size: .9vw !important;
   }
   }
-
-

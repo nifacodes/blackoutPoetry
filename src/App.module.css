@@ -1,13 +1,11 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 body, #root{
-  background: url("./img/lm.png") no-repeat fixed; 
+  background: url("./img/blackout_bg.png") no-repeat fixed; 
   background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   height:100%;
   width:100%;
-  
 }
 
 .main-container {
@@ -37,13 +35,28 @@ a{
 }
 
 .loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 
 .nav-container {
   color: whitesmoke !important;
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+  background: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
   background: linear-gradient(
     to right,
     #093028,
@@ -75,7 +88,8 @@ a{
 
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
@@ -102,4 +116,3 @@ a{
   }
 
 }
-

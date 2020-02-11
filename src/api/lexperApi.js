@@ -9,7 +9,7 @@ const getLexperContent = async (urlFromNewsApi) => {
 
     return text;
   } catch (e) {
-    return e;
+    return false;
   }
 };
 

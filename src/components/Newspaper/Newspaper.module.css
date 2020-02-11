@@ -1,23 +1,29 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 .skew {
-    transform: rotate(-0.5deg);
+    -webkit-transform: rotate(-0.5deg);
+        -ms-transform: rotate(-0.5deg);
+            transform: rotate(-0.5deg);
+    
 }
-.insp-container{
-    margin: 5% 0%;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.bg{
+    margin-top: 1% !important;
+    background-color: black;  
+    height: 60vh;
+
 }
 
 .insp{
    padding: 5%;
-    width: 85%;
-    height: 95%;
+   height: 100%;
+   width:100%; 
 }
 
 
 @media only screen and (max-width: 768px) {
     .skew{
-        transform: none;
+        -webkit-transform: none;
+            -ms-transform: none;
+                transform: none;
     }
 }

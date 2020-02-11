@@ -1,3 +1,5 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
 .saved-newspapers-container {
   
   overflow-y: auto;
@@ -5,9 +7,15 @@
 }
 
 .saved-header{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 4vh;
   color: #D0D0D0;
   background-color: #353839;
@@ -44,6 +52,17 @@
 
 .delete-btn {
   color: whitesmoke !important;
+  background-image: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+  background-image: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
   background-image: linear-gradient(
     to right,
     #093028,
@@ -55,6 +74,17 @@
 
 .download-btn {
   color: whitesmoke !important;
+  background-image: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#093028),
+    to(#237a57)
+  );
+  background-image: -o-linear-gradient(
+    left,
+    #093028,
+    #237a57
+  );
   background-image: linear-gradient(
     to right,
     #093028,

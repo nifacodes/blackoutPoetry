@@ -5,6 +5,7 @@ import Loader from 'react-loader';
 import Uniqid from 'uniqid';
 import DehazeIcon from '@material-ui/icons/Dehaze';
 import classNames from 'classnames';
+import axios from 'axios';
 import { createWordMap, getRandomNumberUpTo } from './utils';
 import { Modal, Newspaper, SavedNewspaper, MobileNav, MobileLanding } from './components';
 import { getLexperContent, getArticles } from './api';
@@ -41,10 +42,10 @@ class App extends React.Component {
       width: window.innerWidth,
       height: window.innerHeight,
       isExtraSmall: ((window.innerWidth <= 600)),
-      isSmall: (!!((window.innerWidth > 600 && window.innerWidth <= 960))),
-      isSNBP1: (!!((window.innerWidth > 425 && window.innerWidth <= 500))),
-      isSNBP2: (!!((window.innerWidth > 500 && window.innerWidth <= 760))),
-      isSNBP3: (!!((window.innerWidth > 760 && window.innerWidth <= 960))),
+      isSmall: window.innerWidth > 600 && window.innerWidth <= 960,
+      isSNBP1: window.innerWidth > 425 && window.innerWidth <= 500,
+      isSNBP2: window.innerWidth > 500 && window.innerWidth <= 760,
+      isSNBP3: window.innerWidth > 760 && window.innerWidth <= 960,
     };
   }
 
@@ -110,7 +111,22 @@ class App extends React.Component {
 
     const articles = await getArticles();
 
-    const pendingContents = articles.map(async (article) => getLexperContent(article.url));
+    if (!articles.length) {
+      const staticData = await axios.get('staticdata.json');
+      this.setState({ ...staticData.data });
+      return 'test';
+    }
+
+    let pendingContents;
+
+    if (await getLexperContent(articles[0].url)) {
+      pendingContents = articles.map(async (article) => getLexperContent(article.url));
+    } else {
+      const staticData = await axios.get('staticdata.json');
+      this.setState({ ...staticData.data });
+      return 'test';
+    }
+
     const fullContents = await Promise.all(pendingContents);
 
     articles.forEach((article, i) => {
@@ -131,6 +147,7 @@ class App extends React.Component {
       isLoading: false,
     });
   }
+
 
   componentWillUnmount() {
     // window.removeEventListener('orientationchange', this.setScreenOrientation);
@@ -572,7 +589,6 @@ class App extends React.Component {
             handleDrawerItem={this.handleDrawerItem}
           />
           {this.displayDrawerComponent()}
-
         </>
       );
     }
@@ -596,7 +612,6 @@ class App extends React.Component {
           <Modal handleClose={this.handleClose} isOpen={isOpen} />
 
           {this.displayDrawerComponent()}
-
         </>
       );
     }

@@ -207,9 +207,7 @@ const Stepper = ({
         </Step>
       ))}
     </MUIStepper>
-
   };
-
   const displayMUIMobileStepper = () => (
     <MobileStepper
       steps={6}

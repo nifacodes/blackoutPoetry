@@ -1,9 +1,18 @@
 .video-container {
-  height: 100%;
-  width:100%;
+  /* adding for safari */
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
 }
 
 .video {
-    width: 80%;
-    height: 70%;
-  }
+  width: 80%;
+  height: 70%;
+}
