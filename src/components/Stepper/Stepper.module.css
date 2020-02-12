@@ -1,8 +1,4 @@
 
-.stepper-container{
-  border: blue solid 3px;
-}
-
 .info {
   text-align: center;
   padding: 1% 2% !important;
@@ -10,7 +6,6 @@
 
 
 .stepper {
-  
   border-top: #808080 solid 3px;
   border-bottom: #808080 solid 3px;
   border-radius: 3px;
@@ -18,6 +13,11 @@
   margin: 0 !important;
   padding: 2% !important;
   width: 100%;
+}
+
+.small-steps{
+  border-top: #808080 solid 3px;
+
 }
 
 

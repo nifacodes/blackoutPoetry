@@ -32,12 +32,8 @@ class App extends React.Component {
       isOpen: false,
       isNavOpen: false,
       volNum: 1,
-      screenOrientation: 'portrait',
       isSmallStepper: ((window.innerWidth <= 425)),
       step: 'instructions',
-      screenOrientation: 'portrait',
-      width: window.innerWidth,
-      height: window.innerHeight,
       isExtraSmall: ((window.innerWidth <= 600)),
       isSmall: window.innerWidth > 600 && window.innerWidth <= 960,
       isSNBP1: window.innerWidth > 425 && window.innerWidth <= 500,
@@ -52,6 +48,8 @@ class App extends React.Component {
         this.setState({ isSmallStepper: true });
       } else {
         this.setState({ isSmallStepper: false });
+        console.log("turn it to false,", this.state.isSmallStepper)
+
       }
 
       if (window.innerWidth > 425 && window.innerWidth <= 500) {
@@ -65,7 +63,7 @@ class App extends React.Component {
       this.setState({ isExtraSmall: true, isSmall: false });
     } else if ((window.innerWidth >= 600 && window.innerWidth <= 959)) {
       if (window.innerWidth <= 760) {
-        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false, step: 'instructions' });
+        this.setState({ isSNBP1: false, isSNBP2: true, isSNBP3: false, step: 'instructions', isSmallStepper: false });
       } else {
         this.setState({ step: 'newspaper' });
       }
@@ -159,6 +157,12 @@ class App extends React.Component {
       isPoetryFinished: false,
     });
   };
+
+  updateLoadExamples = () => {
+    this.setState({
+      isInspiration: false
+    })
+  }
 
   loadNewArticle = async () => {
     const { totalArticles, savedArticles, entireCurrentArticleOF } = this.state;
@@ -443,6 +447,7 @@ class App extends React.Component {
               saveCurrentArticle={this.saveCurrentArticle}
               handleOpen={this.handleOpen}
               isSmallStepper={isSmallStepper}
+              updateLoadExamples={this.updateLoadExamples}
 
             />
           </Grid>
@@ -623,6 +628,7 @@ class App extends React.Component {
             saveState={this.saveState}
             saveCurrentArticle={this.saveCurrentArticle}
             handleOpen={this.handleOpen}
+            updateLoadExamples={this.updateLoadExamples}
           />
         </Grid>
         <Grid item xs={12} md={3} className={styles['saved-np']}>

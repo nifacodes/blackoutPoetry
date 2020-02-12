@@ -48,6 +48,7 @@ const Newspaper = ({
   isSNBP1,
   isSNBP2,
   isSNBP3,
+  updateLoadExamples
 }) => {
   const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
   let ranNum = [getRandomNumberUpTo(12)];
@@ -56,23 +57,22 @@ const Newspaper = ({
     let newRanNum = getRandomNumberUpTo(12);
 
     while (newRanNum in ranNum) {
-      // console.log(totalArticles[randomNum].id, " is in ", savedArticles, "so lets find another number")
       newRanNum = getRandomNumberUpTo(10);
     }
     return newRanNum;
   };
 
-  const InspirationImages = () => (
+  const getInspirationImages = () => {
+    // item xs needs to be updated so that when you resize, it adjusts to all screens 
+    return (<Grid item xs={8} className={styles.bg}> <img className={styles.insp} src={inspirationImgs[handleRanNum()]} alt="" /> {updateLoadExamples()}</Grid>)
 
-    <Grid item xs={8} className={styles.bg}> <img className={styles.insp} src={inspirationImgs[handleRanNum()]} alt="" /></Grid>
-
-  );
+  };
 
   return (
     <Grid container alignContent="center" justify="center" className={styles.skew}>
       <Header handleOpen={handleOpen} />
 
-      {isInspiration ? (<InspirationImages />) : (
+      {isInspiration ? (getInspirationImages()) : (
         <>
           <Title
             entireCurrentArticleOF={entireCurrentArticleOF}

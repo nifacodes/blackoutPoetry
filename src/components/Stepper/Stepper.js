@@ -161,9 +161,7 @@ const Stepper = ({
   saveCurrentArticle,
   isSmallStepper
 }) => {
-  // useState returns an array with two values
-  // (one being the state property (activeStep) and the second being the setter function for that state) (setActive)
-  // we can also specify the default value for the state property (activeStep), useState takes in a default value
+
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
@@ -286,7 +284,7 @@ const Stepper = ({
       <div className={styles.root}>
         {isSmallStepper ? (
           <Grid container alignContent='center' justify='center' className={styles.info}>
-            <Grid item>
+            <Grid item className={styles['small-steps']}>
               {getStepContent(activeStep)}
             </Grid>
             {handleActiveSteps()}
