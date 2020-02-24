@@ -1,28 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import styles from './Newspaper.module.css';
-// import { Header, Title } from './Sections';
 import { Header, Title } from './Sections';
 import { Content } from './Sections/Content/Content';
 
+import InspirationImage from './Sections/InspirationImage/InspirationImage';
+
 import Stepper from '../Stepper/Stepper';
-
-import { getRandomNumberUpTo } from '../../utils';
-
-import imageOne from '../../img/1.png';
-import imageTwo from '../../img/2.png';
-import imageThree from '../../img/3.png';
-import imageFour from '../../img/4.png';
-import imageFive from '../../img/5.png';
-import imageSix from '../../img/6.png';
-import imageSeven from '../../img/7.png';
-import imageEight from '../../img/8.png';
-import imageNine from '../../img/9.png';
-import imageTen from '../../img/10.png';
-import imageEleven from '../../img/11.png';
-import imageTwelve from '../../img/12.png';
 
 const Newspaper = ({
   entireCurrentArticleOF,
@@ -47,32 +33,11 @@ const Newspaper = ({
   isSmallStepper,
   isSNBP1,
   isSNBP2,
-  isSNBP3,
-  updateLoadExamples
-}) => {
-  const inspirationImgs = [imageOne, imageTwo, imageThree, imageFour, imageFive, imageSix, imageSeven, imageEight, imageNine, imageTen, imageEleven, imageTwelve];
-  let ranNum = [getRandomNumberUpTo(12)];
-
-  const handleRanNum = () => {
-    let newRanNum = getRandomNumberUpTo(12);
-
-    while (newRanNum in ranNum) {
-      newRanNum = getRandomNumberUpTo(10);
-    }
-    return newRanNum;
-  };
-
-  const getInspirationImages = () => {
-    // item xs needs to be updated so that when you resize, it adjusts to all screens 
-    return (<Grid item xs={8} className={styles.bg}> <img className={styles.insp} src={inspirationImgs[handleRanNum()]} alt="" /> {updateLoadExamples()}</Grid>)
-
-  };
-
-  return (
+  isSNBP3
+}) => (
     <Grid container alignContent="center" justify="center" className={styles.skew}>
       <Header handleOpen={handleOpen} />
-
-      {isInspiration ? (getInspirationImages()) : (
+      {isInspiration ? (<InspirationImage />) : (
         <>
           <Title
             entireCurrentArticleOF={entireCurrentArticleOF}
@@ -114,17 +79,17 @@ const Newspaper = ({
       />
     </Grid>
   );
-};
+
 
 Newspaper.propTypes = {
   volNum: PropTypes.number.isRequired,
   isDisplayFromSaved: PropTypes.bool.isRequired,
   isPencilState: PropTypes.bool.isRequired,
   isMarkerState: PropTypes.bool.isRequired,
-  isSmallStepper: PropTypes.bool,
-  isSNBP1: PropTypes.bool,
-  isSNBP2: PropTypes.bool,
-  isSNBP3: PropTypes.bool,
+  isSmallStepper: PropTypes.bool.isRequired,
+  isSNBP1: PropTypes.bool.isRequired,
+  isSNBP2: PropTypes.bool.isRequired,
+  isSNBP3: PropTypes.bool.isRequired,
   currentTitleWordMap: PropTypes.oneOfType([
     PropTypes.instanceOf(Array),
     PropTypes.shape({}),
@@ -141,7 +106,7 @@ Newspaper.propTypes = {
   onClickHandler: PropTypes.func.isRequired,
   onMouseOverHandler: PropTypes.func.isRequired,
   isInspiration: PropTypes.bool.isRequired,
-  handleOpen: PropTypes.func,
+  handleOpen: PropTypes.func.isRequired,
   isPoetryFinished: PropTypes.bool.isRequired,
   loadExamples: PropTypes.func.isRequired,
   pencilState: PropTypes.func.isRequired,

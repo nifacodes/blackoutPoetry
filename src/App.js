@@ -321,22 +321,6 @@ class App extends React.Component {
     }
   };
 
-  downloadCurrentArticle = () => {
-    // MAKE A POST REQUEST TO THE BACKEND => SEND THE NECESSARY DATA
-    // ON BACKEND, CREATE A PDF BASED ON A TEMPLATE USING THAT DATA
-    // MAKE A GET REQUEST TO GET THAT BLOB BACK FROM THE BACKEND
-    // CONVERT A BLOB TO A PDF
-    // USE FILE-SAVER TO DOWNLOAD THAT PDF
-    // const pdf = null;
-
-    // axios.post('/route', { data })
-    //   .then(() => {
-    //     axios.get('/route')
-    //       .then((response) => {
-    //         pdf = response.data;
-    //       });
-    //   });
-  }
 
   onSaveHandler = (i) => {
     const { savedArticles } = this.state;

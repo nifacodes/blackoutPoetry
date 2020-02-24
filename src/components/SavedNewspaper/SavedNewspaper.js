@@ -31,7 +31,7 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler, isSm
             )}
           >Delete
           </Button>
-          <Button
+          {/* <Button
             className={styles['download-btn']}
             type="button"
             size="small"
@@ -39,7 +39,7 @@ const SavedNewspaper = ({ savedArticles, onSaveHandler, deleteSavedHandler, isSm
               savedArticles[articleObj].entireCurrentArticleOF.id,
             )}
           >Download
-          </Button>
+          </Button> */}
         </Grid>
       </Grid>
     ))
