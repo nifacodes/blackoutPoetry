@@ -43,7 +43,7 @@ const lightBulbSentence = (
 const saveSentence = (
   <Typography variant="body2" className={styles['main-font']}>
     {`Congrats you made your very own Newspaper Blackout Poetry! If you want to save
-    this, click the Save button below or click Finish! Afterwards, you may also download your poetry by clicking the download button.`}
+    this, click the Save button below or click Finish!`}
   </Typography>
 );
 
@@ -252,7 +252,7 @@ const Stepper = ({
           <Button className={styles.btn} onClick={saveCurrentArticle}>
             <i className={classNames('fas', 'fa-lg', 'fa-save')} />
           </Button>
-          <PrintableNewspaper />
+          {/* <PrintableNewspaper /> */}
         </>
         break;
       default:
