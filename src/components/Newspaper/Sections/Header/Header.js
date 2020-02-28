@@ -27,7 +27,8 @@ const Header = ({ handleOpen }) => (
     <Hidden xsDown>
       <Grid item sm={5} className={styles['side-info']}>
         <Typography variant="body2" className={styles['sec-font']}>
-          Welcome! When creating a poem, traditional poetry is written out completely from scratch. Austin Kleon, a modern poet and blogger writes his poetry by choosing words that stand out to him from newspapers. Blackout Poetry is a digitized tool for his method. It allows you to make poetry the way Austin Kleon does with Newspapers. To learn more visit <span><a href="https://austinkleon.com/category/newspaper-blackout-poems/">his blog.</a></span> To watch a video of the method, click the button below.
+          Welcome! Blackout Poetry (short for Newspaper Blackout Poetry) is a tool to create poetry
+from real newspaper articles. Traditionally, when creating a poem, it is written out completely from scratch with a pen and paper. Austin Kleon, a modern poet and blogger writes his poetry by choosing words that stand out to him from newspapers. Blackout Poetry is a digitized tool for his method. It allows you to make poetry the way Austin Kleon does with Newspapers. To learn more visit <span><a href="https://austinkleon.com/category/newspaper-blackout-poems/">his blog.</a></span> To watch a video of the method, click the button below.
         </Typography>
         <Button
           className={styles['learnmore-button']}
