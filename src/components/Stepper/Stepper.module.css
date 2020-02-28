@@ -19,7 +19,9 @@
   border-top: #808080 solid 3px;
 
 }
-
+.w-100{
+  width: 100%
+}
 
 .step-btn {
   background: -webkit-gradient(

@@ -21,15 +21,17 @@ import { PrintableNewspaper } from '..';
 const getSteps = () => [
   <Typography variant="body2" className={styles['sec-font']}>{`Get Inspired`}</Typography>,
   <Typography variant="body2" className={styles['sec-font']}>{`Browse Articles`}</Typography>,
-  <Typography variant="body2" className={styles['sec-font']}>{`Box the words`}</Typography>,
-  <Typography variant="body2" className={styles['sec-font']}>{`Blackout the rest`}</Typography>,
+  <Typography variant="body2" className={styles['sec-font']}>{`Box The Words`}</Typography>,
+  <Typography variant="body2" className={styles['sec-font']}>{`Blackout The Rest`}</Typography>,
   <Typography variant="body2" className={styles['sec-font']}>{`Save Poetry`}</Typography>,
 ];
 
 const browseSentence = (
-  <Typography variant="body2" className={styles['main-font']}>
-    {`Click the Plus button below to browse through articles until you find one that you like!`}
-  </Typography>
+  <Grid item>
+    <Typography variant="body2" className={styles['main-font']}>
+      {`Click the Plus button below to browse through articles until you find one that you like!`}
+    </Typography>
+  </Grid>
 );
 
 const lightBulbSentence = (
@@ -56,7 +58,7 @@ const boxWords = (
 
 const blackOutWords = (
   <Typography variant="body2" className={styles['main-font']}>
-    {`With your mouse, hover over the rest of the words to black them out! Once you're done, click Next to continue`}
+    {`With your mouse, hover over (or tap) the rest of the words to black them out! Once you're done, click Next to continue`}
   </Typography>
 );
 
@@ -239,7 +241,7 @@ const Stepper = ({
             <i className={classNames('fas', 'fa-lg', 'fa-lightbulb')} />
           </Button>
         </>
-        break;
+
       case 1:
         return <>
           <Button className={styles.btn} onClick={loadNewArticle}>
@@ -297,12 +299,16 @@ const Stepper = ({
               <Grid item>
                 {getStepContent(activeStep)}
               </Grid>
-              {handleActiveSteps()}
-              {activeStep === steps.length - 1 ? (
-                displayButton("Finsihed", handleReset)
-              ) : (
-                  displayButton("Next", handleNext)
-                )}
+              <Grid item className={styles['w-100']}>
+                {handleActiveSteps()}
+                {activeStep === steps.length - 1 ? (
+                  displayButton("Finsihed", handleReset)
+                ) : (
+                    displayButton("Next", handleNext)
+                  )}
+              </Grid>
+
+
             </Grid>
           )}
       </div>

@@ -1,4 +1,3 @@
-/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
 
 .saved-newspapers-container {
   
@@ -16,7 +15,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 4vh;
+  height: 6vh;
   color: #D0D0D0;
   background-color: #353839;
   border: 1px dashed #dcdcdc; 
