@@ -82,43 +82,45 @@ class App extends React.Component {
     this.state.isExtraSmall ? this.setState({ step: 'instructions' }) : this.setState({ step: 'newspaper' });
     window.addEventListener('resize', this.updateDimensions);
 
-    const articles = await getArticles();
+    // const articles = await getArticles();
 
-    if (!articles.length) {
-      const staticData = await axios.get('staticdata.json');
-      this.setState({ ...staticData.data });
-      return 'test';
-    }
+    // if (!articles.length) {
+    //   const staticData = await axios.get('staticdata.json');
+    //   this.setState({ ...staticData.data });
+    //   return 'test';
+    // }
 
-    let pendingContents;
+    // let pendingContents;
 
-    if (await getLexperContent(articles[0].url)) {
-      pendingContents = articles.map(async (article) => getLexperContent(article.url));
-    } else {
-      const staticData = await axios.get('staticdata.json');
-      this.setState({ ...staticData.data });
-      return 'test';
-    }
+    // if (await getLexperContent(articles[0].url)) {
+    //   pendingContents = articles.map(async (article) => getLexperContent(article.url));
+    // } else {
+    const staticData = await axios.get('staticdata.json');
+    //   this.setState({ ...staticData.data });
+    //   return 'test';
+    // }
 
-    const fullContents = await Promise.all(pendingContents);
+    // const fullContents = await Promise.all(pendingContents);
 
-    articles.forEach((article, i) => {
-      article.fullContentText = fullContents[i];
-      article.id = Uniqid();
-    });
+    this.setState({ ...staticData.data });
 
-    this.setState({
-      totalArticles: articles,
-      entireCurrentArticleOF: {
-        ...articles[0],
-        fullContentText: articles[0].fullContentText,
-        id: articles[0].id,
-      },
-      currentTitleWordMap: createWordMap(articles[0].title),
-      currentAuthorWordMap: createWordMap(articles[0].author),
-      currentContentWordMap: createWordMap(articles[0].fullContentText),
-      isLoading: false,
-    });
+    // articles.forEach((article, i) => {
+    //   article.fullContentText = fullContents[i];
+    //   article.id = Uniqid();
+    // });
+
+    // this.setState({
+    //   totalArticles: articles,
+    //   entireCurrentArticleOF: {
+    //     ...articles[0],
+    //     fullContentText: articles[0].fullContentText,
+    //     id: articles[0].id,
+    //   },
+    //   currentTitleWordMap: createWordMap(articles[0].title),
+    //   currentAuthorWordMap: createWordMap(articles[0].author),
+    //   currentContentWordMap: createWordMap(articles[0].fullContentText),
+    //   isLoading: false,
+    // });
   }
 
 
