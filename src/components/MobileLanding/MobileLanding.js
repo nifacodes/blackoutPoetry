@@ -29,7 +29,7 @@ from real newspaper articles. Traditionally, when creating a poem, it is written
                 fullWidth
                 onClick={handleOpen}
             >
-                WATCH VIEDO
+                WATCH VIDEO
       </Button>
             <Typography variant="subtitle2" display="inline" className={styles['sec-font']}>
                 Inspiration: Austin Kleon | Powered By: NewsAPI and Lexper API

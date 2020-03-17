@@ -1,7 +1,11 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
 
+html{
+  font-family: Arial, Helvetica, sans-serif; 
+}
+
 body, #root{
-  background: url("./img/blackout_bg.jpg") no-repeat fixed; 
+  background: url("./img/bg-min.jpg") no-repeat fixed; 
   background-size: cover;
   background-size: cover;
   height:100%;
@@ -24,7 +28,7 @@ body, #root{
 
 
 .newspaper-container {
-  background-image: url("./img/paper.png");
+  background-image: url("./img/paper-min.png");
   background-size: cover;
   background-repeat: no-repeat;
   padding: 3.7%;
