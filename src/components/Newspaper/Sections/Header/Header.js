@@ -37,7 +37,7 @@ from real newspaper articles. Inspired by Austin Kleon, a modern poet, Blackout 
           fullWidth
           onClick={handleOpen}
         >
-          WATCH VIEDO
+          WATCH VIDEO
         </Button>
       </Grid>
     </Hidden>
